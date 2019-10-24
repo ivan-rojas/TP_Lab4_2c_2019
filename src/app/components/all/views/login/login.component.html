@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row top-row">
+		<div class="col-3"></div>
+		<div class="col-6">
+			<div class="card">
+				<div class="card-body align-center">
+					<h4 class="form-title">Ingresar</h4>
+					<hr>
+					<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+						<input type="text" formControlName="email" class="form-control separate-top-input align-center" placeholder="Email" autofocus>
+						<input type="password" formControlName="password" class="form-control separate-top-input align-center" placeholder="Contraseña">
+						<button [disabled]="!loginForm.valid" type="submit" class="btn btn-success full-width separate-top-input">Entrar</button>
+					</form>
+					<hr>
+					<button routerLink="/app/register" class="btn btn-primary full-width">Registrarse</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-3"></div>
+	</div>
+</div>

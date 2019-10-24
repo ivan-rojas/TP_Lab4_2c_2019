@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row top-row">
+        <div class="col-4"></div>
+        <div class="col-4">
+
+            <div class="role-panel">
+                <div class="row">
+                    <div class="col-12">
+                        <input [(ngModel)]="changeRoleEmail" type="text" class="form-control input-titanic role-input" placeholder="Email del usuario">
+                    </div>
+                </div>
+                <div class="row middle-row">
+                    <div class="col-12">
+                        <select [(ngModel)]="changeRoleNewRole" class="form-control input-titanic role-input">
+                            <option value="socio">Socio</option>
+                            <option value="mozo">Mozo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row middle-row">
+                    <div class="col-12">
+                        <button class="btn btn-success full-width" (click)="ChangeRole()">Cambiar rol</button>
+                    </div>
+                </div>
+            </div>      
+
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+      

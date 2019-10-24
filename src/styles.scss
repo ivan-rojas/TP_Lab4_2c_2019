@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Parisienne&display=swap');
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient(silver, white) fixed;
+    font-family: 'Raleway', sans-serif;
+}
+
+.main-bar {
+    height: 5rem;
+    -webkit-box-shadow: inset -8px 46px 121px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset -8px 46px 121px -7px rgba(0,0,0,0.75);
+    box-shadow: inset -8px 46px 121px -7px rgba(0,0,0,0.75);
+}
+
+.main-title {
+    margin: 1.2rem 0 0 3rem;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    font-family: 'Parisienne', cursive;
+}
+
+nav {
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+}
+
+.bottom-shadow {
+    -webkit-box-shadow: 0px -3px 23px 13px rgba(0,0,0,0.65);
+    -moz-box-shadow: 0px -3px 23px 13px rgba(0,0,0,0.65);
+    box-shadow: 0px -3px 23px 13px rgba(0,0,0,0.65);
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    border: 1px solid #333;
+    margin: 0.6rem 3rem 0 0;
+}
+
+.profile {
+    text-align: right;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.top-row {
+    margin-top: 8rem;
+}
+
+.separate-top-input {
+    margin-top: 2rem;
+}
+
+.separate-bottom-input {
+    margin-top: 2rem;
+}
+
+hr {
+    margin: 1.5rem 0 1.5rem 0;
+}
+
+.form-title {
+    color: #333;
+    font-weight: bold;
+}
+
+.no-side-margin {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.last-row {
+    margin-bottom: 5rem;
+}
+
+.middle-row {
+    margin-top: 2rem;
+}
