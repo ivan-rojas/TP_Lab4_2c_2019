@@ -1,0 +1,7 @@
+<div *ngIf="product" class="card outside-shadow">
+    <div class="card-body align-center">
+        <div class="card-title">{{product.name}}</div>
+        <img src="{{product.pathImg}}" class="img-shadow" (click)="AddToOrder(product)">
+        <div class="price">${{product.price}}.00</div>
+    </div>
+</div>

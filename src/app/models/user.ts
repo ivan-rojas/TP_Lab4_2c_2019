@@ -30,5 +30,9 @@ export class User
 export enum Role
 {
     socio = 'socio',
-    mozo = 'mozo'
+    mozo = 'mozo',
+    cocinero = 'cocinero',
+    cervecero = 'cervecero',
+    bartender = 'bartender',
+    cliente = 'cliente'
 }

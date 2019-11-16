@@ -3,14 +3,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
+import { UserService } from '../firebase/user.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthService {
 
-	constructor(private afsAuth: AngularFireAuth, private db: AngularFirestore, private router: Router) { }
-
+	constructor(private afsAuth: AngularFireAuth, private db: AngularFirestore, private router: Router, private userService: UserService) { }
   
 	public RegisterWithEmail(user: User)
 	{
@@ -18,6 +18,8 @@ export class AuthService {
 			this.afsAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
 				.then(userData => {
 					resolve(userData);
+					this.userService.Add(user);
+					console.log('Register successful');
 				})
 				.catch(error => console.log(reject(error)))
     	});

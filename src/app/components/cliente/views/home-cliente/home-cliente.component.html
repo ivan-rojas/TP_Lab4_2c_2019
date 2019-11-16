@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="row top-row card-group">
+        <div class="col-3 mar-top-2"  *ngFor="let prod of products">
+            <app-food-card (added)="AddToOrder($event)" [product]="prod"></app-food-card>
+        </div>
+    </div>
+</div>

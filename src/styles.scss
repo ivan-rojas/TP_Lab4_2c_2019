@@ -42,6 +42,18 @@ nav {
     border-radius: 100%;
     border: 1px solid #333;
     margin: 0.6rem 3rem 0 0;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.profile-pic:hover {
+    border: 2px solid white;
+    border-radius: 10%;
+}
+
+.profile-pic.active {
+    border: 2px solid white;
+    border-radius: 10%;
 }
 
 .profile {
@@ -54,6 +66,14 @@ nav {
 
 .align-center {
     text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-left {
+    text-align: left;
 }
 
 .top-row {
@@ -92,4 +112,39 @@ hr {
 
 .middle-row {
     margin-top: 2rem;
+}
+
+.sidebar, .content {
+    height: 100%;
+    transition: width .35s;
+}
+
+.sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    background: white;
+    width: 20%;
+    border-left: 1px solid silver;
+}
+
+.sidebar.collapsed {
+    width: 0;
+}
+
+.mar-top-1 {
+    margin-top: 1rem;
+}
+
+.mar-top-2 {
+    margin-top: 2rem;
+}
+
+.mar-top-3 {
+    margin-top: 3rem;
+}
+
+.mar-top-4 {
+    margin-top: 4rem;
 }

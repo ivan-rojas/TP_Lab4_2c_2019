@@ -11,7 +11,6 @@ export class ErrorComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['/app/login']);
   }
 
 }

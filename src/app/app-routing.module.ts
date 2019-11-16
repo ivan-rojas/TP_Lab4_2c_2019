@@ -8,27 +8,41 @@ import { LoginComponent } from './components/all/views/login/login.component';
 import { RegisterComponent } from './components/all/views/register/register.component';
 import { MainGeneralComponent } from './components/all/views/main-general/main-general.component';
 import { ErrorComponent } from './components/all/views/error/error.component';
+import { MainClienteComponent } from './components/cliente/views/main-cliente/main-cliente.component';
+import { HomeClienteComponent } from './components/cliente/views/home-cliente/home-cliente.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
   
-  {path: 'app', component: MainGeneralComponent,
+  	{path: 'app', component: MainGeneralComponent,
 		children:	
 		[
       		{path: 'login', component: LoginComponent},
       		{path: 'register', component: RegisterComponent}
-    	]},
-  {path: 'socio', component: MainSocioComponent,
+		]},
+		
+  	{path: 'socio', component: MainSocioComponent,
       	children:
 		[
 			{path: '', component: HomeSocioComponent}
-		]},
-  {path: 'mozo', component: MainMozoComponent,
+		],
+	canActivate: [AuthGuard]},
+
+  	{path: 'mozo', component: MainMozoComponent,
       	children:
 		[
 			{path: '', component: HomeMozoComponent}
+		],
+	canActivate: [AuthGuard]},
+
+	{path: 'cliente', component: MainClienteComponent,
+      	children:
+		[
+			{path: '', component: HomeClienteComponent}
 		]},
-{path: '**', component: ErrorComponent}
+		
+	{path: '**', component: ErrorComponent}
 ];
 
 @NgModule({

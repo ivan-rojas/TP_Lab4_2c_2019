@@ -17,6 +17,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainGeneralComponent } from './components/all/views/main-general/main-general.component';
 import { FirebaseConfig } from 'src/environments/environment';
 import { ErrorComponent } from './components/all/views/error/error.component';
+import { HomeClienteComponent } from './components/cliente/views/home-cliente/home-cliente.component';
+import { MainClienteComponent } from './components/cliente/views/main-cliente/main-cliente.component';
+import { FoodCardComponent } from './components/all/main/food-card/food-card.component';
+import { SidebarOptionComponent } from './components/all/main/sidebar-option/sidebar-option.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { ErrorComponent } from './components/all/views/error/error.component';
     LoginComponent,
     RegisterComponent,
     MainGeneralComponent,
-    ErrorComponent
+    ErrorComponent,
+    HomeClienteComponent,
+    MainClienteComponent,
+    FoodCardComponent,
+    SidebarOptionComponent
   ],
   imports: [
     BrowserModule,
