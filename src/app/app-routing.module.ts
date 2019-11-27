@@ -11,6 +11,13 @@ import { ErrorComponent } from './components/all/views/error/error.component';
 import { MainClienteComponent } from './components/cliente/views/main-cliente/main-cliente.component';
 import { HomeClienteComponent } from './components/cliente/views/home-cliente/home-cliente.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ManageTablesComponent } from './components/mozo/views/manage-tables/manage-tables.component';
+import { MainCerveceroComponent } from './components/cervecero/views/main-cervecero/main-cervecero.component';
+import { HomeCerveceroComponent } from './components/cervecero/views/home-cervecero/home-cervecero.component';
+import { MainCocineroComponent } from './components/cocinero/views/main-cocinero/main-cocinero.component';
+import { HomeCocineroComponent } from './components/cocinero/views/home-cocinero/home-cocinero.component';
+import { MainBartenderComponent } from './components/bartender/views/main-bartender/main-bartender.component';
+import { HomeBartenderComponent } from './components/bartender/views/home-bartender/home-bartender.component';
 
 
 const routes: Routes = [
@@ -32,7 +39,29 @@ const routes: Routes = [
   	{path: 'mozo', component: MainMozoComponent,
       	children:
 		[
-			{path: '', component: HomeMozoComponent}
+			{path: '', component: HomeMozoComponent},
+			{path: 'tables', component: ManageTablesComponent}
+		],
+	canActivate: [AuthGuard]},
+
+	{path: 'cervecero', component: MainCerveceroComponent,
+      	children:
+		[
+			{path: '', component: HomeCerveceroComponent},
+		],
+	canActivate: [AuthGuard]},
+
+	{path: 'cocinero', component: MainCocineroComponent,
+      	children:
+		[
+			{path: '', component: HomeCocineroComponent},
+		],
+	canActivate: [AuthGuard]},
+
+	{path: 'bartender', component: MainBartenderComponent,
+      	children:
+		[
+			{path: '', component: HomeBartenderComponent},
 		],
 	canActivate: [AuthGuard]},
 
@@ -40,7 +69,8 @@ const routes: Routes = [
       	children:
 		[
 			{path: '', component: HomeClienteComponent}
-		]},
+		],
+	canActivate: [AuthGuard]},
 		
 	{path: '**', component: ErrorComponent}
 ];

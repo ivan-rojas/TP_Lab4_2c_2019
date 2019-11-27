@@ -1,22 +1,45 @@
-import { Product } from './product';
+import { Product, FoodState } from './product';
+import { User } from './user';
 
 export class Order 
 {
+    public id: string;
     public codeID: string;
     public items: Product[];
+    public totalPrice: number;
     public tableID: string;
+    public client: User;
+    public waiter: User;
     public state: OrderState;
     public timeLeft: string;
     public timestamp: number;
 
-    private constructor()
+    constructor()
     {
         this.codeID = Order.GenerateCodeID();
         this.items = [];
+        this.totalPrice = 0;
         this.tableID = '';
         this.state = OrderState.pending;
         this.timeLeft = '';
         this.timestamp = Date.now();
+    }
+
+    public CalculateTotal(): void
+    {
+        this.totalPrice = this.items.reduce((before, actual) => {
+            return before + actual.price;
+        }, 0);
+    }
+
+    public UpdateOrderState(): void
+    {
+        if(this.IsFinished())
+            this.state = OrderState.readyToServe;
+        else if(this.IsBeingPrepared())
+            this.state = OrderState.cooking;
+        else
+            this.state = OrderState.pending;
     }
 
     public static Create(tableID: string): Order
@@ -24,6 +47,21 @@ export class Order
         let newOrder = new Order();
         newOrder.tableID = tableID;
         return newOrder;
+    }
+
+    public CheckOrder(): boolean
+    {
+        let isValid = false;
+
+        if((this.codeID != '' && this.codeID != undefined) &&
+            this.items.length > 0 &&
+            this.totalPrice > 0 &&
+            (this.tableID != '' && this.tableID != undefined) &&
+            this.state != undefined &&
+            (this.timestamp != undefined && this.timestamp != 0))
+            isValid = true;
+
+        return isValid;
     }
 
     private static GenerateCodeID(): string
@@ -54,11 +92,32 @@ export class Order
         }
         return code;
     }
+
+    private IsBeingPrepared(): boolean
+    {
+        let isBeingPrepared = false;
+        this.items.forEach(el => {
+            if(el.state == FoodState.preparing)
+                isBeingPrepared = true;
+        });
+        return isBeingPrepared;
+    }
+
+    private IsFinished(): boolean
+    {
+        let finished = true;
+        this.items.forEach(el => {
+            if(el.state != FoodState.finished)
+                finished = false;
+        });
+        return finished;
+    }
 }
 
 export enum OrderState
 {
-    pending = 'pending',
-    cooking = 'cooking',
-    readyToServe = 'ready to serve'
+    pending = 'Pendiente',
+    cooking = 'Cocinándose',
+    readyToServe = 'Listo para servir',
+    served = 'Servido'
 }

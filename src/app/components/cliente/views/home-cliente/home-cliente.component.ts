@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
+import { Product, FoodType, Cook } from 'src/app/models/product';
 import { Order } from 'src/app/models/order';
+import { Subject } from 'rxjs';
+import { OrderService } from 'src/app/services/firebase/order.service';
+import { AuthService } from 'src/app/services/authentication/auth.service';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/firebase/user.service';
 
 @Component({
 	selector: 'app-home-cliente',
@@ -10,30 +15,99 @@ import { Order } from 'src/app/models/order';
 
 export class HomeClienteComponent implements OnInit {
 
-	public products: any[];
 	public order: Order;
+	public products: Product[];
+	public showingProducts: Product[];
+	public somethingOrdered: boolean;
+	public onReset: Subject<void> = new Subject<void>();
+	private currentUser: User;
+	private currentWorker: User;
 
-	constructor() { }
+	constructor(private orderService: OrderService, private userService: UserService, private authService: AuthService) { }
 
 	ngOnInit() 
 	{
-		this.order = Order.Create('1');
-		this.products = [
-			Product.Create('B-CER-QUIL', 'Cerveza Quilmes', 'assets/img/B-CER-QUIL.jpg', 50),
-			Product.Create('C-COM-MCFR', 'Milanesa con fritas', 'assets/img/C-COM-MCFR.jpg', 300),
-			Product.Create('C-COM-MACF', 'Milanesa a caballo con fritas', 'assets/img/C-COM-MACF.jpg', 350),
-			Product.Create('C-COM-MNAF', 'Milanesa napo con fritas', 'assets/img/C-COM-MNAF.jpg', 350),
-			Product.Create('B-GAS-COCA', 'Coca-Cola', 'assets/img/B-GAS-COCA.jpg', 60),
-			Product.Create('B-AGU-BONA', 'Bon Aqua', 'assets/img/B-AGU-BONA.jpg', 45),
-			Product.Create('B-TRA-DDFR', 'Daikiri de frutilla', 'assets/img/B-TRA-DDFR.jpg', 70),
-			Product.Create('C-COM-ENCE', 'Ensalada el Cesar', 'assets/img/C-COM-ENCE.jpg', 150),
-		];
+		this.InitializeOrder();
+		this.products = this.CreateTestProducts();
+		this.showingProducts = this.products;
+		this.authService.GetCurrentUser().then(userLogged => this.currentUser = userLogged);
+		this.SelectRandomWaiter().then(waiter => this.currentWorker = waiter);
 	}
 
-	AddToOrder(prod: Product)
+	// ##### CORE FUNCTIONS #####
+
+	public AddToOrder(prod: Product): void
 	{
 		this.order.items.push(prod);
+		this.order.CalculateTotal();
+		this.somethingOrdered = true;
 		console.log('order:', this.order);
 	}
 
+	public CancelOrder(): void
+	{
+		this.somethingOrdered = false;
+		this.order.items = [];
+		this.order.CalculateTotal();
+		this.onReset.next();
+	}
+	
+	public MakeOrder(): void 
+	{
+		if(this.order.CheckOrder())
+		{
+			this.order.waiter = this.currentWorker;
+			this.order.client = this.currentUser;
+			this.orderService.Add(this.order);
+			alert("El pedido se ha realizado correctamente! Este es tu número de pedido: " + this.order.codeID);
+		}
+		else
+		alert("Hay algo erróneo con el pedido.");
+	}
+
+	// ##### FILTER FUNCTIONS #####
+
+	public Filter(type: string): void
+	{
+		this.showingProducts = this.products.filter((element) => {
+			if(element.IsFoodType(type))
+			return element;
+		})
+	}
+	
+	public ClearFilters(): void
+	{
+		this.showingProducts = this.products;
+	}
+
+	// ###### PRIVATE FUNCTIONS #####
+
+	private InitializeOrder(): void
+	{
+		this.order = Order.Create('1');
+		this.somethingOrdered = false;
+	}
+	
+	private SelectRandomWaiter(): Promise<User>
+	{
+		return this.userService.GetAllWaiters().then(waiters => {
+			let random = Math.floor(Math.random() * waiters.length);
+			console.log(random);
+			return waiters[random];
+		})
+	}
+
+	private CreateTestProducts(): Product[]
+	{
+		return [
+			Product.Create('B-CER-QUIL', 'Cerveza Quilmes', 'assets/img/B-CER-QUIL.jpg', 50, [FoodType.bebida, FoodType.alcohol], Cook.cervecero),
+			Product.Create('C-COM-MCFR', 'Milanesa con fritas', 'assets/img/C-COM-MCFR.jpg', 300, [FoodType.comida], Cook.cocinero),
+			Product.Create('C-COM-MACF', 'Milanesa a caballo con fritas', 'assets/img/C-COM-MACF.jpg', 350, [FoodType.comida], Cook.cocinero),
+			Product.Create('C-COM-MNAF', 'Milanesa napo con fritas', 'assets/img/C-COM-MNAF.jpg', 350, [FoodType.comida], Cook.cocinero),
+			Product.Create('B-GAS-COCA', 'Coca-Cola', 'assets/img/B-GAS-COCA.jpg', 60, [FoodType.bebida, FoodType.vegano, FoodType.celiaco], Cook.bartender),
+			Product.Create('B-AGU-BONA', 'Bon Aqua', 'assets/img/B-AGU-BONA.jpg', 45, [FoodType.bebida, FoodType.vegano, FoodType.celiaco], Cook.bartender),
+			Product.Create('B-TRA-DDFR', 'Daikiri de frutilla', 'assets/img/B-TRA-DDFR.jpg', 70, [FoodType.bebida, FoodType.alcohol, FoodType.postre], Cook.bartender),
+			Product.Create('C-COM-ENCE', 'Ensalada el Cesar', 'assets/img/C-COM-ENCE.jpg', 150, [FoodType.comida, FoodType.vegano], Cook.cocinero),
+		];
+	}
 }

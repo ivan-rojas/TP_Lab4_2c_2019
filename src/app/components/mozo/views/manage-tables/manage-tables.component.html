@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="row top-row card-group">
+        <div class="col-3 mar-top-2" *ngFor="let tab of tables | async">
+            <app-table-card [table]="tab"></app-table-card>
+        </div>
+    </div>
+    <div class="row blank-row"></div>
+</div>

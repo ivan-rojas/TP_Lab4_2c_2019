@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Sidebar } from 'src/app/classes/interfaces/sidebar';
 
 @Component({
-  selector: 'app-main-mozo',
-  templateUrl: './main-mozo.component.html',
-  styleUrls: ['./main-mozo.component.scss']
+	selector: 'app-main-mozo',
+	templateUrl: './main-mozo.component.html',
+	styleUrls: ['./main-mozo.component.scss']
 })
-export class MainMozoComponent implements OnInit {
+export class MainMozoComponent implements OnInit, Sidebar {
 
-  constructor() { }
+	public open: boolean = false;
 
-  ngOnInit() {
-  }
+	toggleSidebar()
+	{
+		this.open = !this.open;
+	}
+
+	constructor() { }
+
+	ngOnInit() {
+	}
 
 }

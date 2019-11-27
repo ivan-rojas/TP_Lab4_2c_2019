@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { User } from 'src/app/models/user';
+import { User, Role } from 'src/app/models/user';
 import { Router } from '@angular/router';
 import { UserService } from '../firebase/user.service';
+import { take, map, tap } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root'
@@ -32,7 +33,7 @@ export class AuthService {
 			.then(userData => {
 				resolve(userData);
 				console.log('Login success', userData);
-				this.router.navigate(['/socio']);
+				this.RedirectForRole(email);
 			})
 			.catch(error => reject(error));
 		});
@@ -43,4 +44,57 @@ export class AuthService {
 		this.afsAuth.auth.signOut();
 	}
 
+	public GetCurrentUser(): Promise<User>
+	{
+		return this.GetCurrentEmail().then(email => {
+			return this.userService.GetUserByEmail(email).then(user => {
+				return this.RemoveUserPassword(user);
+			})
+		})
+	}
+
+	private GetCurrentEmail(): Promise<string>
+	{
+		return this.afsAuth.user.pipe(
+			take(1),
+			map(user => user.email)
+		)
+		.toPromise();
+	}
+
+	private RemoveUserPassword(user: User): User
+	{
+		user.password = '';
+		return user;
+	}
+
+	private RedirectForRole(email: string): void
+	{
+		this.userService.GetUserByEmail(email).then(user => {
+			switch(user.role)
+			{
+				case Role.cliente:
+					this.router.navigate(['/cliente']);
+					break;
+				case Role.mozo:
+					this.router.navigate(['/mozo']);
+					break;
+				case Role.socio:
+					this.router.navigate(['/socio']);
+					break;
+				case Role.cocinero:
+					this.router.navigate(['/cocinero']);
+					break;
+				case Role.cervecero:
+					this.router.navigate(['/cervecero']);
+					break;
+				case Role.bartender:
+					this.router.navigate(['/bartender']);
+					break;
+				default:
+					alert('No tiene rol.');
+					break;
+			}
+		});
+	}
 }

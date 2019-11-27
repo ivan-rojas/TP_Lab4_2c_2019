@@ -18,4 +18,19 @@
 		</div>
 		<div class="col-3"></div>
 	</div>
+	<div class="row middle-row">
+		<div class="col-3"></div>
+		<div class="col-6">
+			<select class="form-control" [(ngModel)]="userOption" (change)="LoadUser()">
+				<option value="none"> - Usuarios de prueba - </option>
+				<option value="juan">Juan - Cliente</option>
+				<option value="mario">Mario - Cliente</option>
+				<option value="jose">José - Mozo</option>
+				<option value="camilo">Camilo - Mozo</option>
+				<option value="pablo">Pablo - Cocinero</option>
+				<option value="ivan">Iván - Socio</option>
+			</select>
+		</div>
+		<div class="col-3"></div>
+	</div>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
-import { User } from 'src/app/models/user';
+import { User, Role } from 'src/app/models/user';
 import { CommonHelper } from 'src/app/classes/helpers/common-helper';
 
 @Injectable({
@@ -33,19 +33,34 @@ export class UserService {
 	private SetRoleInFirebase(email: string, role: string): void
 	{
 		this.GetUserByEmail(email).then(doc => {
-			let user = doc.data;
-			user["role"] = role;
+			let user = doc;
+			user.role = role as Role;
 			this.db.collection('users').doc(doc.id).update(user);
 			console.log('User role updated on firebase!')
 		})
 	}
 
-	private GetUserByEmail(email: string)
+	public GetUserByEmail(email: string): Promise<User>
 	{
 		let docRef = this.db.collection('users', ref => ref.where('email', '==', email));
 		return docRef.get().toPromise().then(doc => {
-			 return {id: doc.docs[0].id, data: doc.docs[0].data()};
+			let user = doc.docs[0].data() as User;
+			user.id = doc.docs[0].id;
+			return user;
 		})
 	}
-
+	
+	public GetAllWaiters(): Promise<User[]>
+	{
+		let documents = this.db.collection('users', ref => ref.where('role', '==', 'mozo'));
+		return documents.get().toPromise().then(doc => {
+			var waiters: User[] = [];
+			doc.docs.forEach(user => {
+				let waiter = user.data() as User;
+				waiter.id = user.id;
+				waiters.push(waiter);
+			})
+			return waiters;
+		})
+	}
 }

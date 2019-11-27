@@ -23,6 +23,13 @@ body {
     font-family: 'Parisienne', cursive;
 }
 
+.page-title {
+    font-size: 3rem;
+    font-family: 'Parisienne', cursive;
+    font-weight: bold;
+    text-align: center;
+}
+
 nav {
     width: 100%;
     position: fixed;
@@ -34,6 +41,12 @@ nav {
     -webkit-box-shadow: 0px -3px 23px 13px rgba(0,0,0,0.65);
     -moz-box-shadow: 0px -3px 23px 13px rgba(0,0,0,0.65);
     box-shadow: 0px -3px 23px 13px rgba(0,0,0,0.65);
+}
+
+.outside-shadow {
+    -webkit-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.33);
+    -moz-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.33);
+    box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.33);
 }
 
 .profile-pic {
@@ -117,6 +130,7 @@ hr {
 .sidebar, .content {
     height: 100%;
     transition: width .35s;
+    overflow-x: hidden; /* Hides the menu, if it's not here, you can scroll to see it */
 }
 
 .sidebar {
@@ -147,4 +161,12 @@ hr {
 
 .mar-top-4 {
     margin-top: 4rem;
+}
+
+.mar-top-half {
+    margin-top: .5rem;
+}
+
+.blank-row {
+    height: 100px;
 }

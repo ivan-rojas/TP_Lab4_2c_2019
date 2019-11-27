@@ -4,6 +4,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +23,17 @@ import { HomeClienteComponent } from './components/cliente/views/home-cliente/ho
 import { MainClienteComponent } from './components/cliente/views/main-cliente/main-cliente.component';
 import { FoodCardComponent } from './components/all/main/food-card/food-card.component';
 import { SidebarOptionComponent } from './components/all/main/sidebar-option/sidebar-option.component';
+import { OrderListComponent } from './components/all/main/order-list/order-list.component';
+import { SelectOrderComponent } from './components/mozo/main/select-order/select-order.component';
+import { ManageTablesComponent } from './components/mozo/views/manage-tables/manage-tables.component';
+import { TableCardComponent } from './components/mozo/main/table-card/table-card.component';
+import { MainCocineroComponent } from './components/cocinero/views/main-cocinero/main-cocinero.component';
+import { HomeCocineroComponent } from './components/cocinero/views/home-cocinero/home-cocinero.component';
+import { HomeBartenderComponent } from './components/bartender/views/home-bartender/home-bartender.component';
+import { MainBartenderComponent } from './components/bartender/views/main-bartender/main-bartender.component';
+import { MainCerveceroComponent } from './components/cervecero/views/main-cervecero/main-cervecero.component';
+import { HomeCerveceroComponent } from './components/cervecero/views/home-cervecero/home-cervecero.component';
+import { WorkOrderComponent } from './components/all/main/work-order/work-order.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +49,18 @@ import { SidebarOptionComponent } from './components/all/main/sidebar-option/sid
     HomeClienteComponent,
     MainClienteComponent,
     FoodCardComponent,
-    SidebarOptionComponent
+    SidebarOptionComponent,
+    OrderListComponent,
+    SelectOrderComponent,
+    ManageTablesComponent,
+    TableCardComponent,
+    MainCocineroComponent,
+    HomeCocineroComponent,
+    HomeBartenderComponent,
+    MainBartenderComponent,
+    MainCerveceroComponent,
+    HomeCerveceroComponent,
+    WorkOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +69,15 @@ import { SidebarOptionComponent } from './components/all/main/sidebar-option/sid
     ReactiveFormsModule,
     AngularFireModule.initializeApp(FirebaseConfig),
     AngularFirestoreModule,
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2300,
+      preventDuplicates: true
+    })
   ],
   providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

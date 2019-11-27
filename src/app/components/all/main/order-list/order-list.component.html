@@ -1,0 +1,20 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Mozo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="order" *ngFor="let or of orders | async" (click)="SelectOrder(or)">
+                <td class="arial">{{or.codeID}}</td>
+                <td>{{or.client.name}}</td>
+                <td>{{or.state}}</td>
+                <td>{{or.waiter.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
