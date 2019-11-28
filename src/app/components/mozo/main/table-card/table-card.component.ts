@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class TableCardComponent implements OnInit {
 
 	@Input() table: Table;
+	@Input() isAdmin: boolean;
 
 	constructor(private tableService: TableService, private toastr: ToastrService) { }
 
@@ -33,6 +34,9 @@ export class TableCardComponent implements OnInit {
 				break;
 			case 4:
 				status = TableState.paying;
+				break;
+			case 5:
+				status = TableState.closed;
 				break;
 			default:
 				status = TableState.available;

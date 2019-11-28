@@ -6,11 +6,12 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-3">
-            <div class="btn-group full-width">
+        <div class="col-3 align-center">
+            <div class="btn-group full-width" *ngIf="order">
                 <button class="btn btn-info" disabled>${{order.totalPrice}}</button>
-                <button class="btn btn-info" disabled>Mesa E24</button>
+                <button class="btn btn-info" disabled>{{order.tableID | table}}</button>
             </div>
+            <app-spinner *ngIf="!order"></app-spinner>
         </div>
         <div class="col-6">
             <button class="btn btn-success full-width" data-toggle="modal" data-target="#orderModal">Ver pedido</button>
@@ -26,6 +27,10 @@
                 <button title="Vegana" class="btn btn-outline-success" (click)="Filter('vegano')"><i class="fas fa-carrot"></i></button>
             </div>
         </div>
+    </div>
+    <div class="ordered align-center" *ngIf="hasOrder">
+        <hr>
+        Tu código de pedido es <b>{{order.codeID}}</b> y tu mozo es <b>{{order.waiter.name}} {{order.waiter.lastname}}</b>.
     </div>
     <hr>
     <div class="row card-group">

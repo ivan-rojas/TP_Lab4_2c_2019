@@ -18,9 +18,15 @@ import { MainCocineroComponent } from './components/cocinero/views/main-cocinero
 import { HomeCocineroComponent } from './components/cocinero/views/home-cocinero/home-cocinero.component';
 import { MainBartenderComponent } from './components/bartender/views/main-bartender/main-bartender.component';
 import { HomeBartenderComponent } from './components/bartender/views/home-bartender/home-bartender.component';
+import { SearchOrderComponent } from './components/cliente/views/search-order/search-order.component';
+import { RedirectComponent } from './components/all/views/redirect/redirect.component';
+import { ManageOrdersAdminComponent } from './components/socio/views/manage-orders-admin/manage-orders-admin.component';
+import { ManageTablesAdminComponent } from './components/socio/views/manage-tables-admin/manage-tables-admin.component';
 
 
 const routes: Routes = [
+
+	{path: '', component: RedirectComponent},
   
   	{path: 'app', component: MainGeneralComponent,
 		children:	
@@ -32,7 +38,9 @@ const routes: Routes = [
   	{path: 'socio', component: MainSocioComponent,
       	children:
 		[
-			{path: '', component: HomeSocioComponent}
+			{path: '', component: HomeSocioComponent},
+			{path: 'tables', component: ManageTablesAdminComponent},
+			{path: 'orders', component: ManageOrdersAdminComponent}
 		],
 	canActivate: [AuthGuard]},
 
@@ -68,7 +76,8 @@ const routes: Routes = [
 	{path: 'cliente', component: MainClienteComponent,
       	children:
 		[
-			{path: '', component: HomeClienteComponent}
+			{path: '', component: HomeClienteComponent},
+			{path: 'buscar', component: SearchOrderComponent}
 		],
 	canActivate: [AuthGuard]},
 		

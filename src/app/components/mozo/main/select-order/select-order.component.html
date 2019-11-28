@@ -38,7 +38,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <b>Tiempo restante:</b> {{order.timeleft}}
+                    <b>Tiempo restante:</b> {{remainingTime | timeleft}}
                 </div>
             </div>
             <hr>
@@ -75,7 +75,7 @@
             <hr>
             <div class="row">
                 <div class="col-12">
-                    <button [disabled]="!CanBeServed()" class="btn btn-success full-width">Pasar a servido</button>
+                    <button [disabled]="!CanBeServed()" (click)="CompleteOrder()" class="btn btn-success full-width">Pasar a servido</button>
                 </div>
             </div>
         </div>

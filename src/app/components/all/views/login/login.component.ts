@@ -52,6 +52,12 @@ export class LoginComponent implements OnInit {
 			case 'pablo':
 				this.loginForm.get('email').setValue('pablo@gmail.com');
 				break;
+			case 'martin':
+				this.loginForm.get('email').setValue('martin@gmail.com');
+				break;
+			case 'roman':
+				this.loginForm.get('email').setValue('roman@gmail.com');
+				break;
 			case 'ivan':
 				this.loginForm.get('email').setValue('ivan@gmail.com');
 				break;

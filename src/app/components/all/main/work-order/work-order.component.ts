@@ -3,6 +3,8 @@ import { Order, OrderState } from 'src/app/models/order';
 import { Product, FoodState, Cook } from 'src/app/models/product';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/authentication/auth.service';
+import { OrderService } from 'src/app/services/firebase/order.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-work-order',
@@ -16,11 +18,20 @@ export class WorkOrderComponent implements OnInit, OnChanges {
 	public selectedItem: Product;
 	public me: User;
 	public addedTime: number;
+	public remainingTime: number;
 
-	constructor(private authService: AuthService) { }
+	constructor(private authService: AuthService, private orderService: OrderService, private toastr: ToastrService) { }
 
 	ngOnInit() {
 		this.authService.GetCurrentUser().then(user => this.me = user);
+
+		setInterval(() => {
+			if(this.order)
+			{
+				let now = new Date();
+				this.remainingTime = new Date(this.order.timeLeft).getTime() - now.getTime();
+			}
+		}, 10)
 	}
 
 	ngOnChanges() {
@@ -65,12 +76,20 @@ export class WorkOrderComponent implements OnInit, OnChanges {
 	public BeginCook(withTime: boolean): void
 	{
 		if(withTime)
-			this.order.timeLeft; // Add more time
+			this.AddMoreTime(); // Add more time
+		else
+			this.order = Object.assign(new Order(), this.order);
+
 		this.AssignToMe();
 		this.selectedItem.state = FoodState.preparing;
-		this.order = Object.assign(new Order(), this.order);
 		this.order.UpdateOrderState();
-		// save in database
+		this.orderService.Update(this.order)
+			.then(() => {
+				this.toastr.success('El pedido se actualizó con éxito', 'Hecho!');
+			})
+			.catch(() => {
+				this.toastr.error('Se ha producido un error.', 'Error');
+			});
 	}
 
 	public ReadyToServe(): void
@@ -78,12 +97,25 @@ export class WorkOrderComponent implements OnInit, OnChanges {
 		this.selectedItem.state = FoodState.finished;
 		this.order = Object.assign(new Order(), this.order);
 		this.order.UpdateOrderState();
-		// save in database
+		this.orderService.Update(this.order)
+			.then(() => {
+				this.toastr.success('El pedido se actualizó con éxito', 'Hecho!');
+			})
+			.catch(() => {
+				this.toastr.error('Se ha producido un error.', 'Error');
+			});
 	}
 
 	private AssignToMe(): void
 	{
 		this.selectedItem.worker = this.me;
+	}
+
+	private AddMoreTime(): void 
+	{
+		this.order = Object.assign(new Order(), this.order);
+		this.order.AddMinutes(this.addedTime);
+		this.addedTime = null;
 	}
 
 }

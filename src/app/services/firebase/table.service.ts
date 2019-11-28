@@ -35,4 +35,27 @@ export class TableService {
 			});
 	}
 
+	public FindAvailable(): Promise<Table>
+	{
+		let documents = this.db.collection('tables', ref => ref.where('state', '==', TableState.available));
+		return documents.get().toPromise()
+			.then(doc => {
+				let newTable: Table;
+				let found = false;
+				doc.docs.forEach(table => {
+					if(table.exists && !found)
+					{
+						newTable = table.data() as Table;
+						newTable.id = table.id;
+						found = true;
+					}
+				})
+
+				if(!found)
+					newTable = Table.Create('No hay', TableState.closed);
+				
+				return newTable;
+			});
+	}
+
 }

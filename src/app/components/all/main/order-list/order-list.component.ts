@@ -34,6 +34,10 @@ export class OrderListComponent implements OnInit {
 				let cook: string = this.role;
 				this.orders = this.orderService.GetAllByCook(cook as Cook);
 				break;
+			case Role.socio:
+				console.log('here');
+				this.orders = this.orderService.GetAllOrderByTime().valueChanges();
+				break;
 		}
 	}
 

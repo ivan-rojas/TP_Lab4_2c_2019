@@ -34,6 +34,13 @@ import { MainBartenderComponent } from './components/bartender/views/main-barten
 import { MainCerveceroComponent } from './components/cervecero/views/main-cervecero/main-cervecero.component';
 import { HomeCerveceroComponent } from './components/cervecero/views/home-cervecero/home-cervecero.component';
 import { WorkOrderComponent } from './components/all/main/work-order/work-order.component';
+import { TimeleftPipe } from './pipes/timeleft.pipe';
+import { TablePipe } from './pipes/table.pipe';
+import { SearchOrderComponent } from './components/cliente/views/search-order/search-order.component';
+import { SpinnerComponent } from './components/all/main/spinner/spinner.component';
+import { RedirectComponent } from './components/all/views/redirect/redirect.component';
+import { ManageTablesAdminComponent } from './components/socio/views/manage-tables-admin/manage-tables-admin.component';
+import { ManageOrdersAdminComponent } from './components/socio/views/manage-orders-admin/manage-orders-admin.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +67,14 @@ import { WorkOrderComponent } from './components/all/main/work-order/work-order.
     MainBartenderComponent,
     MainCerveceroComponent,
     HomeCerveceroComponent,
-    WorkOrderComponent
+    WorkOrderComponent,
+    TimeleftPipe,
+    TablePipe,
+    SearchOrderComponent,
+    SpinnerComponent,
+    RedirectComponent,
+    ManageTablesAdminComponent,
+    ManageOrdersAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +87,7 @@ import { WorkOrderComponent } from './components/all/main/work-order/work-order.
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 2300,
+      positionClass: 'toast-bottom-left',
       preventDuplicates: true
     })
   ],

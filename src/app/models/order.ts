@@ -1,5 +1,6 @@
 import { Product, FoodState } from './product';
 import { User } from './user';
+import { CommonHelper } from '../classes/helpers/common-helper';
 
 export class Order 
 {
@@ -13,6 +14,7 @@ export class Order
     public state: OrderState;
     public timeLeft: string;
     public timestamp: number;
+    public completed: boolean;
 
     constructor()
     {
@@ -21,8 +23,37 @@ export class Order
         this.totalPrice = 0;
         this.tableID = '';
         this.state = OrderState.pending;
-        this.timeLeft = '';
+        this.timeLeft = undefined;
         this.timestamp = Date.now();
+        this.completed = false;
+    }
+
+    public CompleteOrder(): void
+    {
+        this.completed = true;
+        this.state = OrderState.served;
+    }
+
+    public CalculateTimeInMinutes(): number
+    {
+        let minutes = 0;
+        let difference = new Date(this.timeLeft).getTime() - (new Date()).getTime();
+        minutes = Math.floor(difference/(1000*60));
+        return minutes;
+    }
+
+    public AddMinutes(minutes: number): void
+    {
+        let theDate: Date;
+
+        if(!this.timeLeft)
+            theDate = new Date();
+        else
+            theDate = new Date(this.timeLeft);
+
+        let time = theDate.getTime() + Math.floor(minutes*(1000*60));
+        let date = new Date(time);
+        this.timeLeft = CommonHelper.ConvertDate(date); 
     }
 
     public CalculateTotal(): void
@@ -119,5 +150,6 @@ export enum OrderState
     pending = 'Pendiente',
     cooking = 'Cocinándose',
     readyToServe = 'Listo para servir',
-    served = 'Servido'
+    served = 'Servido',
+    paidOut = 'Pagado'
 }

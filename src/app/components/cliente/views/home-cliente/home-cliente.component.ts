@@ -6,6 +6,9 @@ import { OrderService } from 'src/app/services/firebase/order.service';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/firebase/user.service';
+import { TableService } from 'src/app/services/firebase/table.service';
+import { ToastrService } from 'ngx-toastr';
+import { TableState } from 'src/app/models/table';
 
 @Component({
 	selector: 'app-home-cliente',
@@ -20,10 +23,11 @@ export class HomeClienteComponent implements OnInit {
 	public showingProducts: Product[];
 	public somethingOrdered: boolean;
 	public onReset: Subject<void> = new Subject<void>();
+	public hasOrder = false;
 	private currentUser: User;
 	private currentWorker: User;
 
-	constructor(private orderService: OrderService, private userService: UserService, private authService: AuthService) { }
+	constructor(private orderService: OrderService, private userService: UserService, private authService: AuthService, private tableService: TableService, private toastr: ToastrService) { }
 
 	ngOnInit() 
 	{
@@ -54,15 +58,22 @@ export class HomeClienteComponent implements OnInit {
 	
 	public MakeOrder(): void 
 	{
-		if(this.order.CheckOrder())
-		{
-			this.order.waiter = this.currentWorker;
-			this.order.client = this.currentUser;
-			this.orderService.Add(this.order);
-			alert("El pedido se ha realizado correctamente! Este es tu número de pedido: " + this.order.codeID);
-		}
+		if(this.order.tableID == 'No hay')
+			this.toastr.error('No hay mesas disponibles. Vuelva más tarde.');
 		else
-		alert("Hay algo erróneo con el pedido.");
+		{
+			if(this.order.CheckOrder())
+			{
+				this.order.waiter = this.currentWorker;
+				this.order.client = this.currentUser;
+				this.tableService.UpdateStatus(this.order.tableID, TableState.waitingOrder);
+				this.orderService.Add(this.order);
+				this.toastr.success("El pedido se ha realizado correctamente! Este es tu número de pedido: " + this.order.codeID);
+				this.hasOrder = true;
+			}
+			else
+				this.toastr.error('Hay algo erróneo con este pedido.');
+		}
 	}
 
 	// ##### FILTER FUNCTIONS #####
@@ -84,8 +95,11 @@ export class HomeClienteComponent implements OnInit {
 
 	private InitializeOrder(): void
 	{
-		this.order = Order.Create('1');
-		this.somethingOrdered = false;
+		this.tableService.FindAvailable()
+			.then(table => {
+				this.order = Order.Create(table.tableID);
+				this.somethingOrdered = false;
+			})
 	}
 	
 	private SelectRandomWaiter(): Promise<User>

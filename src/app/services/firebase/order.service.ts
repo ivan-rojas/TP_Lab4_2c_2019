@@ -20,19 +20,19 @@ export class OrderService {
 
 	public GetAllOrderByTime(): AngularFirestoreCollection<Order>
 	{
-		return this.db.collection("orders", ref => ref.orderBy('timestamp', 'desc'));
+		return this.db.collection("orders", ref => ref.where('completed', '==', false));
 	}
 
 	public GetAllByWaiterOrderByTime(email: string): any
 	{
 		// It's not order by time yet. It requires to create an index.
 		//return this.db.collection("orders", ref => ref.where('waiter.email', '==', email).orderBy('timestamp', 'desc'));
-		return this.db.collection("orders", ref => ref.where('waiter.email', '==', email));
+		return this.db.collection("orders", ref => ref.where('waiter.email', '==', email).where('completed', '==', false));
 	}
 
 	public GetAllByCook(cook: Cook): Observable<Order[]>
 	{
-		let documents = this.db.collection("orders", ref => ref.orderBy('timestamp', 'desc')) as AngularFirestoreCollection<Order>;
+		let documents = this.db.collection("orders", ref => ref.where('completed', '==', false).orderBy('timestamp', 'desc')) as AngularFirestoreCollection<Order>;
 		return documents.valueChanges().pipe(
 			map(orders => {
 				return orders.filter(order => {
@@ -57,7 +57,21 @@ export class OrderService {
 		});
 	}
 
-	private GetByCodeID(code: string): Promise<Order>
+	public Update(order: Order): Promise<boolean>
+	{
+		return this.GetByCodeID(order.codeID).then(or => {
+			let obj = CommonHelper.ConvertToObject(order);
+			this.db.collection("orders").doc(or.id).update(obj);
+		})
+			.then(() => {
+				return true;
+			})
+			.catch(() => {
+				return false;
+			})
+	}
+
+	public GetByCodeID(code: string): Promise<Order>
 	{
 		let documents = this.db.collection("orders", ref => ref.where('codeID', '==', code));
 		return documents.get().toPromise().then(doc => {

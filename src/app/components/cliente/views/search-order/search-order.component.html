@@ -1,0 +1,152 @@
+<div class="container">
+    <div class="row top-row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <input [(ngModel)]="orderID" class="form-control full-width" type="text" placeholder="Ingrese el código de su pedido">
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row mar-top-1">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <button class="btn btn-outline-primary full-width" (click)="FindOrder()">Buscar</button>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row mar-top-1" *ngIf="alreadyPaid">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <button class="btn btn-info full-width" data-toggle="modal" data-target="#questionsModal">Hacer encuesta</button>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+    <div class="row middle-row" *ngIf="waitingOrder">
+        <div class="col-4"></div>
+        <div class="col-4 align-center">
+            <app-spinner></app-spinner>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+    <div class="row middle-row" *ngIf="order">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card outside-shadow">
+                <div class="card-body align-center">
+                    <h5 class="card-title">Pedido</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <b>Código: </b>{{order.codeID}}
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <b>Mozo: </b>{{order.waiter.name}} {{order.waiter.lastname}}
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <div class="row" *ngIf="!IsServed()">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <b>Tiempo estimado: </b>{{remainingTime | timeleft}}
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <b>Comida</b>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <ul>
+                                <li *ngFor="let i of order.items">{{i.name}} - ${{i.price}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <b>Precio total: </b> <span class="price">${{order.totalPrice}}</span>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <button [disabled]="!CanPayNow()" (click)="Pay()" class="btn btn-success full-width">Pagar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="questionsModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <h3 class="align-center">Encuesta</h3>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <hr class="mar-top-1">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <input  class="form-control full-width align-center" type="number" placeholder="Puntée del 1 al 10 a la mesa.">
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row middle-row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <input  class="form-control full-width align-center" type="number" placeholder="Puntée del 1 al 10 al mozo.">
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row middle-row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <input  class="form-control full-width align-center" type="number" placeholder="Puntée del 1 al 10 al restaurante.">
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row middle-row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <input class="form-control full-width align-center"  type="number" placeholder="Puntée del 1 al 10 al cocinero.">
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row middle-row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <button class="btn btn-success full-width" data-dismiss="modal" (click)="SendAnswers()">Enviar encuesta</button>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

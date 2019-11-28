@@ -5,6 +5,7 @@ import { User, Role } from 'src/app/models/user';
 import { Router } from '@angular/router';
 import { UserService } from '../firebase/user.service';
 import { take, map, tap } from 'rxjs/operators';
+import { reject } from 'q';
 
 @Injectable({
 	providedIn: 'root'
@@ -47,6 +48,9 @@ export class AuthService {
 	public GetCurrentUser(): Promise<User>
 	{
 		return this.GetCurrentEmail().then(email => {
+			if(!email)
+				reject('error');
+				
 			return this.userService.GetUserByEmail(email).then(user => {
 				return this.RemoveUserPassword(user);
 			})
