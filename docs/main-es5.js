@@ -1705,7 +1705,7 @@
                     var _this = this;
                     this.fileService.GetImageURL(imgName).then(function (img) {
                         _this.userService.ModifyProfileImage(_this.user.email, img).then(function () {
-                            location.reload();
+                            location.assign('https://ivan-rojas.github.io/TP_Lab4_2c_2019/');
                         });
                     });
                 };
