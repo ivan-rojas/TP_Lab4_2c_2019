@@ -84,6 +84,7 @@ export class UserService {
 		return this.GetUserByEmail(email).then(doc => {
 			let user = doc;
 			user.image = image;
+			console.log('new token', image);
 			this.db.collection('users').doc(doc.id).update(user);
 		})
 	}

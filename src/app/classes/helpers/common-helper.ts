@@ -18,6 +18,7 @@ export class CommonHelper
     {
         return user.name.trim().toUpperCase()
             + user.lastname.trim().toUpperCase()
-            + user.role.charAt(0).toUpperCase();
+            + user.role.charAt(0).toUpperCase()
+            + Math.floor((Math.random() * 10000) + 1);
     }
 }

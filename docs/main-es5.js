@@ -966,7 +966,8 @@
                 CommonHelper.GenerateProfileImageName = function (user) {
                     return user.name.trim().toUpperCase()
                         + user.lastname.trim().toUpperCase()
-                        + user.role.charAt(0).toUpperCase();
+                        + user.role.charAt(0).toUpperCase()
+                        + Math.floor((Math.random() * 10000) + 1);
                 };
                 return CommonHelper;
             }());
@@ -1694,10 +1695,12 @@
                 ProfileComponent.prototype.Upload = function () {
                     var _this = this;
                     var name = src_app_classes_helpers_common_helper__WEBPACK_IMPORTED_MODULE_4__["CommonHelper"].GenerateProfileImageName(this.user);
+                    console.log(name);
                     this.fileService.Upload(name, this.selectedFile)
                         .then(function () {
-                        _this.toastr.success('Imagen cargada con éxito.');
-                        _this.ChangeProfilePic(name);
+                        setTimeout(function () {
+                            _this.ChangeProfilePic(name);
+                        }, 1000);
                     })
                         .catch(function () { return _this.toastr.error('Se ha producido un error al cargar la imagen.'); });
                 };
@@ -1705,7 +1708,11 @@
                     var _this = this;
                     this.fileService.GetImageURL(imgName).then(function (img) {
                         _this.userService.ModifyProfileImage(_this.user.email, img).then(function () {
-                            location.assign('https://ivan-rojas.github.io/TP_Lab4_2c_2019/');
+                            _this.toastr.success('Imagen cargada con éxito.');
+                            setTimeout(function () {
+                                //location.reload();
+                                location.assign('https://ivan-rojas.github.io/TP_Lab4_2c_2019/');
+                            }, 1000);
                         });
                     });
                 };
@@ -3941,6 +3948,7 @@
                     return this.GetUserByEmail(email).then(function (doc) {
                         var user = doc;
                         user.image = image;
+                        console.log('new token', image);
                         _this.db.collection('users').doc(doc.id).update(user);
                     });
                 };

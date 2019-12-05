@@ -35,10 +35,12 @@ export class ProfileComponent implements OnInit {
 	public Upload(): void
 	{
 		let name = CommonHelper.GenerateProfileImageName(this.user);
+		console.log(name);
 		this.fileService.Upload(name, this.selectedFile)
 			.then(() => {
-				this.toastr.success('Imagen cargada con éxito.');
-				this.ChangeProfilePic(name);
+				setTimeout(() => {
+					this.ChangeProfilePic(name);
+				},1000)
 			})
 			.catch(() => this.toastr.error('Se ha producido un error al cargar la imagen.'));
 	}
@@ -47,7 +49,11 @@ export class ProfileComponent implements OnInit {
 	{
 		this.fileService.GetImageURL(imgName).then(img => {
 			this.userService.ModifyProfileImage(this.user.email, img).then(() => {
-				location.assign('https://ivan-rojas.github.io/TP_Lab4_2c_2019/');
+				this.toastr.success('Imagen cargada con éxito.');
+				setTimeout(() => {
+					//location.reload();
+					location.assign('https://ivan-rojas.github.io/TP_Lab4_2c_2019/');
+				},1000)
 			})
 		});
 	}

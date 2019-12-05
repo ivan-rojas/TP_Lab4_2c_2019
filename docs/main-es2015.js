@@ -1050,7 +1050,8 @@ class CommonHelper {
     static GenerateProfileImageName(user) {
         return user.name.trim().toUpperCase()
             + user.lastname.trim().toUpperCase()
-            + user.role.charAt(0).toUpperCase();
+            + user.role.charAt(0).toUpperCase()
+            + Math.floor((Math.random() * 10000) + 1);
     }
 }
 
@@ -1864,17 +1865,23 @@ let ProfileComponent = class ProfileComponent {
     }
     Upload() {
         let name = src_app_classes_helpers_common_helper__WEBPACK_IMPORTED_MODULE_4__["CommonHelper"].GenerateProfileImageName(this.user);
+        console.log(name);
         this.fileService.Upload(name, this.selectedFile)
             .then(() => {
-            this.toastr.success('Imagen cargada con éxito.');
-            this.ChangeProfilePic(name);
+            setTimeout(() => {
+                this.ChangeProfilePic(name);
+            }, 1000);
         })
             .catch(() => this.toastr.error('Se ha producido un error al cargar la imagen.'));
     }
     ChangeProfilePic(imgName) {
         this.fileService.GetImageURL(imgName).then(img => {
             this.userService.ModifyProfileImage(this.user.email, img).then(() => {
-                location.assign('https://ivan-rojas.github.io/TP_Lab4_2c_2019/');
+                this.toastr.success('Imagen cargada con éxito.');
+                setTimeout(() => {
+                    //location.reload();
+                    location.assign('https://ivan-rojas.github.io/TP_Lab4_2c_2019/');
+                }, 1000);
             });
         });
     }
@@ -4354,6 +4361,7 @@ let UserService = class UserService {
         return this.GetUserByEmail(email).then(doc => {
             let user = doc;
             user.image = image;
+            console.log('new token', image);
             this.db.collection('users').doc(doc.id).update(user);
         });
     }
