@@ -24,6 +24,20 @@ export class OrderService {
 		return this.db.collection("orders", ref => ref.where('completed', '==', false));
 	}
 
+	public GetAllCompletedOrders_InArray(): Promise<Order[]>
+	{
+		return this.db.collection("orders", ref => ref.where('completed', '==', true)).get().toPromise()
+		.then(doc => {
+			
+			let orders: Order[] = [];
+			doc.docs.forEach(el => {
+					orders.push(el.data() as Order);
+				});
+
+			return orders;
+			})
+	}
+
 	public GetAllByWaiterOrderByTime(email: string)
 	{
 		// It's not order by time yet. It requires to create an index.

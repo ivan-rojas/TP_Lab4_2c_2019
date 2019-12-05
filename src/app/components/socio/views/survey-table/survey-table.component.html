@@ -26,10 +26,11 @@
                             <th scope="col">Cliente</th>
                             <th scope="col">Mesa</th>
                             <th scope="col">Mozo</th>
-                            <th scope="col">Puntaje mesa</th>
-                            <th scope="col">Puntaje mozo</th>
-                            <th scope="col">Puntaje restaurante</th>
-                            <th scope="col">Puntaje cocinero</th>
+                            <th scope="col">Punt. mesa</th>
+                            <th scope="col">Punt. mozo</th>
+                            <th scope="col">Punt. restaurante</th>
+                            <th scope="col">Punt. cocinero</th>
+                            <th scope="col">Fecha</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,7 @@
                             <td>{{sur.waiterScore}}</td>
                             <td>{{sur.restaurantScore}}</td>
                             <td>{{sur.cookScore}}</td>
+                            <td>{{sur.order.timeLeft | neatDate}}</td>
                         </tr>
                     </tbody>
                 </table>

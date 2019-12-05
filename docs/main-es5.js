@@ -61,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"table-responsive\">\n    <table class=\"table table-hover\">\n        <thead>\n            <tr>\n                <th scope=\"col\">ID</th>\n                <th scope=\"col\">Cliente</th>\n                <th scope=\"col\">Estado</th>\n                <th scope=\"col\">Mozo</th>\n            </tr>\n        </thead>\n        <tbody *ngIf=\"orders\">\n            <tr class=\"order\" *ngFor=\"let or of orders | async\" (click)=\"SelectOrder(or)\">\n                <td class=\"arial\">{{or.codeID}}</td>\n                <td>{{or.client.name}}</td>\n                <td>{{or.state}}</td>\n                <td>{{or.waiter.name}}</td>\n            </tr>\n        </tbody>\n    </table>\n    <div *ngIf=\"!orders\" class=\"align-center mar-top-1\">\n        <app-spinner></app-spinner>\n    </div>\n</div>\n\n<div [noOrders]=\"orders\" class=\"align-center mar-top-1\">\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"table-responsive\">\n    <table class=\"table table-hover\">\n        <thead>\n            <tr>\n                <th scope=\"col\">ID</th>\n                <th scope=\"col\">Cliente</th>\n                <th scope=\"col\">Estado</th>\n                <th scope=\"col\">Mozo</th>\n            </tr>\n        </thead>\n        <tbody *ngIf=\"orders\">\n            <tr class=\"order\" *ngFor=\"let or of orders | async\" (click)=\"SelectOrder(or)\">\n                <td class=\"arial\">{{or.codeID}}</td>\n                <td>{{or.client.name}}</td>\n                <td>{{or.state}}</td>\n                <td>{{or.waiter.name}}</td>\n            </tr>\n        </tbody>\n    </table>\n    <div *ngIf=\"!orders\" class=\"align-center mar-top-1\">\n        <app-spinner></app-spinner>\n    </div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/sidebar-option/sidebar-option.component.html": 
@@ -127,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n\t<div class=\"row top-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-body align-center\">\n\t\t\t\t\t<h4 class=\"form-title\">Ingresar</h4>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t\t\t<input type=\"text\" formControlName=\"email\" class=\"form-control separate-top-input align-center\" placeholder=\"Email\" autofocus>\n\t\t\t\t\t\t<input type=\"password\" formControlName=\"password\" class=\"form-control separate-top-input align-center\" placeholder=\"Contraseña\">\n\t\t\t\t\t\t<button *ngIf=\"!loading\" [disabled]=\"!loginForm.valid\" type=\"submit\" class=\"btn btn-success full-width separate-top-input\">Entrar</button>\n\t\t\t\t\t\t<div class=\"mar-top-1\">\n\t\t\t\t\t\t\t<app-spinner *ngIf=\"loading\"></app-spinner>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</form>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<button routerLink=\"/app/register\" class=\"btn btn-primary full-width\">Registrarse</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n\t<div class=\"row middle-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<select class=\"form-control\" [(ngModel)]=\"userOption\" (change)=\"LoadUser()\">\n\t\t\t\t<option value=\"none\"> - Usuarios de prueba - </option>\n\t\t\t\t<option value=\"juan\">Juan - Cliente</option>\n\t\t\t\t<option value=\"mario\">Mario - Cliente</option>\n\t\t\t\t<option value=\"chelo\">Chelo - Cliente</option>\n\t\t\t\t<option value=\"jose\">José - Mozo</option>\n\t\t\t\t<option value=\"camilo\">Camilo - Mozo</option>\n\t\t\t\t<option value=\"pablo\">Pablo - Cocinero</option>\n\t\t\t\t<option value=\"martin\">Martin - Bartender</option>\n\t\t\t\t<option value=\"roman\">Román - Cervecero</option>\n\t\t\t\t<option value=\"ivan\">Iván - Socio</option>\n\t\t\t</select>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n</div>\n\n<app-footer></app-footer>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n\t<div class=\"row top-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-body align-center\">\n\t\t\t\t\t<h4 class=\"form-title\">Ingresar</h4>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t\t\t<input type=\"text\" formControlName=\"email\" class=\"form-control separate-top-input align-center\" placeholder=\"Email\" autofocus>\n\t\t\t\t\t\t<input type=\"password\" formControlName=\"password\" class=\"form-control separate-top-input align-center\" placeholder=\"Contraseña\">\n\t\t\t\t\t\t<div class=\"row mar-top-2\">\n\t\t\t\t\t\t\t<div class=\"col-2\"></div>\n\t\t\t\t\t\t\t<div class=\"col-8 align-center\">\n\t\t\t\t\t\t\t\t<ngx-recaptcha2  formControlName=\"captcha\" #captchaElem [siteKey]=\"'6Le9VcYUAAAAAK4z-Fj0YlhKfrNIc9eqvsNuMSsy'\" [useGlobalDomain]=\"false\"></ngx-recaptcha2>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-2\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button *ngIf=\"!loading\" [disabled]=\"!loginForm.valid\" type=\"submit\" class=\"btn btn-success full-width separate-top-input\">Entrar</button>\n\t\t\t\t\t\t<div class=\"mar-top-1\">\n\t\t\t\t\t\t\t<app-spinner *ngIf=\"loading\"></app-spinner>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</form>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<button routerLink=\"/app/register\" class=\"btn btn-primary full-width\">Registrarse</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n\t<div class=\"row middle-row\" [isProd]>\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<select class=\"form-control\" [(ngModel)]=\"userOption\" (change)=\"LoadUser()\">\n\t\t\t\t<option value=\"none\"> - Usuarios de prueba - </option>\n\t\t\t\t<option value=\"juan\">Juan - Cliente</option>\n\t\t\t\t<option value=\"mario\">Mario - Cliente</option>\n\t\t\t\t<option value=\"chelo\">Chelo - Cliente</option>\n\t\t\t\t<option value=\"jose\">José - Mozo</option>\n\t\t\t\t<option value=\"camilo\">Camilo - Mozo</option>\n\t\t\t\t<option value=\"pablo\">Pablo - Cocinero</option>\n\t\t\t\t<option value=\"martin\">Martin - Bartender</option>\n\t\t\t\t<option value=\"roman\">Román - Cervecero</option>\n\t\t\t\t<option value=\"ivan\">Iván - Socio</option>\n\t\t\t</select>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n</div>\n\n<app-footer></app-footer>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/views/main-general/main-general.component.html": 
@@ -171,7 +171,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n\t<div class=\"row top-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-body align-center\">\n\t\t\t\t\t<h4 class=\"form-title\">Registrarse</h4>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n                        <input type=\"text\" formControlName=\"name\" class=\"form-control separate-top-input align-center\" placeholder=\"Nombre\" autofocus>\n                        <input type=\"text\" formControlName=\"lastname\" class=\"form-control separate-top-input align-center\" placeholder=\"Apellido\">\n\t\t\t\t\t\t<input type=\"text\" formControlName=\"email\" class=\"form-control separate-top-input align-center\" placeholder=\"Email\">\n                        <input type=\"password\" formControlName=\"password\" class=\"form-control separate-top-input align-center\" placeholder=\"Contraseña\">\n                        <input type=\"password\" formControlName=\"repPassword\" class=\"form-control separate-top-input align-center\" placeholder=\"Repita la contraseña\">\n\t\t\t\t\t\t<button *ngIf=\"!loading\" [disabled]=\"!registerForm.valid\" type=\"submit\" class=\"btn btn-success full-width separate-top-input\">Registrarse</button>\n\t\t\t\t\t\t<div class=\"mar-top-2\" *ngIf=\"loading\">\n\t\t\t\t\t\t\t<app-spinner></app-spinner>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</form>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<button routerLink=\"/app/login\" class=\"btn btn-secondary full-width\">¿Ya tenés una cuenta?</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n</div>\n\n<app-footer></app-footer>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n\t<div class=\"row top-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-body align-center\">\n\t\t\t\t\t<h4 class=\"form-title\">Registrarse</h4>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n                        <input type=\"text\" formControlName=\"name\" class=\"form-control separate-top-input align-center\" placeholder=\"Nombre\" autofocus>\n                        <input type=\"text\" formControlName=\"lastname\" class=\"form-control separate-top-input align-center\" placeholder=\"Apellido\">\n\t\t\t\t\t\t<input type=\"text\" formControlName=\"email\" class=\"form-control separate-top-input align-center\" placeholder=\"Email\">\n                        <input type=\"password\" formControlName=\"password\" class=\"form-control separate-top-input align-center\" placeholder=\"Contraseña\">\n\t\t\t\t\t\t<input type=\"password\" formControlName=\"repPassword\" class=\"form-control separate-top-input align-center\" placeholder=\"Repita la contraseña\">\n\t\t\t\t\t\t<div class=\"row mar-top-2\">\n\t\t\t\t\t\t\t<div class=\"col-2\"></div>\n\t\t\t\t\t\t\t<div class=\"col-8 align-center\">\n\t\t\t\t\t\t\t\t<ngx-recaptcha2  formControlName=\"captcha\" #captchaElem [siteKey]=\"'6Le9VcYUAAAAAK4z-Fj0YlhKfrNIc9eqvsNuMSsy'\" [useGlobalDomain]=\"false\"></ngx-recaptcha2>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-2\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button *ngIf=\"!loading\" [disabled]=\"!registerForm.valid\" type=\"submit\" class=\"btn btn-success full-width separate-top-input\">Registrarse</button>\n\t\t\t\t\t\t<div class=\"mar-top-2\" *ngIf=\"loading\">\n\t\t\t\t\t\t\t<app-spinner></app-spinner>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</form>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<button routerLink=\"/app/login\" class=\"btn btn-secondary full-width\">¿Ya tenés una cuenta?</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n</div>\n\n<app-footer></app-footer>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/bartender/views/home-bartender/home-bartender.component.html": 
@@ -325,7 +325,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-4\">\n\n            <div class=\"role-panel\">\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <input [(ngModel)]=\"changeRoleEmail\" type=\"text\" class=\"form-control input-titanic role-input\" placeholder=\"Email del usuario\">\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12\">\n                        <select [(ngModel)]=\"changeRoleNewRole\" class=\"form-control input-titanic role-input\">\n                            <option value=\"socio\">Socio</option>\n                            <option value=\"mozo\">Mozo</option>\n                            <option value=\"cocinero\">Cocinero</option>\n                            <option value=\"cervecero\">Cervecero</option>\n                            <option value=\"bartender\">Bartender</option>\n                            <option value=\"cliente\">Cliente</option>\n                        </select>\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12\">\n                        <button class=\"btn btn-success full-width\" (click)=\"ChangeRole()\">Cambiar rol</button>\n                    </div>\n                </div>\n            </div>      \n\n        </div>\n        <div class=\"col-4\"></div>\n        <div class=\"col-4 align-center\">\n            <h3>Facturación</h3>\n            <hr>\n            <div class=\"btn-group full-width\">\n                <button class=\"btn btn-danger full-width\">Generar PDF</button>\n                <button class=\"btn btn-success full-width\">Generar CSV</button>\n            </div>\n        </div>\n    </div>\n</div>\n      ");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-4 align-center\">\n            <h3>Control de roles</h3>\n            <hr>\n            <p>Desde esta opción podés administrar los roles de los usuarios registrados en la aplicación.</p>\n            <hr>\n            <div class=\"role-panel\">\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <input [(ngModel)]=\"changeRoleEmail\" type=\"text\" class=\"form-control input-titanic role-input\" placeholder=\"Email del usuario\">\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12\">\n                        <select [(ngModel)]=\"changeRoleNewRole\" class=\"form-control input-titanic role-input\">\n                            <option value=\"socio\">Socio</option>\n                            <option value=\"mozo\">Mozo</option>\n                            <option value=\"cocinero\">Cocinero</option>\n                            <option value=\"cervecero\">Cervecero</option>\n                            <option value=\"bartender\">Bartender</option>\n                            <option value=\"cliente\">Cliente</option>\n                        </select>\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12\">\n                        <button class=\"btn btn-primary full-width\" (click)=\"ChangeRole()\">Cambiar rol</button>\n                    </div>\n                </div>\n            </div>      \n\n        </div>\n        <div class=\"col-4 align-center\">\n            <h3>Lista de usuarios</h3>\n            <hr>\n            <p>Desde acá podés ver un listado completo de los usuarios registrados en la aplicación</p>\n            <hr>\n            <div class=\"btn-group full-width\">\n                <button class=\"btn btn-danger full-width\" (click)=\"GeneratePDF()\">Generar PDF</button>\n            </div>\n        </div>\n        <div class=\"col-4 align-center\">\n            <h3>Facturación</h3>\n            <hr>\n            <p>Desde acá podés ver todo lo que se facturó en detalle.</p>\n            <hr>\n            <div class=\"btn-group full-width\">\n                <button class=\"btn btn-success full-width\" (click)=\"GenerateCSV()\">Generar CSV</button>\n            </div>\n        </div>\n    </div>\n</div>\n      ");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/main-socio/main-socio.component.html": 
@@ -336,7 +336,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar socio-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img *ngIf=\"user\" src=\"{{user.image}}\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio/profile\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de mesas\" link=\"/socio/tables\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de pedidos\" link=\"/socio/orders\"></app-sidebar-option>\n        <app-sidebar-option name=\"Ver encuestas\" link=\"/socio/surveys\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar socio-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img *ngIf=\"user\" src=\"{{user.image}}\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio/profile\"></app-sidebar-option>\n        <app-sidebar-option name=\"Panel de control\" link=\"/socio\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de mesas\" link=\"/socio/tables\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de pedidos\" link=\"/socio/orders\"></app-sidebar-option>\n        <app-sidebar-option name=\"Ver encuestas\" link=\"/socio/surveys\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/manage-orders-admin/manage-orders-admin.component.html": 
@@ -369,7 +369,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">\n                - Encuestas -\n            </h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <div class=\"row middle-row\">\n        <div class=\"col-1\"></div>\n        <div class=\"col-10\">\n            <p>Cada encuesta está coloreada según el promedio de puntaje realizado sobre las cuatro categorías: el color es <span class=\"red\">rojo</span> si el promedio está por debajo del 4, el color es <span class=\"yellow\">amarillo</span> si es mayor o igual que 4 pero menor a 7 y por último <span class=\"green\">verde</span>, si el promedio es mayor a 7. Haga click en una encuesta para ver más detalles.</p>\n        </div>\n        <div class=\"col-1\"></div>\n    </div>\n    <div class=\"row middle-row\">\n        <div class=\"col-12\">\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-hover\">\n                    <thead class=\"align-center\">\n                        <tr>\n                            <th scope=\"col\">Pedido</th>\n                            <th scope=\"col\">Cliente</th>\n                            <th scope=\"col\">Mesa</th>\n                            <th scope=\"col\">Mozo</th>\n                            <th scope=\"col\">Puntaje mesa</th>\n                            <th scope=\"col\">Puntaje mozo</th>\n                            <th scope=\"col\">Puntaje restaurante</th>\n                            <th scope=\"col\">Puntaje cocinero</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr [surveyAverage]=\"sur\" *ngFor=\"let sur of surveys | async\" class=\"survey align-center\" data-toggle=\"modal\" data-target=\"#surveyModal\" (click)=\"SelectSurvey(sur)\">\n                            <td>{{sur.order.codeID}}</td>\n                            <td>{{sur.order.client.name}} {{sur.order.client.lastname}}</td>\n                            <td>{{sur.order.tableID}}</td>\n                            <td>{{sur.order.waiter.name}} {{sur.order.waiter.lastname}}</td>\n                            <td>{{sur.tableScore}}</td>\n                            <td>{{sur.waiterScore}}</td>\n                            <td>{{sur.restaurantScore}}</td>\n                            <td>{{sur.cookScore}}</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n    </div>\n</div>\n\n\n<div class=\"modal fade\" id=\"surveyModal\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n        <div class=\"modal-body\">\n            <div class=\"container-fluid\" *ngIf=\"survey\">\n                <div class=\"row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <h3 class=\"align-center\">Pedido {{survey.order.codeID}}</h3>\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n                <hr class=\"mar-top-1\">\n                <div class=\"row\">\n                    <div class=\"col-12 align-center\">\n                        <b>Promedio de los puntajes: </b> <span [surveyAverage]=\"survey\" returnAverage=\"true\"></span>\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12 align-center\" [surveyComment]='survey.commentType'></div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <span [surveyComment]=\"survey.commentType\" isIcon=\"true\"></span> - {{survey.comment}}\n                    </div>\n                </div>\n                <div class=\"row mar-top-1\">\n                    <div class=\"col-1\"></div>\n                    <div class=\"col-10 align-right\">\n                        {{survey.order.client.name}} {{survey.order.client.lastname}}\n                    </div>\n                    <div class=\"col-1\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n  </div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">\n                - Encuestas -\n            </h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <div class=\"row middle-row\">\n        <div class=\"col-1\"></div>\n        <div class=\"col-10\">\n            <p>Cada encuesta está coloreada según el promedio de puntaje realizado sobre las cuatro categorías: el color es <span class=\"red\">rojo</span> si el promedio está por debajo del 4, el color es <span class=\"yellow\">amarillo</span> si es mayor o igual que 4 pero menor a 7 y por último <span class=\"green\">verde</span>, si el promedio es mayor a 7. Haga click en una encuesta para ver más detalles.</p>\n        </div>\n        <div class=\"col-1\"></div>\n    </div>\n    <div class=\"row middle-row\">\n        <div class=\"col-12\">\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-hover\">\n                    <thead class=\"align-center\">\n                        <tr>\n                            <th scope=\"col\">Pedido</th>\n                            <th scope=\"col\">Cliente</th>\n                            <th scope=\"col\">Mesa</th>\n                            <th scope=\"col\">Mozo</th>\n                            <th scope=\"col\">Punt. mesa</th>\n                            <th scope=\"col\">Punt. mozo</th>\n                            <th scope=\"col\">Punt. restaurante</th>\n                            <th scope=\"col\">Punt. cocinero</th>\n                            <th scope=\"col\">Fecha</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr [surveyAverage]=\"sur\" *ngFor=\"let sur of surveys | async\" class=\"survey align-center\" data-toggle=\"modal\" data-target=\"#surveyModal\" (click)=\"SelectSurvey(sur)\">\n                            <td>{{sur.order.codeID}}</td>\n                            <td>{{sur.order.client.name}} {{sur.order.client.lastname}}</td>\n                            <td>{{sur.order.tableID}}</td>\n                            <td>{{sur.order.waiter.name}} {{sur.order.waiter.lastname}}</td>\n                            <td>{{sur.tableScore}}</td>\n                            <td>{{sur.waiterScore}}</td>\n                            <td>{{sur.restaurantScore}}</td>\n                            <td>{{sur.cookScore}}</td>\n                            <td>{{sur.order.timeLeft | neatDate}}</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n    </div>\n</div>\n\n\n<div class=\"modal fade\" id=\"surveyModal\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n        <div class=\"modal-body\">\n            <div class=\"container-fluid\" *ngIf=\"survey\">\n                <div class=\"row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <h3 class=\"align-center\">Pedido {{survey.order.codeID}}</h3>\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n                <hr class=\"mar-top-1\">\n                <div class=\"row\">\n                    <div class=\"col-12 align-center\">\n                        <b>Promedio de los puntajes: </b> <span [surveyAverage]=\"survey\" returnAverage=\"true\"></span>\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12 align-center\" [surveyComment]='survey.commentType'></div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <span [surveyComment]=\"survey.commentType\" isIcon=\"true\"></span> - {{survey.comment}}\n                    </div>\n                </div>\n                <div class=\"row mar-top-1\">\n                    <div class=\"col-1\"></div>\n                    <div class=\"col-10 align-right\">\n                        {{survey.order.client.name}} {{survey.order.client.lastname}}\n                    </div>\n                    <div class=\"col-1\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n  </div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -868,7 +868,9 @@
             /* harmony import */ var _components_socio_views_survey_table_survey_table_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/socio/views/survey-table/survey-table.component */ "./src/app/components/socio/views/survey-table/survey-table.component.ts");
             /* harmony import */ var _directives_survey_average_directive__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./directives/survey-average.directive */ "./src/app/directives/survey-average.directive.ts");
             /* harmony import */ var _directives_survey_comment_directive__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./directives/survey-comment.directive */ "./src/app/directives/survey-comment.directive.ts");
-            /* harmony import */ var _directives_no_orders_directive__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./directives/no-orders.directive */ "./src/app/directives/no-orders.directive.ts");
+            /* harmony import */ var _pipes_neat_date_pipe__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./pipes/neat-date.pipe */ "./src/app/pipes/neat-date.pipe.ts");
+            /* harmony import */ var _directives_is_prod_directive__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./directives/is-prod.directive */ "./src/app/directives/is-prod.directive.ts");
+            /* harmony import */ var ngx_captcha__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ngx-captcha */ "./node_modules/ngx-captcha/fesm2015/ngx-captcha.js");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -913,7 +915,8 @@
                         _components_socio_views_survey_table_survey_table_component__WEBPACK_IMPORTED_MODULE_46__["SurveyTableComponent"],
                         _directives_survey_average_directive__WEBPACK_IMPORTED_MODULE_47__["SurveyAverageDirective"],
                         _directives_survey_comment_directive__WEBPACK_IMPORTED_MODULE_48__["SurveyCommentDirective"],
-                        _directives_no_orders_directive__WEBPACK_IMPORTED_MODULE_49__["NoOrdersDirective"]
+                        _pipes_neat_date_pipe__WEBPACK_IMPORTED_MODULE_49__["NeatDatePipe"],
+                        _directives_is_prod_directive__WEBPACK_IMPORTED_MODULE_50__["IsProdDirective"]
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -925,6 +928,7 @@
                         _angular_fire_functions__WEBPACK_IMPORTED_MODULE_5__["AngularFireFunctionsModule"],
                         _angular_fire_storage__WEBPACK_IMPORTED_MODULE_9__["AngularFireStorageModule"],
                         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"],
+                        ngx_captcha__WEBPACK_IMPORTED_MODULE_51__["NgxCaptchaModule"],
                         ngx_toastr__WEBPACK_IMPORTED_MODULE_8__["ToastrModule"].forRoot({
                             timeOut: 2300,
                             positionClass: 'toast-bottom-left',
@@ -932,7 +936,8 @@
                         })
                     ],
                     providers: [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__["AngularFireAuth"], angularfire2_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"]],
-                    bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]]
+                    bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]],
+                    exports: [_directives_is_prod_directive__WEBPACK_IMPORTED_MODULE_50__["IsProdDirective"]]
                 })
             ], AppModule);
             /***/ 
@@ -1532,7 +1537,8 @@
                 LoginComponent.prototype.ngOnInit = function () {
                     this.loginForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
                         'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
-                        'password': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
+                        'password': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+                        'captcha': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
                     });
                 };
                 LoginComponent.prototype.onSubmit = function () {
@@ -1833,7 +1839,8 @@
                         'lastname': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
                         'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
                         'password': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
-                        'repPassword': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
+                        'repPassword': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+                        'captcha': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
                     });
                 };
                 RegisterComponent.prototype.onSubmit = function () {
@@ -2675,21 +2682,73 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var src_app_services_firebase_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/firebase/user.service */ "./src/app/services/firebase/user.service.ts");
+            /* harmony import */ var src_app_services_firebase_order_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/firebase/order.service */ "./src/app/services/firebase/order.service.ts");
+            /* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.min.js");
+            /* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/ __webpack_require__.n(jspdf__WEBPACK_IMPORTED_MODULE_4__);
+            /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
             var HomeSocioComponent = /** @class */ (function () {
-                function HomeSocioComponent(userService) {
+                function HomeSocioComponent(userService, orderService, toastr) {
                     this.userService = userService;
+                    this.orderService = orderService;
+                    this.toastr = toastr;
                     this.changeRoleNewRole = 'socio';
                 }
                 HomeSocioComponent.prototype.ngOnInit = function () {
                 };
                 HomeSocioComponent.prototype.ChangeRole = function () {
                     this.userService.SetRole(this.changeRoleEmail, this.changeRoleNewRole);
-                    alert('El rol se ha cambiado correctamente.');
+                    this.toastr.info('El rol se ha cambiado correctamente!');
+                };
+                HomeSocioComponent.prototype.GenerateCSV = function () {
+                    this.toastr.info('Generando la facturación...');
+                    this.orderService.GetAllCompletedOrders_InArray().then(function (orders) {
+                        var data = [];
+                        orders.forEach(function (ord) {
+                            data.push([ord.timeLeft,
+                                ord.codeID,
+                                ord.client.email,
+                                ord.waiter.name + ' ' + ord.waiter.lastname,
+                                '$' + ord.totalPrice]);
+                        });
+                        var csvData = 'Fecha,Pedido,Cliente,Mozo,Importe\n';
+                        data.forEach(function (row) {
+                            csvData += row.join(',');
+                            csvData += '\n';
+                        });
+                        var file = new Blob([csvData], { type: 'text/csv' });
+                        var fileUrl = URL.createObjectURL(file);
+                        var hiddenEl = document.createElement('a');
+                        hiddenEl.href = fileUrl;
+                        hiddenEl.target = '_blank';
+                        hiddenEl.download = 'Facturacion.csv';
+                        hiddenEl.click();
+                    });
+                };
+                HomeSocioComponent.prototype.GeneratePDF = function () {
+                    this.toastr.info('Generando el listado de usuarios...');
+                    this.userService.GetAll_InArray().then(function (users) {
+                        var start = '<div style="text-align: center"><h1>Listado de usuarios</h1><hr><ul>';
+                        var usersHtml = '';
+                        var end = '</ul></div>';
+                        users.forEach(function (el) {
+                            var liSt = '<li>';
+                            var liEnd = '</li>';
+                            var user = el.email + ' - ' + el.name + ' ' + el.lastname + ' - ' + el.role;
+                            var fullLine = liSt + user + liEnd;
+                            usersHtml += fullLine;
+                        });
+                        var html = start + usersHtml + end;
+                        var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_4__();
+                        pdf.fromHTML(html, 20, 20);
+                        pdf.save('Prueba.pdf');
+                    });
                 };
                 return HomeSocioComponent;
             }());
             HomeSocioComponent.ctorParameters = function () { return [
-                { type: src_app_services_firebase_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] }
+                { type: src_app_services_firebase_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] },
+                { type: src_app_services_firebase_order_service__WEBPACK_IMPORTED_MODULE_3__["OrderService"] },
+                { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"] }
             ]; };
             HomeSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2881,32 +2940,39 @@
             ], SurveyTableComponent);
             /***/ 
         }),
-        /***/ "./src/app/directives/no-orders.directive.ts": 
-        /*!***************************************************!*\
-          !*** ./src/app/directives/no-orders.directive.ts ***!
-          \***************************************************/
-        /*! exports provided: NoOrdersDirective */
+        /***/ "./src/app/directives/is-prod.directive.ts": 
+        /*!*************************************************!*\
+          !*** ./src/app/directives/is-prod.directive.ts ***!
+          \*************************************************/
+        /*! exports provided: IsProdDirective */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoOrdersDirective", function () { return NoOrdersDirective; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IsProdDirective", function () { return IsProdDirective; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            var NoOrdersDirective = /** @class */ (function () {
-                function NoOrdersDirective() {
+            /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+            var IsProdDirective = /** @class */ (function () {
+                function IsProdDirective(el) {
+                    this.el = el;
                 }
-                NoOrdersDirective.prototype.ngOnChanges = function () {
+                IsProdDirective.prototype.ngOnInit = function () {
+                    if (_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].production)
+                        this.el.nativeElement.style.display = 'none';
                 };
-                return NoOrdersDirective;
+                return IsProdDirective;
             }());
+            IsProdDirective.ctorParameters = function () { return [
+                { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }
+            ]; };
             tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('noOrders')
-            ], NoOrdersDirective.prototype, "orders", void 0);
-            NoOrdersDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('isProd')
+            ], IsProdDirective.prototype, "nothing", void 0);
+            IsProdDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
-                    selector: '[noOrders]'
+                    selector: '[isProd]'
                 })
-            ], NoOrdersDirective);
+            ], IsProdDirective);
             /***/ 
         }),
         /***/ "./src/app/directives/survey-average.directive.ts": 
@@ -3349,6 +3415,55 @@
             })(Role || (Role = {}));
             /***/ 
         }),
+        /***/ "./src/app/pipes/neat-date.pipe.ts": 
+        /*!*****************************************!*\
+          !*** ./src/app/pipes/neat-date.pipe.ts ***!
+          \*****************************************/
+        /*! exports provided: NeatDatePipe */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NeatDatePipe", function () { return NeatDatePipe; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            var NeatDatePipe = /** @class */ (function () {
+                function NeatDatePipe() {
+                }
+                NeatDatePipe.prototype.transform = function (value) {
+                    if (value == undefined || value == '')
+                        return 'No se registró la fecha.';
+                    var fullDate = value.split(" ")[0];
+                    var splittedDate = fullDate.split("-");
+                    var day = splittedDate[2];
+                    var month = splittedDate[1];
+                    var year = splittedDate[0];
+                    switch (day) {
+                        case '1':
+                        case '2':
+                        case '3':
+                        case '4':
+                        case '5':
+                        case '6':
+                        case '7':
+                        case '8':
+                        case '9':
+                            day = '0' + day;
+                            break;
+                        default:
+                            break;
+                    }
+                    var finalDate = day + '-' + month + '-' + year;
+                    return finalDate;
+                };
+                return NeatDatePipe;
+            }());
+            NeatDatePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+                    name: 'neatDate'
+                })
+            ], NeatDatePipe);
+            /***/ 
+        }),
         /***/ "./src/app/pipes/table.pipe.ts": 
         /*!*************************************!*\
           !*** ./src/app/pipes/table.pipe.ts ***!
@@ -3560,6 +3675,16 @@
                 OrderService.prototype.GetAllOrderByTime = function () {
                     return this.db.collection("orders", function (ref) { return ref.where('completed', '==', false); });
                 };
+                OrderService.prototype.GetAllCompletedOrders_InArray = function () {
+                    return this.db.collection("orders", function (ref) { return ref.where('completed', '==', true); }).get().toPromise()
+                        .then(function (doc) {
+                        var orders = [];
+                        doc.docs.forEach(function (el) {
+                            orders.push(el.data());
+                        });
+                        return orders;
+                    });
+                };
                 OrderService.prototype.GetAllByWaiterOrderByTime = function (email) {
                     // It's not order by time yet. It requires to create an index.
                     //return this.db.collection("orders", ref => ref.where('waiter.email', '==', email).orderBy('timestamp', 'desc'));
@@ -3758,6 +3883,18 @@
                     this.db = db;
                     this.afsFunc = afsFunc;
                 }
+                UserService.prototype.GetAll_InArray = function () {
+                    return this.db.collection('users').get().toPromise()
+                        .then(function (doc) {
+                        var users = [];
+                        doc.docs.forEach(function (el) {
+                            var us = el.data();
+                            us.password = '';
+                            users.push(us);
+                        });
+                        return users;
+                    });
+                };
                 UserService.prototype.SetRole = function (email, role) {
                     this.SetRoleInFirebase(email, role);
                     this.SetRoleInCloudFunctions(email, role);

@@ -158,7 +158,7 @@ Luego de que el mozo sirve el pedido, la mesa cambia de estado automáticamente,
 
 ### Menu principal
 
-El socio es el rol con más poder dentro de la aplicación. Desde el menú principal puede gestionar los roles de cada usuario, ingresando el email y el rol deseado. Además, puede descargar la facturación total de lo trabajado.
+El socio es el rol con más poder dentro de la aplicación. Desde el menú principal puede gestionar los roles de cada usuario, ingresando el email y el rol deseado. Además, puede descargar la facturación total de lo trabajado y la lista de usuarios para llevar un control más apropiado.
 
 ---
 <img src="https://github.com/ivan-rojas/TP_Lab4_2c_2019/blob/master/documents/images/s1.PNG" />

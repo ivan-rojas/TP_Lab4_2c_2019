@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
 		'lastname': new FormControl(null, [Validators.required]),
 		'email': new FormControl(null, [Validators.required]),
 		'password': new FormControl(null, [Validators.required]),
-		'repPassword': new FormControl(null, [Validators.required])
+		'repPassword': new FormControl(null, [Validators.required]),
+		'captcha': new FormControl('', [Validators.required])
     	});
   	}
 

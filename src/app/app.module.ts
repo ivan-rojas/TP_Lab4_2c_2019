@@ -47,7 +47,9 @@ import { FooterComponent } from './components/all/main/footer/footer.component';
 import { SurveyTableComponent } from './components/socio/views/survey-table/survey-table.component';
 import { SurveyAverageDirective } from './directives/survey-average.directive';
 import { SurveyCommentDirective } from './directives/survey-comment.directive';
-import { NoOrdersDirective } from './directives/no-orders.directive';
+import { NeatDatePipe } from './pipes/neat-date.pipe';
+import { IsProdDirective } from './directives/is-prod.directive';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,8 @@ import { NoOrdersDirective } from './directives/no-orders.directive';
     SurveyTableComponent,
     SurveyAverageDirective,
     SurveyCommentDirective,
-    NoOrdersDirective
+    NeatDatePipe,
+    IsProdDirective
   ],
   imports: [
     BrowserModule,
@@ -99,6 +102,7 @@ import { NoOrdersDirective } from './directives/no-orders.directive';
     AngularFireFunctionsModule,
     AngularFireStorageModule,
     BrowserAnimationsModule,
+    NgxCaptchaModule,
     ToastrModule.forRoot({
       timeOut: 2300,
       positionClass: 'toast-bottom-left',
@@ -106,7 +110,8 @@ import { NoOrdersDirective } from './directives/no-orders.directive';
     })
   ],
   providers: [AngularFireAuth, AngularFirestore],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [IsProdDirective]
 })
 
 export class AppModule { }

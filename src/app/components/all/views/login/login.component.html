@@ -9,6 +9,13 @@
 					<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 						<input type="text" formControlName="email" class="form-control separate-top-input align-center" placeholder="Email" autofocus>
 						<input type="password" formControlName="password" class="form-control separate-top-input align-center" placeholder="Contraseña">
+						<div class="row mar-top-2">
+							<div class="col-2"></div>
+							<div class="col-8 align-center">
+								<ngx-recaptcha2  formControlName="captcha" #captchaElem [siteKey]="'6Le9VcYUAAAAAK4z-Fj0YlhKfrNIc9eqvsNuMSsy'" [useGlobalDomain]="false"></ngx-recaptcha2>
+							</div>
+							<div class="col-2"></div>
+						</div>
 						<button *ngIf="!loading" [disabled]="!loginForm.valid" type="submit" class="btn btn-success full-width separate-top-input">Entrar</button>
 						<div class="mar-top-1">
 							<app-spinner *ngIf="loading"></app-spinner>
@@ -21,7 +28,7 @@
 		</div>
 		<div class="col-3"></div>
 	</div>
-	<div class="row middle-row">
+	<div class="row middle-row" [isProd]>
 		<div class="col-3"></div>
 		<div class="col-6">
 			<select class="form-control" [(ngModel)]="userOption" (change)="LoadUser()">

@@ -1,7 +1,10 @@
 <div class="container">
     <div class="row top-row">
-        <div class="col-4">
-
+        <div class="col-4 align-center">
+            <h3>Control de roles</h3>
+            <hr>
+            <p>Desde esta opción podés administrar los roles de los usuarios registrados en la aplicación.</p>
+            <hr>
             <div class="role-panel">
                 <div class="row">
                     <div class="col-12">
@@ -22,19 +25,28 @@
                 </div>
                 <div class="row middle-row">
                     <div class="col-12">
-                        <button class="btn btn-success full-width" (click)="ChangeRole()">Cambiar rol</button>
+                        <button class="btn btn-primary full-width" (click)="ChangeRole()">Cambiar rol</button>
                     </div>
                 </div>
             </div>      
 
         </div>
-        <div class="col-4"></div>
+        <div class="col-4 align-center">
+            <h3>Lista de usuarios</h3>
+            <hr>
+            <p>Desde acá podés ver un listado completo de los usuarios registrados en la aplicación</p>
+            <hr>
+            <div class="btn-group full-width">
+                <button class="btn btn-danger full-width" (click)="GeneratePDF()">Generar PDF</button>
+            </div>
+        </div>
         <div class="col-4 align-center">
             <h3>Facturación</h3>
             <hr>
+            <p>Desde acá podés ver todo lo que se facturó en detalle.</p>
+            <hr>
             <div class="btn-group full-width">
-                <button class="btn btn-danger full-width">Generar PDF</button>
-                <button class="btn btn-success full-width">Generar CSV</button>
+                <button class="btn btn-success full-width" (click)="GenerateCSV()">Generar CSV</button>
             </div>
         </div>
     </div>

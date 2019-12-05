@@ -13,6 +13,20 @@ export class UserService {
 
 	constructor(private db: AngularFirestore, private afsFunc: AngularFireFunctions) { }
 
+	public GetAll_InArray(): Promise<User[]>
+	{
+		return this.db.collection('users').get().toPromise()
+			.then(doc => {
+				let users: User[] = [];
+				doc.docs.forEach(el => {
+					let us = el.data() as User;
+					us.password = '';
+					users.push(us);
+				})
+				return users;
+			})
+	}
+
 	public SetRole(email: string, role: string): void
 	{
 		this.SetRoleInFirebase(email, role);
