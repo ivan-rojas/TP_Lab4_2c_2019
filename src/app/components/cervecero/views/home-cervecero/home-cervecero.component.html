@@ -1,5 +1,13 @@
 <div class="container">
     <div class="row top-row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h1 class="page-title">- Pedidos -</h1>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <hr>
+    <div class="row middle-row">
         <div class="col-6">
             <app-order-list role="cervecero" (orderSelected)="SelectOrder($event)"></app-order-list>
         </div>

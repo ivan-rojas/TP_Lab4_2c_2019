@@ -8,7 +8,7 @@
                 <th scope="col">Mozo</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="orders">
             <tr class="order" *ngFor="let or of orders | async" (click)="SelectOrder(or)">
                 <td class="arial">{{or.codeID}}</td>
                 <td>{{or.client.name}}</td>
@@ -17,4 +17,10 @@
             </tr>
         </tbody>
     </table>
+    <div *ngIf="!orders" class="align-center mar-top-1">
+        <app-spinner></app-spinner>
+    </div>
+</div>
+
+<div [noOrders]="orders" class="align-center mar-top-1">
 </div>

@@ -3,6 +3,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { User, Role } from 'src/app/models/user';
 import { CommonHelper } from 'src/app/classes/helpers/common-helper';
+import { resolve, reject } from 'q';
 
 @Injectable({
 	providedIn: 'root'
@@ -61,6 +62,15 @@ export class UserService {
 				waiters.push(waiter);
 			})
 			return waiters;
+		})
+	}
+
+	public ModifyProfileImage(email: string, image: string): Promise<void>
+	{
+		return this.GetUserByEmail(email).then(doc => {
+			let user = doc;
+			user.image = image;
+			this.db.collection('users').doc(doc.id).update(user);
 		})
 	}
 }

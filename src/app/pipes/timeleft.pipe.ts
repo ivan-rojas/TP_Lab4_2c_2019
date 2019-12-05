@@ -7,7 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimeleftPipe implements PipeTransform {
 
 	transform(value: number): string {
-		console.log(value)
 		if(value == undefined || isNaN(value) || value == 0)
 			return 'No tiene un tiempo estimado asignado.';
 		

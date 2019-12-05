@@ -12,7 +12,10 @@
 						<input type="text" formControlName="email" class="form-control separate-top-input align-center" placeholder="Email">
                         <input type="password" formControlName="password" class="form-control separate-top-input align-center" placeholder="Contraseña">
                         <input type="password" formControlName="repPassword" class="form-control separate-top-input align-center" placeholder="Repita la contraseña">
-						<button [disabled]="!registerForm.valid" type="submit" class="btn btn-success full-width separate-top-input">Registrarse</button>
+						<button *ngIf="!loading" [disabled]="!registerForm.valid" type="submit" class="btn btn-success full-width separate-top-input">Registrarse</button>
+						<div class="mar-top-2" *ngIf="loading">
+							<app-spinner></app-spinner>
+						</div>
 					</form>
 					<hr>
 					<button routerLink="/app/login" class="btn btn-secondary full-width">¿Ya tenés una cuenta?</button>
@@ -22,3 +25,5 @@
 		<div class="col-3"></div>
 	</div>
 </div>
+
+<app-footer></app-footer>

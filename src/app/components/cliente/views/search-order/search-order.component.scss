@@ -7,3 +7,17 @@ input {
     font-weight: bold;
     color: green;
 }
+
+textarea {
+    resize: none;
+}
+
+.positive {
+    font-weight: bold;
+    color: green;
+}
+
+.negative {
+    font-weight: bold;
+    color: red;
+}

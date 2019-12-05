@@ -6,6 +6,7 @@ export class User
     public password: string;
     public email: string;
     public role: Role;
+    public image: string;
 
     constructor() 
     {
@@ -14,6 +15,7 @@ export class User
         this.password = "";
         this.email = "";
         this.role = Role.socio;
+        this.image = 'assets/img/default-profile.png';
     }
 
     public static CreateUserWithParams(name: string, lastname: string,  email: string, password: string, role: Role): User

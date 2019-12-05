@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
 	public loginForm: FormGroup;
 	public userOption: string = 'none';
+	public loading: boolean = false;
 
 	constructor(private authService: AuthService, private toastr: ToastrService) {  }
 
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	public onSubmit() {
+		this.loading = true;
 		this.authService.LoginWithEmail(this.loginForm.get('email').value, this.loginForm.get('password').value)
 		.then(() => {
 			this.toastr.success('¡Bienvenido!');
@@ -42,6 +44,9 @@ export class LoginComponent implements OnInit {
 				break;
 			case 'mario':
 				this.loginForm.get('email').setValue('mario@gmail.com');
+				break;
+			case 'chelo':
+				this.loginForm.get('email').setValue('chelo@gmail.com');
 				break;
 			case 'jose':
 				this.loginForm.get('email').setValue('jose@gmail.com');

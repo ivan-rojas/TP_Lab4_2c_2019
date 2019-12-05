@@ -9,7 +9,10 @@
 					<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 						<input type="text" formControlName="email" class="form-control separate-top-input align-center" placeholder="Email" autofocus>
 						<input type="password" formControlName="password" class="form-control separate-top-input align-center" placeholder="Contraseña">
-						<button [disabled]="!loginForm.valid" type="submit" class="btn btn-success full-width separate-top-input">Entrar</button>
+						<button *ngIf="!loading" [disabled]="!loginForm.valid" type="submit" class="btn btn-success full-width separate-top-input">Entrar</button>
+						<div class="mar-top-1">
+							<app-spinner *ngIf="loading"></app-spinner>
+						</div>
 					</form>
 					<hr>
 					<button routerLink="/app/register" class="btn btn-primary full-width">Registrarse</button>
@@ -25,6 +28,7 @@
 				<option value="none"> - Usuarios de prueba - </option>
 				<option value="juan">Juan - Cliente</option>
 				<option value="mario">Mario - Cliente</option>
+				<option value="chelo">Chelo - Cliente</option>
 				<option value="jose">José - Mozo</option>
 				<option value="camilo">Camilo - Mozo</option>
 				<option value="pablo">Pablo - Cocinero</option>
@@ -36,3 +40,5 @@
 		<div class="col-3"></div>
 	</div>
 </div>
+
+<app-footer></app-footer>

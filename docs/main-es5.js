@@ -28,7 +28,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<router-outlet></router-outlet>\r\n\r\n<div class=\"row blank-row\"></div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<router-outlet></router-outlet>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/food-card/food-card.component.html": 
@@ -42,6 +42,17 @@
             /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"product\" class=\"card outside-shadow\">\n    <div class=\"card-body align-center\">\n        <div class=\"card-title\">{{product.name}}</div>\n        <img src=\"{{product.pathImg}}\" class=\"img-shadow\" (click)=\"AddToOrder(product)\">\n        <div class=\"price\">\n            <div class=\"row\">\n                <div class=\"col-3\">\n                    <span class=\"ordered\" *ngIf=\"ordered\"><i class=\"fas fa-clipboard-check\"></i></span>\n                </div>\n                <div class=\"col-6\">\n                    ${{product.price}}.00\n                </div>\n                <div class=\"col-3\">\n                    <span class=\"quant\" *ngIf=\"quantity > 1\">x{{quantity}}</span>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
             /***/ 
         }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/footer/footer.component.html": 
+        /*!********************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/footer/footer.component.html ***!
+          \********************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"footer footer-shadow mar-top-3\">\n    <div class=\"row no-side-margin\">\n        <div class=\"col-6 no-side-margin align-left\">\n            Trabajo práctico - Laboratorio IV\n        </div>\n        <div class=\"col-6 no-side-margin align-right\">\n            Iván Rojas \t&copy;\n        </div>\n    </div>\n</div>");
+            /***/ 
+        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/order-list/order-list.component.html": 
         /*!****************************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/order-list/order-list.component.html ***!
@@ -50,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"table-responsive\">\n    <table class=\"table table-hover\">\n        <thead>\n            <tr>\n                <th scope=\"col\">ID</th>\n                <th scope=\"col\">Cliente</th>\n                <th scope=\"col\">Estado</th>\n                <th scope=\"col\">Mozo</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr class=\"order\" *ngFor=\"let or of orders | async\" (click)=\"SelectOrder(or)\">\n                <td class=\"arial\">{{or.codeID}}</td>\n                <td>{{or.client.name}}</td>\n                <td>{{or.state}}</td>\n                <td>{{or.waiter.name}}</td>\n            </tr>\n        </tbody>\n    </table>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"table-responsive\">\n    <table class=\"table table-hover\">\n        <thead>\n            <tr>\n                <th scope=\"col\">ID</th>\n                <th scope=\"col\">Cliente</th>\n                <th scope=\"col\">Estado</th>\n                <th scope=\"col\">Mozo</th>\n            </tr>\n        </thead>\n        <tbody *ngIf=\"orders\">\n            <tr class=\"order\" *ngFor=\"let or of orders | async\" (click)=\"SelectOrder(or)\">\n                <td class=\"arial\">{{or.codeID}}</td>\n                <td>{{or.client.name}}</td>\n                <td>{{or.state}}</td>\n                <td>{{or.waiter.name}}</td>\n            </tr>\n        </tbody>\n    </table>\n    <div *ngIf=\"!orders\" class=\"align-center mar-top-1\">\n        <app-spinner></app-spinner>\n    </div>\n</div>\n\n<div [noOrders]=\"orders\" class=\"align-center mar-top-1\">\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/sidebar-option/sidebar-option.component.html": 
@@ -73,6 +84,17 @@
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony default export */ __webpack_exports__["default"] = ("<img src=\"assets/img/load.svg\">");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/table-card/table-card.component.html": 
+        /*!****************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/table-card/table-card.component.html ***!
+          \****************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"card outside-shadow\">\n    <div class=\"card-body align-center\">\n        <div class=\"card-title\">Mesa {{table.tableID}}</div>\n        <div class=\"row\">\n            <div class=\"col-2\"></div>\n            <div class=\"col-8 icon\" [ngSwitch]=\"table.state\">\n                <i class=\"fas fa-user-check green\" *ngSwitchCase=\"'Disponible'\"></i>\n                <i class=\"fas fa-user-clock orange\" *ngSwitchCase=\"'Cliente esperando pedido'\"></i>\n                <i class=\"fas fa-utensils orange\" *ngSwitchCase=\"'Cliente comiendo'\"></i>\n                <i class=\"fas fa-money-bill-wave orange\" *ngSwitchCase=\"'Cliente pagando'\"></i>\n                <i class=\"fas fa-window-close red\" *ngSwitchCase=\"'Cerrada'\"></i>\n            </div>\n            <div class=\"col-2\"></div>\n        </div>\n        <div class=\"row mar-top-half\">\n            <div class=\"col-12\">\n                {{table.state}}\n            </div>\n        </div>\n        <hr>\n        <div class=\"row\">\n            <div class=\"col-12\">\n                <b>Cambiar estado</b>\n            </div>\n        </div>\n        <div class=\"row mar-top-1\">\n            <div class=\"col-12\">\n                <div class=\"btn-group\">\n                    <button class=\"btn btn-primary\" (click)=\"ChangeStatus(1)\"><i class=\"fas fa-user-check\"></i></button>\n                    <button class=\"btn btn-primary\" (click)=\"ChangeStatus(2)\"><i class=\"fas fa-user-clock\"></i></button>\n                    <button class=\"btn btn-primary\" (click)=\"ChangeStatus(3)\"><i class=\"fas fa-utensils\"></i></button>\n                    <button class=\"btn btn-primary\" (click)=\"ChangeStatus(4)\"><i class=\"fas fa-money-bill-wave\"></i></button>\n                    <button *ngIf=\"isAdmin\" class=\"btn btn-danger\" (click)=\"ChangeStatus(5)\"><i class=\"fas fa-window-close\"></i></button>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/work-order/work-order.component.html": 
@@ -105,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n\t<div class=\"row top-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-body align-center\">\n\t\t\t\t\t<h4 class=\"form-title\">Ingresar</h4>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t\t\t<input type=\"text\" formControlName=\"email\" class=\"form-control separate-top-input align-center\" placeholder=\"Email\" autofocus>\n\t\t\t\t\t\t<input type=\"password\" formControlName=\"password\" class=\"form-control separate-top-input align-center\" placeholder=\"Contraseña\">\n\t\t\t\t\t\t<button [disabled]=\"!loginForm.valid\" type=\"submit\" class=\"btn btn-success full-width separate-top-input\">Entrar</button>\n\t\t\t\t\t</form>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<button routerLink=\"/app/register\" class=\"btn btn-primary full-width\">Registrarse</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n\t<div class=\"row middle-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<select class=\"form-control\" [(ngModel)]=\"userOption\" (change)=\"LoadUser()\">\n\t\t\t\t<option value=\"none\"> - Usuarios de prueba - </option>\n\t\t\t\t<option value=\"juan\">Juan - Cliente</option>\n\t\t\t\t<option value=\"mario\">Mario - Cliente</option>\n\t\t\t\t<option value=\"jose\">José - Mozo</option>\n\t\t\t\t<option value=\"camilo\">Camilo - Mozo</option>\n\t\t\t\t<option value=\"pablo\">Pablo - Cocinero</option>\n\t\t\t\t<option value=\"martin\">Martin - Bartender</option>\n\t\t\t\t<option value=\"roman\">Román - Cervecero</option>\n\t\t\t\t<option value=\"ivan\">Iván - Socio</option>\n\t\t\t</select>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n\t<div class=\"row top-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-body align-center\">\n\t\t\t\t\t<h4 class=\"form-title\">Ingresar</h4>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t\t\t<input type=\"text\" formControlName=\"email\" class=\"form-control separate-top-input align-center\" placeholder=\"Email\" autofocus>\n\t\t\t\t\t\t<input type=\"password\" formControlName=\"password\" class=\"form-control separate-top-input align-center\" placeholder=\"Contraseña\">\n\t\t\t\t\t\t<button *ngIf=\"!loading\" [disabled]=\"!loginForm.valid\" type=\"submit\" class=\"btn btn-success full-width separate-top-input\">Entrar</button>\n\t\t\t\t\t\t<div class=\"mar-top-1\">\n\t\t\t\t\t\t\t<app-spinner *ngIf=\"loading\"></app-spinner>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</form>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<button routerLink=\"/app/register\" class=\"btn btn-primary full-width\">Registrarse</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n\t<div class=\"row middle-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<select class=\"form-control\" [(ngModel)]=\"userOption\" (change)=\"LoadUser()\">\n\t\t\t\t<option value=\"none\"> - Usuarios de prueba - </option>\n\t\t\t\t<option value=\"juan\">Juan - Cliente</option>\n\t\t\t\t<option value=\"mario\">Mario - Cliente</option>\n\t\t\t\t<option value=\"chelo\">Chelo - Cliente</option>\n\t\t\t\t<option value=\"jose\">José - Mozo</option>\n\t\t\t\t<option value=\"camilo\">Camilo - Mozo</option>\n\t\t\t\t<option value=\"pablo\">Pablo - Cocinero</option>\n\t\t\t\t<option value=\"martin\">Martin - Bartender</option>\n\t\t\t\t<option value=\"roman\">Román - Cervecero</option>\n\t\t\t\t<option value=\"ivan\">Iván - Socio</option>\n\t\t\t</select>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n</div>\n\n<app-footer></app-footer>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/views/main-general/main-general.component.html": 
@@ -117,6 +139,17 @@
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar general-color\">\n        <div class=\"col-12 align-center no-padding\">\n            <h1 class=\"main-title no-side-margin\">La Comanda</h1>\n        </div>\n    </div>\n</nav>\n\n<router-outlet></router-outlet>");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/views/profile/profile.component.html": 
+        /*!***********************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/views/profile/profile.component.html ***!
+          \***********************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" *ngIf=\"user\">\n    <div class=\"row top-row\">\n        <div class=\"col-4 align-center\">\n            <img src=\"{{user.image}}\">\n        </div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">\n                {{user.name}} {{user.lastname}}\n            </h1>\n        </div>\n        <div class=\"col-2\"></div>\n    </div>\n    <div class=\"row middle-row\">\n        <p>Tu privacidad está segura en este sitio. La información detallada anteriormente no se expone ni es visible\n            para nadie público. Solamente un administrador del sistema tiene acceso a estos datos.</p>\n    </div>\n    <div class=\"row middle-row\">\n        <div class=\"col-2\"></div>\n        <div class=\"col-8\">\n            <div class=\"card outside-shadow\">\n                <div class=\"card-header align-center\">\n                    <b>Editar perfil</b>\n                </div>\n                <div class=\"card-body\">\n                    <div class=\"row\">\n                        <div class=\"col-6 align-center\">\n                            <h5 class=\"card-title\">Foto</h5>\n                            <p class=\"card-text\">Cambia la foto de tu perfil en solo dos pasos: elegir y cargar.</p>\n                            <div class=\"btn-group\">\n                                <button class=\"btn btn-primary\" (click)=\"fileInput.click()\">Elegir imagen</button>\n                                <button [disabled]=\"!isLoaded\" class=\"btn btn-success\" (click)=\"Upload()\">Cargar imagen</button>\n                            </div>\n                        </div>\n                        <div class=\"col-6 align-center\">\n                            <h5 class=\"card-title\">Nombre</h5>\n                            <p class=\"card-text\">Modificá tu nombre, apellido y/o email de una forma simple.</p>\n                            <button class=\"btn btn-primary\" disabled>Cambiar mis datos</button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-2\"></div>\n    </div>\n    <input accept=\".png,.jpg\" type=\"file\" #fileInput style=\"display: none;\" (change)=\"OnFileSelected($event)\">\n</div>\n\n<app-footer></app-footer>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/views/redirect/redirect.component.html": 
@@ -138,7 +171,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n\t<div class=\"row top-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-body align-center\">\n\t\t\t\t\t<h4 class=\"form-title\">Registrarse</h4>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n                        <input type=\"text\" formControlName=\"name\" class=\"form-control separate-top-input align-center\" placeholder=\"Nombre\" autofocus>\n                        <input type=\"text\" formControlName=\"lastname\" class=\"form-control separate-top-input align-center\" placeholder=\"Apellido\">\n\t\t\t\t\t\t<input type=\"text\" formControlName=\"email\" class=\"form-control separate-top-input align-center\" placeholder=\"Email\">\n                        <input type=\"password\" formControlName=\"password\" class=\"form-control separate-top-input align-center\" placeholder=\"Contraseña\">\n                        <input type=\"password\" formControlName=\"repPassword\" class=\"form-control separate-top-input align-center\" placeholder=\"Repita la contraseña\">\n\t\t\t\t\t\t<button [disabled]=\"!registerForm.valid\" type=\"submit\" class=\"btn btn-success full-width separate-top-input\">Registrarse</button>\n\t\t\t\t\t</form>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<button routerLink=\"/app/login\" class=\"btn btn-secondary full-width\">¿Ya tenés una cuenta?</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n\t<div class=\"row top-row\">\n\t\t<div class=\"col-3\"></div>\n\t\t<div class=\"col-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-body align-center\">\n\t\t\t\t\t<h4 class=\"form-title\">Registrarse</h4>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n                        <input type=\"text\" formControlName=\"name\" class=\"form-control separate-top-input align-center\" placeholder=\"Nombre\" autofocus>\n                        <input type=\"text\" formControlName=\"lastname\" class=\"form-control separate-top-input align-center\" placeholder=\"Apellido\">\n\t\t\t\t\t\t<input type=\"text\" formControlName=\"email\" class=\"form-control separate-top-input align-center\" placeholder=\"Email\">\n                        <input type=\"password\" formControlName=\"password\" class=\"form-control separate-top-input align-center\" placeholder=\"Contraseña\">\n                        <input type=\"password\" formControlName=\"repPassword\" class=\"form-control separate-top-input align-center\" placeholder=\"Repita la contraseña\">\n\t\t\t\t\t\t<button *ngIf=\"!loading\" [disabled]=\"!registerForm.valid\" type=\"submit\" class=\"btn btn-success full-width separate-top-input\">Registrarse</button>\n\t\t\t\t\t\t<div class=\"mar-top-2\" *ngIf=\"loading\">\n\t\t\t\t\t\t\t<app-spinner></app-spinner>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</form>\n\t\t\t\t\t<hr>\n\t\t\t\t\t<button routerLink=\"/app/login\" class=\"btn btn-secondary full-width\">¿Ya tenés una cuenta?</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-3\"></div>\n\t</div>\n</div>\n\n<app-footer></app-footer>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/bartender/views/home-bartender/home-bartender.component.html": 
@@ -149,7 +182,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"bartender\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-work-order [order]=\"currentOrder\"></app-work-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">- Pedidos -</h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <hr>\n    <div class=\"row middle-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"bartender\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-work-order [order]=\"currentOrder\"></app-work-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/bartender/views/main-bartender/main-bartender.component.html": 
@@ -160,7 +193,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar bartender-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img src=\"assets/img/default-profile.png\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio\"></app-sidebar-option>\n        <app-sidebar-option name=\"Configuracion\" link=\"/app/register\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar bartender-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img *ngIf=\"user\" src=\"{{user.image}}\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/bartender/profile\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de pedidos\" link=\"/bartender\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/cervecero/views/home-cervecero/home-cervecero.component.html": 
@@ -171,7 +204,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"cervecero\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-work-order [order]=\"currentOrder\"></app-work-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">- Pedidos -</h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <hr>\n    <div class=\"row middle-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"cervecero\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-work-order [order]=\"currentOrder\"></app-work-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/cervecero/views/main-cervecero/main-cervecero.component.html": 
@@ -182,7 +215,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar cervecero-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img src=\"assets/img/default-profile.png\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio\"></app-sidebar-option>\n        <app-sidebar-option name=\"Configuracion\" link=\"/app/register\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar cervecero-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img *ngIf=\"user\" src=\"{{user.image}}\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/cervecero/profile\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de pedidos\" link=\"/cervecero\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/cliente/views/home-cliente/home-cliente.component.html": 
@@ -204,7 +237,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar general-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img src=\"assets/img/default-profile.png\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio\"></app-sidebar-option>\n        <app-sidebar-option name=\"Pedir algo\" link=\"/cliente\"></app-sidebar-option>\n        <app-sidebar-option name=\"Buscar\" link=\"buscar\"></app-sidebar-option>\n        <app-sidebar-option name=\"Configuracion\" link=\"/app/register\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar general-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img *ngIf=\"user\" src=\"{{user.image}}\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/cliente/profile\"></app-sidebar-option>\n        <app-sidebar-option name=\"Pedir algo\" link=\"/cliente\"></app-sidebar-option>\n        <app-sidebar-option name=\"Buscar pedido\" link=\"buscar\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/cliente/views/search-order/search-order.component.html": 
@@ -215,7 +248,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <input [(ngModel)]=\"orderID\" class=\"form-control full-width\" type=\"text\" placeholder=\"Ingrese el código de su pedido\">\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <div class=\"row mar-top-1\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <button class=\"btn btn-outline-primary full-width\" (click)=\"FindOrder()\">Buscar</button>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <div class=\"row mar-top-1\" *ngIf=\"alreadyPaid\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <button class=\"btn btn-info full-width\" data-toggle=\"modal\" data-target=\"#questionsModal\">Hacer encuesta</button>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n\n    <div class=\"row middle-row\" *ngIf=\"waitingOrder\">\n        <div class=\"col-4\"></div>\n        <div class=\"col-4 align-center\">\n            <app-spinner></app-spinner>\n        </div>\n        <div class=\"col-4\"></div>\n    </div>\n\n    <div class=\"row middle-row\" *ngIf=\"order\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <div class=\"card outside-shadow\">\n                <div class=\"card-body align-center\">\n                    <h5 class=\"card-title\">Pedido</h5>\n                    <hr>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Código: </b>{{order.codeID}}\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Mozo: </b>{{order.waiter.name}} {{order.waiter.lastname}}\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <div class=\"row\" *ngIf=\"!IsServed()\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Tiempo estimado: </b>{{remainingTime | timeleft}}\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <hr>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Comida</b>\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <ul>\n                                <li *ngFor=\"let i of order.items\">{{i.name}} - ${{i.price}}</li>\n                            </ul>\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <hr>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Precio total: </b> <span class=\"price\">${{order.totalPrice}}</span>\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <hr>\n                    <div class=\"row\">\n                        <div class=\"col-12\">\n                            <button [disabled]=\"!CanPayNow()\" (click)=\"Pay()\" class=\"btn btn-success full-width\">Pagar</button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n</div>\n\n\n\n<div class=\"modal fade\" id=\"questionsModal\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n        <div class=\"modal-body\">\n            <div class=\"container-fluid\">\n                <div class=\"row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <h3 class=\"align-center\">Encuesta</h3>\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n                <hr class=\"mar-top-1\">\n                <div class=\"row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <input  class=\"form-control full-width align-center\" type=\"number\" placeholder=\"Puntée del 1 al 10 a la mesa.\">\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <input  class=\"form-control full-width align-center\" type=\"number\" placeholder=\"Puntée del 1 al 10 al mozo.\">\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <input  class=\"form-control full-width align-center\" type=\"number\" placeholder=\"Puntée del 1 al 10 al restaurante.\">\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <input class=\"form-control full-width align-center\"  type=\"number\" placeholder=\"Puntée del 1 al 10 al cocinero.\">\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <button class=\"btn btn-success full-width\" data-dismiss=\"modal\" (click)=\"SendAnswers()\">Enviar encuesta</button>\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n  </div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">- Buscar un pedido -</h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <hr>\n    <div class=\"row middle-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <input [(ngModel)]=\"orderID\" class=\"form-control full-width\" type=\"text\"\n                placeholder=\"Ingrese el código de su pedido\">\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <div class=\"row mar-top-1\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <button [disabled]=\"!orderID\" class=\"btn btn-outline-primary full-width\"\n                (click)=\"FindOrder()\">Buscar</button>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <div class=\"row mar-top-1\" *ngIf=\"alreadyPaid\">\n    <!-- <div class=\"row mar-top-1\"> -->\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <button [disabled]=\"surveyDone\" class=\"btn btn-info full-width\" data-toggle=\"modal\"\n                data-target=\"#questionsModal\">Hacer encuesta</button>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n\n    <div class=\"row middle-row\" *ngIf=\"waitingOrder\">\n        <div class=\"col-4\"></div>\n        <div class=\"col-4 align-center\">\n            <app-spinner></app-spinner>\n        </div>\n        <div class=\"col-4\"></div>\n    </div>\n\n    <div class=\"row middle-row\" *ngIf=\"order\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <div class=\"card outside-shadow\">\n                <div class=\"card-body align-center\">\n                    <h5 class=\"card-title\">Pedido</h5>\n                    <hr>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Código: </b>{{order.codeID}}\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Mozo: </b>{{order.waiter.name}} {{order.waiter.lastname}}\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <div class=\"row\" *ngIf=\"!IsServed()\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Tiempo estimado: </b>{{remainingTime | timeleft}}\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <hr>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Comida</b>\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <ul>\n                                <li *ngFor=\"let i of order.items\">{{i.name}} - ${{i.price}}</li>\n                            </ul>\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <hr>\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <b>Precio total: </b> <span class=\"price\">${{order.totalPrice}}</span>\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <hr>\n                    <div class=\"row\">\n                        <div class=\"col-12\">\n                            <button [disabled]=\"!CanPayNow()\" (click)=\"Pay()\"\n                                class=\"btn btn-success full-width\">Pagar</button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n</div>\n\n<div class=\"modal fade\" id=\"questionsModal\">\n    <div class=\"modal-dialog\">\n        <div class=\"modal-content\">\n            <div class=\"modal-body\">\n                <div class=\"container-fluid\">\n                    <div class=\"row\">\n                        <div class=\"col-2\"></div>\n                        <div class=\"col-8\">\n                            <h3 class=\"align-center\">Encuesta</h3>\n                        </div>\n                        <div class=\"col-2\"></div>\n                    </div>\n                    <hr class=\"mar-top-1\">\n                    <form [formGroup]=\"surveyForm\" (ngSubmit)=\"SendAnswers()\">\n                        <div class=\"row\">\n                            <div class=\"col-2\"></div>\n                            <div class=\"col-8\">\n                                <input formControlName=\"tableScore\" class=\"form-control full-width align-center\"\n                                    type=\"number\" placeholder=\"Puntée del 1 al 10 a la mesa.\">\n                            </div>\n                            <div class=\"col-2\"></div>\n                        </div>\n                        <div class=\"row middle-row\">\n                            <div class=\"col-2\"></div>\n                            <div class=\"col-8\">\n                                <input formControlName=\"waiterScore\" class=\"form-control full-width align-center\"\n                                    type=\"number\" placeholder=\"Puntée del 1 al 10 al mozo.\">\n                            </div>\n                            <div class=\"col-2\"></div>\n                        </div>\n                        <div class=\"row middle-row\">\n                            <div class=\"col-2\"></div>\n                            <div class=\"col-8\">\n                                <input formControlName=\"restaurantScore\" class=\"form-control full-width align-center\"\n                                    type=\"number\" placeholder=\"Puntée del 1 al 10 al restaurante.\">\n                            </div>\n                            <div class=\"col-2\"></div>\n                        </div>\n                        <div class=\"row middle-row\">\n                            <div class=\"col-2\"></div>\n                            <div class=\"col-8\">\n                                <input formControlName=\"cookScore\" class=\"form-control full-width align-center\"\n                                    type=\"number\" placeholder=\"Puntée del 1 al 10 al cocinero.\">\n                            </div>\n                            <div class=\"col-2\"></div>\n                        </div>\n                        <div class=\"row middle-row\">\n                            <div class=\"col-2\"></div>\n                            <div class=\"col-8\">\n                                <textarea class=\"form-control\" cols=\"30\" rows=\"3\" maxlength=\"66\" formControlName=\"comment\"\n                                    placeholder=\"Escribe un breve comentario (máximo de 66 caracteres).\"></textarea>\n                            </div>\n                            <div class=\"col-2\"></div>\n                        </div>\n                        <div class=\"row mar-top-1\">\n                            <div class=\"col-2\"></div>\n                            <div class=\"col-4 align-center\">\n                                <div class=\"form-check form-check-inline\">\n                                    <input class=\"form-check-input\" type=\"radio\" formControlName=\"commentType\" name=\"commentType\"\n                                        id=\"negative\" value=\"false\">\n                                    <label class=\"form-check-label negative\" for=\"negative\">Malo</label>\n                                </div>\n                            </div>\n                            <div class=\"col-4 align-center\">\n                                <div class=\"form-check form-check-inline\">\n                                    <input class=\"form-check-input\" type=\"radio\" formControlName=\"commentType\" name=\"commentType\"\n                                        id=\"positive\" value=\"true\">\n                                    <label class=\"form-check-label positive\" for=\"positive\">Bueno</label>\n                                </div>\n                            </div>\n                            <div class=\"col-2\"></div>\n                        </div>\n                        <div class=\"row middle-row\">\n                            <div class=\"col-2\"></div>\n                            <div class=\"col-8\">\n                                <button [disabled]=\"!surveyForm.valid\" class=\"btn btn-success full-width\"\n                                    data-dismiss=\"modal\" (click)=\"SendAnswers()\">Enviar encuesta</button>\n                            </div>\n                            <div class=\"col-2\"></div>\n                        </div>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/cocinero/views/home-cocinero/home-cocinero.component.html": 
@@ -226,7 +259,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"cocinero\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-work-order [order]=\"currentOrder\"></app-work-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">- Pedidos -</h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <hr>\n    <div class=\"row middle-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"cocinero\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-work-order [order]=\"currentOrder\"></app-work-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/cocinero/views/main-cocinero/main-cocinero.component.html": 
@@ -237,7 +270,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar cocinero-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img src=\"assets/img/default-profile.png\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio\"></app-sidebar-option>\n        <app-sidebar-option name=\"Configuracion\" link=\"/app/register\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar cocinero-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img *ngIf=\"user\" src=\"{{user.image}}\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/cocinero/profile\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de pedidos\" link=\"/cocinero\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mozo/main/select-order/select-order.component.html": 
@@ -251,17 +284,6 @@
             /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"card outside-shadow\">\n    <div class=\"card-body align-center\">\n        <h5 class=\"card-title\">Pedido</h5>\n        <hr>\n        <div *ngIf=\"order\" class=\"order-body align-center\">\n\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <b>Código:</b> {{order.codeID}}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <b>Cliente:</b> {{order.client.name}} {{order.client.lastname}}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <b>Mesa:</b> {{order.tableID}}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <b>Precio total:</b> ${{order.totalPrice}}\n                </div>\n            </div>\n            <hr>\n\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <b>Está:</b> {{order.state}}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <b>Mozo:</b> {{order.waiter.name}} {{order.waiter.lastname}}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <b>Tiempo restante:</b> {{remainingTime | timeleft}}\n                </div>\n            </div>\n            <hr>\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <select class=\"form-control\" [ngModel]=\"selectedItem\" (ngModelChange)=\"SelectItem($event)\">\n                        <option [ngValue]=\"it\" *ngFor=\"let it of order.items\">{{it.name}}</option>\n                    </select>\n                </div>\n            </div>\n            <div class=\"row mar-top-1\" *ngIf=\"!selectedItem\">\n                <div class=\"col-12\">\n                    <label>No se seleccionó nada.</label>\n                </div>\n            </div>\n            <div class=\"item mar-top-1\" *ngIf=\"selectedItem\">\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <b>Estado:</b> {{selectedItem.state}}\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <b>Lo tiene:</b> \n                        <span *ngIf=\"selectedItem.worker\">\n                        {{selectedItem.worker.name}} {{selectedItem.worker.lastname}} \n                        </span>\n                        <span *ngIf=\"!selectedItem.worker\">\n                            Nadie por ahora.\n                        </span>\n                    </div>\n                </div>\n            </div>\n            <hr>\n            <div class=\"row\">\n                <div class=\"col-12\">\n                    <button [disabled]=\"!CanBeServed()\" (click)=\"CompleteOrder()\" class=\"btn btn-success full-width\">Pasar a servido</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"row\" *ngIf=\"!order\">\n            <div class=\"col-12\">\n                <label>Seleccione un pedido.</label>\n            </div>\n        </div>\n    </div>\n</div>");
             /***/ 
         }),
-        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mozo/main/table-card/table-card.component.html": 
-        /*!*****************************************************************************************************************!*\
-          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/mozo/main/table-card/table-card.component.html ***!
-          \*****************************************************************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"card outside-shadow\">\n    <div class=\"card-body align-center\">\n        <div class=\"card-title\">Mesa {{table.tableID}}</div>\n        <div class=\"row\">\n            <div class=\"col-2\"></div>\n            <div class=\"col-8 icon\" [ngSwitch]=\"table.state\">\n                <i class=\"fas fa-user-check green\" *ngSwitchCase=\"'Disponible'\"></i>\n                <i class=\"fas fa-user-clock orange\" *ngSwitchCase=\"'Cliente esperando pedido'\"></i>\n                <i class=\"fas fa-utensils orange\" *ngSwitchCase=\"'Cliente comiendo'\"></i>\n                <i class=\"fas fa-money-bill-wave orange\" *ngSwitchCase=\"'Cliente pagando'\"></i>\n                <i class=\"fas fa-window-close red\" *ngSwitchCase=\"'Cerrada'\"></i>\n            </div>\n            <div class=\"col-2\"></div>\n        </div>\n        <div class=\"row mar-top-half\">\n            <div class=\"col-12\">\n                {{table.state}}\n            </div>\n        </div>\n        <hr>\n        <div class=\"row\">\n            <div class=\"col-12\">\n                <b>Cambiar estado</b>\n            </div>\n        </div>\n        <div class=\"row mar-top-1\">\n            <div class=\"col-12\">\n                <div class=\"btn-group\">\n                    <button class=\"btn btn-primary\" (click)=\"ChangeStatus(1)\"><i class=\"fas fa-user-check\"></i></button>\n                    <button class=\"btn btn-primary\" (click)=\"ChangeStatus(2)\"><i class=\"fas fa-user-clock\"></i></button>\n                    <button class=\"btn btn-primary\" (click)=\"ChangeStatus(3)\"><i class=\"fas fa-utensils\"></i></button>\n                    <button class=\"btn btn-primary\" (click)=\"ChangeStatus(4)\"><i class=\"fas fa-money-bill-wave\"></i></button>\n                    <button *ngIf=\"isAdmin\" class=\"btn btn-danger\" (click)=\"ChangeStatus(5)\"><i class=\"fas fa-window-close\"></i></button>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
-            /***/ 
-        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mozo/views/home-mozo/home-mozo.component.html": 
         /*!****************************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/mozo/views/home-mozo/home-mozo.component.html ***!
@@ -270,7 +292,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"mozo\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-select-order [order]=\"currentOrder\"></app-select-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">- Pedidos -</h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <hr>\n    <div class=\"row middle-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"mozo\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-select-order [order]=\"currentOrder\"></app-select-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mozo/views/main-mozo/main-mozo.component.html": 
@@ -281,7 +303,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar mozo-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img src=\"assets/img/default-profile.png\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio\"></app-sidebar-option>\n        <app-sidebar-option name=\"Pedidos\" link=\"/mozo\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de mesas\" link=\"/mozo/tables\"></app-sidebar-option>\n        <app-sidebar-option name=\"Configuracion\" link=\"/app/register\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar mozo-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img *ngIf=\"user\" src=\"{{user.image}}\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/mozo/profile\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de pedidos\" link=\"/mozo\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de mesas\" link=\"/mozo/tables\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mozo/views/manage-tables/manage-tables.component.html": 
@@ -292,7 +314,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row card-group\">\n        <div class=\"col-3 mar-top-2\" *ngFor=\"let tab of tables | async\">\n            <app-table-card [table]=\"tab\"></app-table-card>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">- Mesas -</h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <hr>\n    <div class=\"row middle-row card-group\">\n        <div class=\"col-3 mar-top-2\" *ngFor=\"let tab of tables | async\">\n            <app-table-card [table]=\"tab\"></app-table-card>\n        </div>\n    </div>\n    <hr>\n</div>\n\n<app-footer></app-footer>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/home-socio/home-socio.component.html": 
@@ -303,7 +325,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-4\">\n\n            <div class=\"role-panel\">\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <input [(ngModel)]=\"changeRoleEmail\" type=\"text\" class=\"form-control input-titanic role-input\" placeholder=\"Email del usuario\">\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12\">\n                        <select [(ngModel)]=\"changeRoleNewRole\" class=\"form-control input-titanic role-input\">\n                            <option value=\"socio\">Socio</option>\n                            <option value=\"mozo\">Mozo</option>\n                            <option value=\"cocinero\">Cocinero</option>\n                            <option value=\"cervecero\">Cervecero</option>\n                            <option value=\"bartender\">Bartender</option>\n                            <option value=\"cliente\">Cliente</option>\n                        </select>\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12\">\n                        <button class=\"btn btn-success full-width\" (click)=\"ChangeRole()\">Cambiar rol</button>\n                    </div>\n                </div>\n            </div>      \n\n        </div>\n        <div class=\"col-4\"></div>\n        <div class=\"col-4 align-center\">\n            <h3>Estadísticas</h3>\n            <hr>\n            <div class=\"btn-group full-width\">\n                <button class=\"btn btn-danger full-width\">Generar PDF</button>\n                <button class=\"btn btn-success full-width\">Generar CSV</button>\n            </div>\n        </div>\n    </div>\n</div>\n      ");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-4\">\n\n            <div class=\"role-panel\">\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <input [(ngModel)]=\"changeRoleEmail\" type=\"text\" class=\"form-control input-titanic role-input\" placeholder=\"Email del usuario\">\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12\">\n                        <select [(ngModel)]=\"changeRoleNewRole\" class=\"form-control input-titanic role-input\">\n                            <option value=\"socio\">Socio</option>\n                            <option value=\"mozo\">Mozo</option>\n                            <option value=\"cocinero\">Cocinero</option>\n                            <option value=\"cervecero\">Cervecero</option>\n                            <option value=\"bartender\">Bartender</option>\n                            <option value=\"cliente\">Cliente</option>\n                        </select>\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12\">\n                        <button class=\"btn btn-success full-width\" (click)=\"ChangeRole()\">Cambiar rol</button>\n                    </div>\n                </div>\n            </div>      \n\n        </div>\n        <div class=\"col-4\"></div>\n        <div class=\"col-4 align-center\">\n            <h3>Facturación</h3>\n            <hr>\n            <div class=\"btn-group full-width\">\n                <button class=\"btn btn-danger full-width\">Generar PDF</button>\n                <button class=\"btn btn-success full-width\">Generar CSV</button>\n            </div>\n        </div>\n    </div>\n</div>\n      ");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/main-socio/main-socio.component.html": 
@@ -314,7 +336,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar socio-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img src=\"assets/img/default-profile.png\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio\"></app-sidebar-option>\n        <app-sidebar-option name=\"Configuracion\" link=\"\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de mesas\" link=\"/socio/tables\"></app-sidebar-option>\n        <app-sidebar-option name=\"Pedidos\" link=\"/socio/orders\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"bottom-shadow\">\n    <div class=\"row main-bar socio-color\">\n        <div class=\"col-6\">\n            <h1 class=\"main-title\">La Comanda</h1>\n        </div>\n        <div class=\"col-6 profile\">\n            <img *ngIf=\"user\" src=\"{{user.image}}\" class=\"profile-pic\" [ngClass]=\"open ? 'active': ''\" (click)=\"toggleSidebar()\">\n        </div>\n    </div>\n</nav>\n\n<div class=\"sidebar\" [ngClass]=\"open ? '' : 'collapsed'\">\n    <div class=\"top-row\">\n        <app-sidebar-option name=\"Perfil\" link=\"/socio/profile\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de mesas\" link=\"/socio/tables\"></app-sidebar-option>\n        <app-sidebar-option name=\"Gestión de pedidos\" link=\"/socio/orders\"></app-sidebar-option>\n        <app-sidebar-option name=\"Ver encuestas\" link=\"/socio/surveys\"></app-sidebar-option>\n        <app-sidebar-option logOut=true></app-sidebar-option>\n    </div>\n</div>\n<div class=\"content\">\n    <router-outlet></router-outlet>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/manage-orders-admin/manage-orders-admin.component.html": 
@@ -325,7 +347,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"socio\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-select-order [order]=\"currentOrder\"></app-select-order>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">- Pedidos -</h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <hr>\n    <div class=\"row middle-row\">\n        <div class=\"col-6\">\n            <app-order-list role=\"socio\" (orderSelected)=\"SelectOrder($event)\"></app-order-list>\n        </div>\n        <div class=\"col-2\"></div>\n        <div class=\"col-4\">\n            <app-select-order [order]=\"currentOrder\"></app-select-order>\n        </div>\n    </div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/manage-tables-admin/manage-tables-admin.component.html": 
@@ -336,7 +358,18 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row card-group\">\n        <div class=\"col-3 mar-top-2\" *ngFor=\"let tab of tables | async\">\n            <app-table-card [table]=\"tab\" [isAdmin]=\"true\"></app-table-card>\n        </div>\n    </div>\n    <div class=\"row blank-row\"></div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">- Mesas -</h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <hr>\n    <div class=\"row middle-row card-group\">\n        <div class=\"col-3 mar-top-2\" *ngFor=\"let tab of tables | async\">\n            <app-table-card [table]=\"tab\" [isAdmin]=\"true\"></app-table-card>\n        </div>\n    </div>\n    <hr>\n</div>\n\n<app-footer></app-footer>");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/survey-table/survey-table.component.html": 
+        /*!***********************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/survey-table/survey-table.component.html ***!
+          \***********************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row top-row\">\n        <div class=\"col-3\"></div>\n        <div class=\"col-6\">\n            <h1 class=\"page-title\">\n                - Encuestas -\n            </h1>\n        </div>\n        <div class=\"col-3\"></div>\n    </div>\n    <div class=\"row middle-row\">\n        <div class=\"col-1\"></div>\n        <div class=\"col-10\">\n            <p>Cada encuesta está coloreada según el promedio de puntaje realizado sobre las cuatro categorías: el color es <span class=\"red\">rojo</span> si el promedio está por debajo del 4, el color es <span class=\"yellow\">amarillo</span> si es mayor o igual que 4 pero menor a 7 y por último <span class=\"green\">verde</span>, si el promedio es mayor a 7. Haga click en una encuesta para ver más detalles.</p>\n        </div>\n        <div class=\"col-1\"></div>\n    </div>\n    <div class=\"row middle-row\">\n        <div class=\"col-12\">\n\n            <div class=\"table-responsive\">\n                <table class=\"table table-hover\">\n                    <thead class=\"align-center\">\n                        <tr>\n                            <th scope=\"col\">Pedido</th>\n                            <th scope=\"col\">Cliente</th>\n                            <th scope=\"col\">Mesa</th>\n                            <th scope=\"col\">Mozo</th>\n                            <th scope=\"col\">Puntaje mesa</th>\n                            <th scope=\"col\">Puntaje mozo</th>\n                            <th scope=\"col\">Puntaje restaurante</th>\n                            <th scope=\"col\">Puntaje cocinero</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr [surveyAverage]=\"sur\" *ngFor=\"let sur of surveys | async\" class=\"survey align-center\" data-toggle=\"modal\" data-target=\"#surveyModal\" (click)=\"SelectSurvey(sur)\">\n                            <td>{{sur.order.codeID}}</td>\n                            <td>{{sur.order.client.name}} {{sur.order.client.lastname}}</td>\n                            <td>{{sur.order.tableID}}</td>\n                            <td>{{sur.order.waiter.name}} {{sur.order.waiter.lastname}}</td>\n                            <td>{{sur.tableScore}}</td>\n                            <td>{{sur.waiterScore}}</td>\n                            <td>{{sur.restaurantScore}}</td>\n                            <td>{{sur.cookScore}}</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n    </div>\n</div>\n\n\n<div class=\"modal fade\" id=\"surveyModal\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n        <div class=\"modal-body\">\n            <div class=\"container-fluid\" *ngIf=\"survey\">\n                <div class=\"row\">\n                    <div class=\"col-2\"></div>\n                    <div class=\"col-8\">\n                        <h3 class=\"align-center\">Pedido {{survey.order.codeID}}</h3>\n                    </div>\n                    <div class=\"col-2\"></div>\n                </div>\n                <hr class=\"mar-top-1\">\n                <div class=\"row\">\n                    <div class=\"col-12 align-center\">\n                        <b>Promedio de los puntajes: </b> <span [surveyAverage]=\"survey\" returnAverage=\"true\"></span>\n                    </div>\n                </div>\n                <div class=\"row middle-row\">\n                    <div class=\"col-12 align-center\" [surveyComment]='survey.commentType'></div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <span [surveyComment]=\"survey.commentType\" isIcon=\"true\"></span> - {{survey.comment}}\n                    </div>\n                </div>\n                <div class=\"row mar-top-1\">\n                    <div class=\"col-1\"></div>\n                    <div class=\"col-10 align-right\">\n                        {{survey.order.client.name}} {{survey.order.client.lastname}}\n                    </div>\n                    <div class=\"col-1\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n  </div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -673,6 +706,8 @@
             /* harmony import */ var _components_all_views_redirect_redirect_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/all/views/redirect/redirect.component */ "./src/app/components/all/views/redirect/redirect.component.ts");
             /* harmony import */ var _components_socio_views_manage_orders_admin_manage_orders_admin_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/socio/views/manage-orders-admin/manage-orders-admin.component */ "./src/app/components/socio/views/manage-orders-admin/manage-orders-admin.component.ts");
             /* harmony import */ var _components_socio_views_manage_tables_admin_manage_tables_admin_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/socio/views/manage-tables-admin/manage-tables-admin.component */ "./src/app/components/socio/views/manage-tables-admin/manage-tables-admin.component.ts");
+            /* harmony import */ var _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/all/views/profile/profile.component */ "./src/app/components/all/views/profile/profile.component.ts");
+            /* harmony import */ var _components_socio_views_survey_table_survey_table_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/socio/views/survey-table/survey-table.component */ "./src/app/components/socio/views/survey-table/survey-table.component.ts");
             var routes = [
                 { path: '', component: _components_all_views_redirect_redirect_component__WEBPACK_IMPORTED_MODULE_22__["RedirectComponent"] },
                 { path: 'app', component: _components_all_views_main_general_main_general_component__WEBPACK_IMPORTED_MODULE_9__["MainGeneralComponent"],
@@ -684,34 +719,41 @@
                     children: [
                         { path: '', component: _components_socio_views_home_socio_home_socio_component__WEBPACK_IMPORTED_MODULE_4__["HomeSocioComponent"] },
                         { path: 'tables', component: _components_socio_views_manage_tables_admin_manage_tables_admin_component__WEBPACK_IMPORTED_MODULE_24__["ManageTablesAdminComponent"] },
-                        { path: 'orders', component: _components_socio_views_manage_orders_admin_manage_orders_admin_component__WEBPACK_IMPORTED_MODULE_23__["ManageOrdersAdminComponent"] }
+                        { path: 'orders', component: _components_socio_views_manage_orders_admin_manage_orders_admin_component__WEBPACK_IMPORTED_MODULE_23__["ManageOrdersAdminComponent"] },
+                        { path: 'profile', component: _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_25__["ProfileComponent"] },
+                        { path: 'surveys', component: _components_socio_views_survey_table_survey_table_component__WEBPACK_IMPORTED_MODULE_26__["SurveyTableComponent"] },
                     ],
                     canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]] },
                 { path: 'mozo', component: _components_mozo_views_main_mozo_main_mozo_component__WEBPACK_IMPORTED_MODULE_5__["MainMozoComponent"],
                     children: [
                         { path: '', component: _components_mozo_views_home_mozo_home_mozo_component__WEBPACK_IMPORTED_MODULE_6__["HomeMozoComponent"] },
-                        { path: 'tables', component: _components_mozo_views_manage_tables_manage_tables_component__WEBPACK_IMPORTED_MODULE_14__["ManageTablesComponent"] }
+                        { path: 'tables', component: _components_mozo_views_manage_tables_manage_tables_component__WEBPACK_IMPORTED_MODULE_14__["ManageTablesComponent"] },
+                        { path: 'profile', component: _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_25__["ProfileComponent"] },
                     ],
                     canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]] },
                 { path: 'cervecero', component: _components_cervecero_views_main_cervecero_main_cervecero_component__WEBPACK_IMPORTED_MODULE_15__["MainCerveceroComponent"],
                     children: [
                         { path: '', component: _components_cervecero_views_home_cervecero_home_cervecero_component__WEBPACK_IMPORTED_MODULE_16__["HomeCerveceroComponent"] },
+                        { path: 'profile', component: _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_25__["ProfileComponent"] },
                     ],
                     canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]] },
                 { path: 'cocinero', component: _components_cocinero_views_main_cocinero_main_cocinero_component__WEBPACK_IMPORTED_MODULE_17__["MainCocineroComponent"],
                     children: [
                         { path: '', component: _components_cocinero_views_home_cocinero_home_cocinero_component__WEBPACK_IMPORTED_MODULE_18__["HomeCocineroComponent"] },
+                        { path: 'profile', component: _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_25__["ProfileComponent"] },
                     ],
                     canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]] },
                 { path: 'bartender', component: _components_bartender_views_main_bartender_main_bartender_component__WEBPACK_IMPORTED_MODULE_19__["MainBartenderComponent"],
                     children: [
                         { path: '', component: _components_bartender_views_home_bartender_home_bartender_component__WEBPACK_IMPORTED_MODULE_20__["HomeBartenderComponent"] },
+                        { path: 'profile', component: _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_25__["ProfileComponent"] },
                     ],
                     canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]] },
                 { path: 'cliente', component: _components_cliente_views_main_cliente_main_cliente_component__WEBPACK_IMPORTED_MODULE_11__["MainClienteComponent"],
                     children: [
                         { path: '', component: _components_cliente_views_home_cliente_home_cliente_component__WEBPACK_IMPORTED_MODULE_12__["HomeClienteComponent"] },
-                        { path: 'buscar', component: _components_cliente_views_search_order_search_order_component__WEBPACK_IMPORTED_MODULE_21__["SearchOrderComponent"] }
+                        { path: 'buscar', component: _components_cliente_views_search_order_search_order_component__WEBPACK_IMPORTED_MODULE_21__["SearchOrderComponent"] },
+                        { path: 'profile', component: _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_25__["ProfileComponent"] },
                     ],
                     canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]] },
                 { path: '**', component: _components_all_views_error_error_component__WEBPACK_IMPORTED_MODULE_10__["ErrorComponent"] }
@@ -786,40 +828,47 @@
             /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
             /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
             /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
-            /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-            /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-            /* harmony import */ var _components_socio_views_main_socio_main_socio_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/socio/views/main-socio/main-socio.component */ "./src/app/components/socio/views/main-socio/main-socio.component.ts");
-            /* harmony import */ var _components_socio_views_home_socio_home_socio_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/socio/views/home-socio/home-socio.component */ "./src/app/components/socio/views/home-socio/home-socio.component.ts");
-            /* harmony import */ var _components_mozo_views_main_mozo_main_mozo_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/mozo/views/main-mozo/main-mozo.component */ "./src/app/components/mozo/views/main-mozo/main-mozo.component.ts");
-            /* harmony import */ var _components_mozo_views_home_mozo_home_mozo_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/mozo/views/home-mozo/home-mozo.component */ "./src/app/components/mozo/views/home-mozo/home-mozo.component.ts");
-            /* harmony import */ var _components_all_views_login_login_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/all/views/login/login.component */ "./src/app/components/all/views/login/login.component.ts");
-            /* harmony import */ var _components_all_views_register_register_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/all/views/register/register.component */ "./src/app/components/all/views/register/register.component.ts");
-            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-            /* harmony import */ var _components_all_views_main_general_main_general_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/all/views/main-general/main-general.component */ "./src/app/components/all/views/main-general/main-general.component.ts");
-            /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
-            /* harmony import */ var _components_all_views_error_error_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/all/views/error/error.component */ "./src/app/components/all/views/error/error.component.ts");
-            /* harmony import */ var _components_cliente_views_home_cliente_home_cliente_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/cliente/views/home-cliente/home-cliente.component */ "./src/app/components/cliente/views/home-cliente/home-cliente.component.ts");
-            /* harmony import */ var _components_cliente_views_main_cliente_main_cliente_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/cliente/views/main-cliente/main-cliente.component */ "./src/app/components/cliente/views/main-cliente/main-cliente.component.ts");
-            /* harmony import */ var _components_all_main_food_card_food_card_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/all/main/food-card/food-card.component */ "./src/app/components/all/main/food-card/food-card.component.ts");
-            /* harmony import */ var _components_all_main_sidebar_option_sidebar_option_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/all/main/sidebar-option/sidebar-option.component */ "./src/app/components/all/main/sidebar-option/sidebar-option.component.ts");
-            /* harmony import */ var _components_all_main_order_list_order_list_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/all/main/order-list/order-list.component */ "./src/app/components/all/main/order-list/order-list.component.ts");
-            /* harmony import */ var _components_mozo_main_select_order_select_order_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/mozo/main/select-order/select-order.component */ "./src/app/components/mozo/main/select-order/select-order.component.ts");
-            /* harmony import */ var _components_mozo_views_manage_tables_manage_tables_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/mozo/views/manage-tables/manage-tables.component */ "./src/app/components/mozo/views/manage-tables/manage-tables.component.ts");
-            /* harmony import */ var _components_mozo_main_table_card_table_card_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/mozo/main/table-card/table-card.component */ "./src/app/components/mozo/main/table-card/table-card.component.ts");
-            /* harmony import */ var _components_cocinero_views_main_cocinero_main_cocinero_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/cocinero/views/main-cocinero/main-cocinero.component */ "./src/app/components/cocinero/views/main-cocinero/main-cocinero.component.ts");
-            /* harmony import */ var _components_cocinero_views_home_cocinero_home_cocinero_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/cocinero/views/home-cocinero/home-cocinero.component */ "./src/app/components/cocinero/views/home-cocinero/home-cocinero.component.ts");
-            /* harmony import */ var _components_bartender_views_home_bartender_home_bartender_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/bartender/views/home-bartender/home-bartender.component */ "./src/app/components/bartender/views/home-bartender/home-bartender.component.ts");
-            /* harmony import */ var _components_bartender_views_main_bartender_main_bartender_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/bartender/views/main-bartender/main-bartender.component */ "./src/app/components/bartender/views/main-bartender/main-bartender.component.ts");
-            /* harmony import */ var _components_cervecero_views_main_cervecero_main_cervecero_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/cervecero/views/main-cervecero/main-cervecero.component */ "./src/app/components/cervecero/views/main-cervecero/main-cervecero.component.ts");
-            /* harmony import */ var _components_cervecero_views_home_cervecero_home_cervecero_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/cervecero/views/home-cervecero/home-cervecero.component */ "./src/app/components/cervecero/views/home-cervecero/home-cervecero.component.ts");
-            /* harmony import */ var _components_all_main_work_order_work_order_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/all/main/work-order/work-order.component */ "./src/app/components/all/main/work-order/work-order.component.ts");
-            /* harmony import */ var _pipes_timeleft_pipe__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./pipes/timeleft.pipe */ "./src/app/pipes/timeleft.pipe.ts");
-            /* harmony import */ var _pipes_table_pipe__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./pipes/table.pipe */ "./src/app/pipes/table.pipe.ts");
-            /* harmony import */ var _components_cliente_views_search_order_search_order_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/cliente/views/search-order/search-order.component */ "./src/app/components/cliente/views/search-order/search-order.component.ts");
-            /* harmony import */ var _components_all_main_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/all/main/spinner/spinner.component */ "./src/app/components/all/main/spinner/spinner.component.ts");
-            /* harmony import */ var _components_all_views_redirect_redirect_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/all/views/redirect/redirect.component */ "./src/app/components/all/views/redirect/redirect.component.ts");
-            /* harmony import */ var _components_socio_views_manage_tables_admin_manage_tables_admin_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/socio/views/manage-tables-admin/manage-tables-admin.component */ "./src/app/components/socio/views/manage-tables-admin/manage-tables-admin.component.ts");
-            /* harmony import */ var _components_socio_views_manage_orders_admin_manage_orders_admin_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/socio/views/manage-orders-admin/manage-orders-admin.component */ "./src/app/components/socio/views/manage-orders-admin/manage-orders-admin.component.ts");
+            /* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+            /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+            /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+            /* harmony import */ var _components_socio_views_main_socio_main_socio_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/socio/views/main-socio/main-socio.component */ "./src/app/components/socio/views/main-socio/main-socio.component.ts");
+            /* harmony import */ var _components_socio_views_home_socio_home_socio_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/socio/views/home-socio/home-socio.component */ "./src/app/components/socio/views/home-socio/home-socio.component.ts");
+            /* harmony import */ var _components_mozo_views_main_mozo_main_mozo_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/mozo/views/main-mozo/main-mozo.component */ "./src/app/components/mozo/views/main-mozo/main-mozo.component.ts");
+            /* harmony import */ var _components_mozo_views_home_mozo_home_mozo_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/mozo/views/home-mozo/home-mozo.component */ "./src/app/components/mozo/views/home-mozo/home-mozo.component.ts");
+            /* harmony import */ var _components_all_views_login_login_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/all/views/login/login.component */ "./src/app/components/all/views/login/login.component.ts");
+            /* harmony import */ var _components_all_views_register_register_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/all/views/register/register.component */ "./src/app/components/all/views/register/register.component.ts");
+            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var _components_all_views_main_general_main_general_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/all/views/main-general/main-general.component */ "./src/app/components/all/views/main-general/main-general.component.ts");
+            /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+            /* harmony import */ var _components_all_views_error_error_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/all/views/error/error.component */ "./src/app/components/all/views/error/error.component.ts");
+            /* harmony import */ var _components_cliente_views_home_cliente_home_cliente_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/cliente/views/home-cliente/home-cliente.component */ "./src/app/components/cliente/views/home-cliente/home-cliente.component.ts");
+            /* harmony import */ var _components_cliente_views_main_cliente_main_cliente_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/cliente/views/main-cliente/main-cliente.component */ "./src/app/components/cliente/views/main-cliente/main-cliente.component.ts");
+            /* harmony import */ var _components_all_main_food_card_food_card_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/all/main/food-card/food-card.component */ "./src/app/components/all/main/food-card/food-card.component.ts");
+            /* harmony import */ var _components_all_main_sidebar_option_sidebar_option_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/all/main/sidebar-option/sidebar-option.component */ "./src/app/components/all/main/sidebar-option/sidebar-option.component.ts");
+            /* harmony import */ var _components_all_main_order_list_order_list_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/all/main/order-list/order-list.component */ "./src/app/components/all/main/order-list/order-list.component.ts");
+            /* harmony import */ var _components_mozo_main_select_order_select_order_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/mozo/main/select-order/select-order.component */ "./src/app/components/mozo/main/select-order/select-order.component.ts");
+            /* harmony import */ var _components_mozo_views_manage_tables_manage_tables_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/mozo/views/manage-tables/manage-tables.component */ "./src/app/components/mozo/views/manage-tables/manage-tables.component.ts");
+            /* harmony import */ var _components_all_main_table_card_table_card_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/all/main/table-card/table-card.component */ "./src/app/components/all/main/table-card/table-card.component.ts");
+            /* harmony import */ var _components_cocinero_views_main_cocinero_main_cocinero_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/cocinero/views/main-cocinero/main-cocinero.component */ "./src/app/components/cocinero/views/main-cocinero/main-cocinero.component.ts");
+            /* harmony import */ var _components_cocinero_views_home_cocinero_home_cocinero_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/cocinero/views/home-cocinero/home-cocinero.component */ "./src/app/components/cocinero/views/home-cocinero/home-cocinero.component.ts");
+            /* harmony import */ var _components_bartender_views_home_bartender_home_bartender_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/bartender/views/home-bartender/home-bartender.component */ "./src/app/components/bartender/views/home-bartender/home-bartender.component.ts");
+            /* harmony import */ var _components_bartender_views_main_bartender_main_bartender_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/bartender/views/main-bartender/main-bartender.component */ "./src/app/components/bartender/views/main-bartender/main-bartender.component.ts");
+            /* harmony import */ var _components_cervecero_views_main_cervecero_main_cervecero_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/cervecero/views/main-cervecero/main-cervecero.component */ "./src/app/components/cervecero/views/main-cervecero/main-cervecero.component.ts");
+            /* harmony import */ var _components_cervecero_views_home_cervecero_home_cervecero_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/cervecero/views/home-cervecero/home-cervecero.component */ "./src/app/components/cervecero/views/home-cervecero/home-cervecero.component.ts");
+            /* harmony import */ var _components_all_main_work_order_work_order_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/all/main/work-order/work-order.component */ "./src/app/components/all/main/work-order/work-order.component.ts");
+            /* harmony import */ var _pipes_timeleft_pipe__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./pipes/timeleft.pipe */ "./src/app/pipes/timeleft.pipe.ts");
+            /* harmony import */ var _pipes_table_pipe__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./pipes/table.pipe */ "./src/app/pipes/table.pipe.ts");
+            /* harmony import */ var _components_cliente_views_search_order_search_order_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/cliente/views/search-order/search-order.component */ "./src/app/components/cliente/views/search-order/search-order.component.ts");
+            /* harmony import */ var _components_all_main_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/all/main/spinner/spinner.component */ "./src/app/components/all/main/spinner/spinner.component.ts");
+            /* harmony import */ var _components_all_views_redirect_redirect_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/all/views/redirect/redirect.component */ "./src/app/components/all/views/redirect/redirect.component.ts");
+            /* harmony import */ var _components_socio_views_manage_tables_admin_manage_tables_admin_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/socio/views/manage-tables-admin/manage-tables-admin.component */ "./src/app/components/socio/views/manage-tables-admin/manage-tables-admin.component.ts");
+            /* harmony import */ var _components_socio_views_manage_orders_admin_manage_orders_admin_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/socio/views/manage-orders-admin/manage-orders-admin.component */ "./src/app/components/socio/views/manage-orders-admin/manage-orders-admin.component.ts");
+            /* harmony import */ var _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/all/views/profile/profile.component */ "./src/app/components/all/views/profile/profile.component.ts");
+            /* harmony import */ var _components_all_main_footer_footer_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/all/main/footer/footer.component */ "./src/app/components/all/main/footer/footer.component.ts");
+            /* harmony import */ var _components_socio_views_survey_table_survey_table_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/socio/views/survey-table/survey-table.component */ "./src/app/components/socio/views/survey-table/survey-table.component.ts");
+            /* harmony import */ var _directives_survey_average_directive__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./directives/survey-average.directive */ "./src/app/directives/survey-average.directive.ts");
+            /* harmony import */ var _directives_survey_comment_directive__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./directives/survey-comment.directive */ "./src/app/directives/survey-comment.directive.ts");
+            /* harmony import */ var _directives_no_orders_directive__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./directives/no-orders.directive */ "./src/app/directives/no-orders.directive.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -828,46 +877,53 @@
             AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
                     declarations: [
-                        _app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"],
-                        _components_socio_views_main_socio_main_socio_component__WEBPACK_IMPORTED_MODULE_11__["MainSocioComponent"],
-                        _components_socio_views_home_socio_home_socio_component__WEBPACK_IMPORTED_MODULE_12__["HomeSocioComponent"],
-                        _components_mozo_views_main_mozo_main_mozo_component__WEBPACK_IMPORTED_MODULE_13__["MainMozoComponent"],
-                        _components_mozo_views_home_mozo_home_mozo_component__WEBPACK_IMPORTED_MODULE_14__["HomeMozoComponent"],
-                        _components_all_views_login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"],
-                        _components_all_views_register_register_component__WEBPACK_IMPORTED_MODULE_16__["RegisterComponent"],
-                        _components_all_views_main_general_main_general_component__WEBPACK_IMPORTED_MODULE_18__["MainGeneralComponent"],
-                        _components_all_views_error_error_component__WEBPACK_IMPORTED_MODULE_20__["ErrorComponent"],
-                        _components_cliente_views_home_cliente_home_cliente_component__WEBPACK_IMPORTED_MODULE_21__["HomeClienteComponent"],
-                        _components_cliente_views_main_cliente_main_cliente_component__WEBPACK_IMPORTED_MODULE_22__["MainClienteComponent"],
-                        _components_all_main_food_card_food_card_component__WEBPACK_IMPORTED_MODULE_23__["FoodCardComponent"],
-                        _components_all_main_sidebar_option_sidebar_option_component__WEBPACK_IMPORTED_MODULE_24__["SidebarOptionComponent"],
-                        _components_all_main_order_list_order_list_component__WEBPACK_IMPORTED_MODULE_25__["OrderListComponent"],
-                        _components_mozo_main_select_order_select_order_component__WEBPACK_IMPORTED_MODULE_26__["SelectOrderComponent"],
-                        _components_mozo_views_manage_tables_manage_tables_component__WEBPACK_IMPORTED_MODULE_27__["ManageTablesComponent"],
-                        _components_mozo_main_table_card_table_card_component__WEBPACK_IMPORTED_MODULE_28__["TableCardComponent"],
-                        _components_cocinero_views_main_cocinero_main_cocinero_component__WEBPACK_IMPORTED_MODULE_29__["MainCocineroComponent"],
-                        _components_cocinero_views_home_cocinero_home_cocinero_component__WEBPACK_IMPORTED_MODULE_30__["HomeCocineroComponent"],
-                        _components_bartender_views_home_bartender_home_bartender_component__WEBPACK_IMPORTED_MODULE_31__["HomeBartenderComponent"],
-                        _components_bartender_views_main_bartender_main_bartender_component__WEBPACK_IMPORTED_MODULE_32__["MainBartenderComponent"],
-                        _components_cervecero_views_main_cervecero_main_cervecero_component__WEBPACK_IMPORTED_MODULE_33__["MainCerveceroComponent"],
-                        _components_cervecero_views_home_cervecero_home_cervecero_component__WEBPACK_IMPORTED_MODULE_34__["HomeCerveceroComponent"],
-                        _components_all_main_work_order_work_order_component__WEBPACK_IMPORTED_MODULE_35__["WorkOrderComponent"],
-                        _pipes_timeleft_pipe__WEBPACK_IMPORTED_MODULE_36__["TimeleftPipe"],
-                        _pipes_table_pipe__WEBPACK_IMPORTED_MODULE_37__["TablePipe"],
-                        _components_cliente_views_search_order_search_order_component__WEBPACK_IMPORTED_MODULE_38__["SearchOrderComponent"],
-                        _components_all_main_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_39__["SpinnerComponent"],
-                        _components_all_views_redirect_redirect_component__WEBPACK_IMPORTED_MODULE_40__["RedirectComponent"],
-                        _components_socio_views_manage_tables_admin_manage_tables_admin_component__WEBPACK_IMPORTED_MODULE_41__["ManageTablesAdminComponent"],
-                        _components_socio_views_manage_orders_admin_manage_orders_admin_component__WEBPACK_IMPORTED_MODULE_42__["ManageOrdersAdminComponent"]
+                        _app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"],
+                        _components_socio_views_main_socio_main_socio_component__WEBPACK_IMPORTED_MODULE_12__["MainSocioComponent"],
+                        _components_socio_views_home_socio_home_socio_component__WEBPACK_IMPORTED_MODULE_13__["HomeSocioComponent"],
+                        _components_mozo_views_main_mozo_main_mozo_component__WEBPACK_IMPORTED_MODULE_14__["MainMozoComponent"],
+                        _components_mozo_views_home_mozo_home_mozo_component__WEBPACK_IMPORTED_MODULE_15__["HomeMozoComponent"],
+                        _components_all_views_login_login_component__WEBPACK_IMPORTED_MODULE_16__["LoginComponent"],
+                        _components_all_views_register_register_component__WEBPACK_IMPORTED_MODULE_17__["RegisterComponent"],
+                        _components_all_views_main_general_main_general_component__WEBPACK_IMPORTED_MODULE_19__["MainGeneralComponent"],
+                        _components_all_views_error_error_component__WEBPACK_IMPORTED_MODULE_21__["ErrorComponent"],
+                        _components_cliente_views_home_cliente_home_cliente_component__WEBPACK_IMPORTED_MODULE_22__["HomeClienteComponent"],
+                        _components_cliente_views_main_cliente_main_cliente_component__WEBPACK_IMPORTED_MODULE_23__["MainClienteComponent"],
+                        _components_all_main_food_card_food_card_component__WEBPACK_IMPORTED_MODULE_24__["FoodCardComponent"],
+                        _components_all_main_sidebar_option_sidebar_option_component__WEBPACK_IMPORTED_MODULE_25__["SidebarOptionComponent"],
+                        _components_all_main_order_list_order_list_component__WEBPACK_IMPORTED_MODULE_26__["OrderListComponent"],
+                        _components_mozo_main_select_order_select_order_component__WEBPACK_IMPORTED_MODULE_27__["SelectOrderComponent"],
+                        _components_mozo_views_manage_tables_manage_tables_component__WEBPACK_IMPORTED_MODULE_28__["ManageTablesComponent"],
+                        _components_all_main_table_card_table_card_component__WEBPACK_IMPORTED_MODULE_29__["TableCardComponent"],
+                        _components_cocinero_views_main_cocinero_main_cocinero_component__WEBPACK_IMPORTED_MODULE_30__["MainCocineroComponent"],
+                        _components_cocinero_views_home_cocinero_home_cocinero_component__WEBPACK_IMPORTED_MODULE_31__["HomeCocineroComponent"],
+                        _components_bartender_views_home_bartender_home_bartender_component__WEBPACK_IMPORTED_MODULE_32__["HomeBartenderComponent"],
+                        _components_bartender_views_main_bartender_main_bartender_component__WEBPACK_IMPORTED_MODULE_33__["MainBartenderComponent"],
+                        _components_cervecero_views_main_cervecero_main_cervecero_component__WEBPACK_IMPORTED_MODULE_34__["MainCerveceroComponent"],
+                        _components_cervecero_views_home_cervecero_home_cervecero_component__WEBPACK_IMPORTED_MODULE_35__["HomeCerveceroComponent"],
+                        _components_all_main_work_order_work_order_component__WEBPACK_IMPORTED_MODULE_36__["WorkOrderComponent"],
+                        _pipes_timeleft_pipe__WEBPACK_IMPORTED_MODULE_37__["TimeleftPipe"],
+                        _pipes_table_pipe__WEBPACK_IMPORTED_MODULE_38__["TablePipe"],
+                        _components_cliente_views_search_order_search_order_component__WEBPACK_IMPORTED_MODULE_39__["SearchOrderComponent"],
+                        _components_all_main_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_40__["SpinnerComponent"],
+                        _components_all_views_redirect_redirect_component__WEBPACK_IMPORTED_MODULE_41__["RedirectComponent"],
+                        _components_socio_views_manage_tables_admin_manage_tables_admin_component__WEBPACK_IMPORTED_MODULE_42__["ManageTablesAdminComponent"],
+                        _components_socio_views_manage_orders_admin_manage_orders_admin_component__WEBPACK_IMPORTED_MODULE_43__["ManageOrdersAdminComponent"],
+                        _components_all_views_profile_profile_component__WEBPACK_IMPORTED_MODULE_44__["ProfileComponent"],
+                        _components_all_main_footer_footer_component__WEBPACK_IMPORTED_MODULE_45__["FooterComponent"],
+                        _components_socio_views_survey_table_survey_table_component__WEBPACK_IMPORTED_MODULE_46__["SurveyTableComponent"],
+                        _directives_survey_average_directive__WEBPACK_IMPORTED_MODULE_47__["SurveyAverageDirective"],
+                        _directives_survey_comment_directive__WEBPACK_IMPORTED_MODULE_48__["SurveyCommentDirective"],
+                        _directives_no_orders_directive__WEBPACK_IMPORTED_MODULE_49__["NoOrdersDirective"]
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                        _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
-                        _angular_forms__WEBPACK_IMPORTED_MODULE_17__["FormsModule"],
-                        _angular_forms__WEBPACK_IMPORTED_MODULE_17__["ReactiveFormsModule"],
-                        angularfire2__WEBPACK_IMPORTED_MODULE_3__["AngularFireModule"].initializeApp(src_environments_environment__WEBPACK_IMPORTED_MODULE_19__["FirebaseConfig"]),
+                        _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"],
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_18__["ReactiveFormsModule"],
+                        angularfire2__WEBPACK_IMPORTED_MODULE_3__["AngularFireModule"].initializeApp(src_environments_environment__WEBPACK_IMPORTED_MODULE_20__["FirebaseConfig"]),
                         angularfire2_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestoreModule"],
                         _angular_fire_functions__WEBPACK_IMPORTED_MODULE_5__["AngularFireFunctionsModule"],
+                        _angular_fire_storage__WEBPACK_IMPORTED_MODULE_9__["AngularFireStorageModule"],
                         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"],
                         ngx_toastr__WEBPACK_IMPORTED_MODULE_8__["ToastrModule"].forRoot({
                             timeOut: 2300,
@@ -876,7 +932,7 @@
                         })
                     ],
                     providers: [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__["AngularFireAuth"], angularfire2_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"]],
-                    bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
+                    bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]]
                 })
             ], AppModule);
             /***/ 
@@ -901,6 +957,11 @@
                     var firstPart = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
                     var secondPart = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
                     return firstPart + ' ' + secondPart;
+                };
+                CommonHelper.GenerateProfileImageName = function (user) {
+                    return user.name.trim().toUpperCase()
+                        + user.lastname.trim().toUpperCase()
+                        + user.role.charAt(0).toUpperCase();
                 };
                 return CommonHelper;
             }());
@@ -969,6 +1030,44 @@
             ], FoodCardComponent);
             /***/ 
         }),
+        /***/ "./src/app/components/all/main/footer/footer.component.scss": 
+        /*!******************************************************************!*\
+          !*** ./src/app/components/all/main/footer/footer.component.scss ***!
+          \******************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = (".footer {\n  width: 100%;\n  background: #333;\n  color: white;\n  font-size: 0.9rem;\n  padding: 0.3rem 0 0.3rem 0;\n}\n\n.footer-shadow {\n  box-shadow: 2px 2px 31px 0px rgba(0, 0, 0, 0.96);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hbGwvbWFpbi9mb290ZXIvRDpcXFdvcmtpbmcgb25cXF9SZXBvc2l0b3JpZXNcXFRQLUNvbWFuZGFcXFRQX0xhYjRfMmNfMjAxOS9zcmNcXGFwcFxcY29tcG9uZW50c1xcYWxsXFxtYWluXFxmb290ZXJcXGZvb3Rlci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9hbGwvbWFpbi9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGdCQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0VBQ0EsMEJBQUE7QUNDSjs7QURFQTtFQUdJLGdEQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2FsbC9tYWluL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vdGVyIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgYmFja2dyb3VuZDogIzMzMztcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGZvbnQtc2l6ZTogMC45cmVtO1xyXG4gICAgcGFkZGluZzogLjNyZW0gMCAuM3JlbSAwO1xyXG59XHJcblxyXG4uZm9vdGVyLXNoYWRvdyB7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IDJweCAycHggMzFweCAwcHggcmdiYSgwLDAsMCwwLjk2KTtcclxuICAgIC1tb3otYm94LXNoYWRvdzogMnB4IDJweCAzMXB4IDBweCByZ2JhKDAsMCwwLDAuOTYpO1xyXG4gICAgYm94LXNoYWRvdzogMnB4IDJweCAzMXB4IDBweCByZ2JhKDAsMCwwLDAuOTYpO1xyXG59IiwiLmZvb3RlciB7XG4gIHdpZHRoOiAxMDAlO1xuICBiYWNrZ3JvdW5kOiAjMzMzO1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtc2l6ZTogMC45cmVtO1xuICBwYWRkaW5nOiAwLjNyZW0gMCAwLjNyZW0gMDtcbn1cblxuLmZvb3Rlci1zaGFkb3cge1xuICAtd2Via2l0LWJveC1zaGFkb3c6IDJweCAycHggMzFweCAwcHggcmdiYSgwLCAwLCAwLCAwLjk2KTtcbiAgLW1vei1ib3gtc2hhZG93OiAycHggMnB4IDMxcHggMHB4IHJnYmEoMCwgMCwgMCwgMC45Nik7XG4gIGJveC1zaGFkb3c6IDJweCAycHggMzFweCAwcHggcmdiYSgwLCAwLCAwLCAwLjk2KTtcbn0iXX0= */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/all/main/footer/footer.component.ts": 
+        /*!****************************************************************!*\
+          !*** ./src/app/components/all/main/footer/footer.component.ts ***!
+          \****************************************************************/
+        /*! exports provided: FooterComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FooterComponent", function () { return FooterComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            var FooterComponent = /** @class */ (function () {
+                function FooterComponent() {
+                }
+                FooterComponent.prototype.ngOnInit = function () {
+                };
+                return FooterComponent;
+            }());
+            FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-footer',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./footer.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/footer/footer.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./footer.component.scss */ "./src/app/components/all/main/footer/footer.component.scss")).default]
+                })
+            ], FooterComponent);
+            /***/ 
+        }),
         /***/ "./src/app/components/all/main/order-list/order-list.component.scss": 
         /*!**************************************************************************!*\
           !*** ./src/app/components/all/main/order-list/order-list.component.scss ***!
@@ -1015,7 +1114,6 @@
                             this.orders = this.orderService.GetAllByCook(cook);
                             break;
                         case src_app_models_user__WEBPACK_IMPORTED_MODULE_3__["Role"].socio:
-                            console.log('here');
                             this.orders = this.orderService.GetAllOrderByTime().valueChanges();
                             break;
                     }
@@ -1142,6 +1240,90 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./spinner.component.scss */ "./src/app/components/all/main/spinner/spinner.component.scss")).default]
                 })
             ], SpinnerComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/components/all/main/table-card/table-card.component.scss": 
+        /*!**************************************************************************!*\
+          !*** ./src/app/components/all/main/table-card/table-card.component.scss ***!
+          \**************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = (".icon {\n  font-size: 2rem;\n}\n\n.card-title {\n  font-size: 1.5rem;\n}\n\n.green {\n  color: green;\n}\n\n.red {\n  color: red;\n}\n\n.orange {\n  color: orange;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hbGwvbWFpbi90YWJsZS1jYXJkL0Q6XFxXb3JraW5nIG9uXFxfUmVwb3NpdG9yaWVzXFxUUC1Db21hbmRhXFxUUF9MYWI0XzJjXzIwMTkvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGFsbFxcbWFpblxcdGFibGUtY2FyZFxcdGFibGUtY2FyZC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9hbGwvbWFpbi90YWJsZS1jYXJkL3RhYmxlLWNhcmQuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxlQUFBO0FDQ0o7O0FERUE7RUFDSSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksWUFBQTtBQ0NKOztBREVBO0VBQ0ksVUFBQTtBQ0NKOztBREVBO0VBQ0ksYUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9hbGwvbWFpbi90YWJsZS1jYXJkL3RhYmxlLWNhcmQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaWNvbiB7XHJcbiAgICBmb250LXNpemU6IDJyZW07XHJcbn1cclxuXHJcbi5jYXJkLXRpdGxlIHtcclxuICAgIGZvbnQtc2l6ZTogMS41cmVtO1xyXG59XHJcblxyXG4uZ3JlZW4ge1xyXG4gICAgY29sb3I6IGdyZWVuO1xyXG59XHJcblxyXG4ucmVkIHtcclxuICAgIGNvbG9yOiByZWQ7XHJcbn1cclxuXHJcbi5vcmFuZ2Uge1xyXG4gICAgY29sb3I6IG9yYW5nZTtcclxufSIsIi5pY29uIHtcbiAgZm9udC1zaXplOiAycmVtO1xufVxuXG4uY2FyZC10aXRsZSB7XG4gIGZvbnQtc2l6ZTogMS41cmVtO1xufVxuXG4uZ3JlZW4ge1xuICBjb2xvcjogZ3JlZW47XG59XG5cbi5yZWQge1xuICBjb2xvcjogcmVkO1xufVxuXG4ub3JhbmdlIHtcbiAgY29sb3I6IG9yYW5nZTtcbn0iXX0= */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/all/main/table-card/table-card.component.ts": 
+        /*!************************************************************************!*\
+          !*** ./src/app/components/all/main/table-card/table-card.component.ts ***!
+          \************************************************************************/
+        /*! exports provided: TableCardComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TableCardComponent", function () { return TableCardComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_models_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/table */ "./src/app/models/table.ts");
+            /* harmony import */ var src_app_services_firebase_table_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/firebase/table.service */ "./src/app/services/firebase/table.service.ts");
+            /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+            var TableCardComponent = /** @class */ (function () {
+                function TableCardComponent(tableService, toastr) {
+                    this.tableService = tableService;
+                    this.toastr = toastr;
+                }
+                TableCardComponent.prototype.ngOnInit = function () {
+                };
+                TableCardComponent.prototype.ChangeStatus = function (option) {
+                    var _this = this;
+                    var status;
+                    switch (option) {
+                        case 1:
+                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].available;
+                            break;
+                        case 2:
+                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].waitingOrder;
+                            break;
+                        case 3:
+                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].eating;
+                            break;
+                        case 4:
+                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].paying;
+                            break;
+                        case 5:
+                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].closed;
+                            break;
+                        default:
+                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].available;
+                            break;
+                    }
+                    this.tableService.UpdateStatus(this.table.tableID, status)
+                        .then(function () {
+                        _this.toastr.success('Se cambió el estado de la mesa.');
+                    })
+                        .catch(function () {
+                        _this.toastr.error('Ha ocurrido un error al actualizar.');
+                    });
+                };
+                return TableCardComponent;
+            }());
+            TableCardComponent.ctorParameters = function () { return [
+                { type: src_app_services_firebase_table_service__WEBPACK_IMPORTED_MODULE_3__["TableService"] },
+                { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"] }
+            ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+            ], TableCardComponent.prototype, "table", void 0);
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+            ], TableCardComponent.prototype, "isAdmin", void 0);
+            TableCardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-table-card',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./table-card.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/main/table-card/table-card.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./table-card.component.scss */ "./src/app/components/all/main/table-card/table-card.component.scss")).default]
+                })
+            ], TableCardComponent);
             /***/ 
         }),
         /***/ "./src/app/components/all/main/work-order/work-order.component.scss": 
@@ -1345,6 +1527,7 @@
                     this.authService = authService;
                     this.toastr = toastr;
                     this.userOption = 'none';
+                    this.loading = false;
                 }
                 LoginComponent.prototype.ngOnInit = function () {
                     this.loginForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
@@ -1354,6 +1537,7 @@
                 };
                 LoginComponent.prototype.onSubmit = function () {
                     var _this = this;
+                    this.loading = true;
                     this.authService.LoginWithEmail(this.loginForm.get('email').value, this.loginForm.get('password').value)
                         .then(function () {
                         _this.toastr.success('¡Bienvenido!');
@@ -1370,6 +1554,9 @@
                             break;
                         case 'mario':
                             this.loginForm.get('email').setValue('mario@gmail.com');
+                            break;
+                        case 'chelo':
+                            this.loginForm.get('email').setValue('chelo@gmail.com');
                             break;
                         case 'jose':
                             this.loginForm.get('email').setValue('jose@gmail.com');
@@ -1449,6 +1636,88 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./main-general.component.scss */ "./src/app/components/all/views/main-general/main-general.component.scss")).default]
                 })
             ], MainGeneralComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/components/all/views/profile/profile.component.scss": 
+        /*!*********************************************************************!*\
+          !*** ./src/app/components/all/views/profile/profile.component.scss ***!
+          \*********************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("img {\n  height: 150px;\n  width: 150px;\n  border-radius: 100%;\n  border: 1px solid #333;\n}\n\nh1 {\n  margin: 0 auto;\n  position: absolute;\n  top: 30%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hbGwvdmlld3MvcHJvZmlsZS9EOlxcV29ya2luZyBvblxcX1JlcG9zaXRvcmllc1xcVFAtQ29tYW5kYVxcVFBfTGFiNF8yY18yMDE5L3NyY1xcYXBwXFxjb21wb25lbnRzXFxhbGxcXHZpZXdzXFxwcm9maWxlXFxwcm9maWxlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnRzL2FsbC92aWV3cy9wcm9maWxlL3Byb2ZpbGUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxhQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7QUNDSjs7QURFQTtFQUNJLGNBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYWxsL3ZpZXdzL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImltZyB7XHJcbiAgICBoZWlnaHQ6IDE1MHB4O1xyXG4gICAgd2lkdGg6IDE1MHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICMzMzM7XHJcbn1cclxuXHJcbmgxIHtcclxuICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAzMCU7XHJcbn0iLCJpbWcge1xuICBoZWlnaHQ6IDE1MHB4O1xuICB3aWR0aDogMTUwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gIGJvcmRlcjogMXB4IHNvbGlkICMzMzM7XG59XG5cbmgxIHtcbiAgbWFyZ2luOiAwIGF1dG87XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAzMCU7XG59Il19 */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/all/views/profile/profile.component.ts": 
+        /*!*******************************************************************!*\
+          !*** ./src/app/components/all/views/profile/profile.component.ts ***!
+          \*******************************************************************/
+        /*! exports provided: ProfileComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function () { return ProfileComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_firestorage_file_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/firestorage/file.service */ "./src/app/services/firestorage/file.service.ts");
+            /* harmony import */ var src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/authentication/auth.service */ "./src/app/services/authentication/auth.service.ts");
+            /* harmony import */ var src_app_classes_helpers_common_helper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/classes/helpers/common-helper */ "./src/app/classes/helpers/common-helper.ts");
+            /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+            /* harmony import */ var src_app_services_firebase_user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/firebase/user.service */ "./src/app/services/firebase/user.service.ts");
+            var ProfileComponent = /** @class */ (function () {
+                function ProfileComponent(userService, fileService, authService, toastr) {
+                    this.userService = userService;
+                    this.fileService = fileService;
+                    this.authService = authService;
+                    this.toastr = toastr;
+                    this.isLoaded = false;
+                    this.selectedFile = null;
+                }
+                ProfileComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.authService.GetCurrentUser().then(function (usr) {
+                        _this.user = usr;
+                    });
+                };
+                ProfileComponent.prototype.OnFileSelected = function (event) {
+                    this.selectedFile = event.target.files[0];
+                    this.isLoaded = true;
+                    this.toastr.success('Seleccionaste el archivo ' + this.selectedFile.name);
+                };
+                ProfileComponent.prototype.Upload = function () {
+                    var _this = this;
+                    var name = src_app_classes_helpers_common_helper__WEBPACK_IMPORTED_MODULE_4__["CommonHelper"].GenerateProfileImageName(this.user);
+                    this.fileService.Upload(name, this.selectedFile)
+                        .then(function () {
+                        _this.toastr.success('Imagen cargada con éxito.');
+                        _this.ChangeProfilePic(name);
+                    })
+                        .catch(function () { return _this.toastr.error('Se ha producido un error al cargar la imagen.'); });
+                };
+                ProfileComponent.prototype.ChangeProfilePic = function (imgName) {
+                    var _this = this;
+                    this.fileService.GetImageURL(imgName).then(function (img) {
+                        _this.userService.ModifyProfileImage(_this.user.email, img).then(function () {
+                            location.reload();
+                        });
+                    });
+                };
+                return ProfileComponent;
+            }());
+            ProfileComponent.ctorParameters = function () { return [
+                { type: src_app_services_firebase_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"] },
+                { type: src_app_services_firestorage_file_service__WEBPACK_IMPORTED_MODULE_2__["FileService"] },
+                { type: src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+                { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"] }
+            ]; };
+            ProfileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-profile',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./profile.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/all/views/profile/profile.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./profile.component.scss */ "./src/app/components/all/views/profile/profile.component.scss")).default]
+                })
+            ], ProfileComponent);
             /***/ 
         }),
         /***/ "./src/app/components/all/views/redirect/redirect.component.scss": 
@@ -1556,6 +1825,7 @@
                     this.authService = authService;
                     this.router = router;
                     this.toastr = toastr;
+                    this.loading = false;
                 }
                 RegisterComponent.prototype.ngOnInit = function () {
                     this.registerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
@@ -1568,6 +1838,7 @@
                 };
                 RegisterComponent.prototype.onSubmit = function () {
                     var _this = this;
+                    this.loading = true;
                     var user = src_app_models_user__WEBPACK_IMPORTED_MODULE_3__["User"].CreateUserWithParams(this.registerForm.get('name').value, this.registerForm.get('lastname').value, this.registerForm.get('email').value, this.registerForm.get('password').value, src_app_models_user__WEBPACK_IMPORTED_MODULE_3__["Role"].cliente);
                     this.authService.RegisterWithEmail(user)
                         .then(function () {
@@ -1657,17 +1928,24 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainBartenderComponent", function () { return MainBartenderComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/authentication/auth.service */ "./src/app/services/authentication/auth.service.ts");
             var MainBartenderComponent = /** @class */ (function () {
-                function MainBartenderComponent() {
+                function MainBartenderComponent(authService) {
+                    this.authService = authService;
                     this.open = false;
                 }
                 MainBartenderComponent.prototype.toggleSidebar = function () {
                     this.open = !this.open;
                 };
                 MainBartenderComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.authService.GetCurrentUser().then(function (x) { return _this.user = x; });
                 };
                 return MainBartenderComponent;
             }());
+            MainBartenderComponent.ctorParameters = function () { return [
+                { type: src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+            ]; };
             MainBartenderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-main-bartender',
@@ -1740,17 +2018,24 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainCerveceroComponent", function () { return MainCerveceroComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/authentication/auth.service */ "./src/app/services/authentication/auth.service.ts");
             var MainCerveceroComponent = /** @class */ (function () {
-                function MainCerveceroComponent() {
+                function MainCerveceroComponent(authService) {
+                    this.authService = authService;
                     this.open = false;
                 }
                 MainCerveceroComponent.prototype.toggleSidebar = function () {
                     this.open = !this.open;
                 };
                 MainCerveceroComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.authService.GetCurrentUser().then(function (x) { return _this.user = x; });
                 };
                 return MainCerveceroComponent;
             }());
+            MainCerveceroComponent.ctorParameters = function () { return [
+                { type: src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+            ]; };
             MainCerveceroComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-main-cervecero',
@@ -1860,7 +2145,6 @@
                 HomeClienteComponent.prototype.SelectRandomWaiter = function () {
                     return this.userService.GetAllWaiters().then(function (waiters) {
                         var random = Math.floor(Math.random() * waiters.length);
-                        console.log(random);
                         return waiters[random];
                     });
                 };
@@ -1916,17 +2200,24 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainClienteComponent", function () { return MainClienteComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/authentication/auth.service */ "./src/app/services/authentication/auth.service.ts");
             var MainClienteComponent = /** @class */ (function () {
-                function MainClienteComponent() {
+                function MainClienteComponent(authService) {
+                    this.authService = authService;
                     this.open = false;
                 }
                 MainClienteComponent.prototype.toggleSidebar = function () {
                     this.open = !this.open;
                 };
                 MainClienteComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.authService.GetCurrentUser().then(function (x) { return _this.user = x; });
                 };
                 return MainClienteComponent;
             }());
+            MainClienteComponent.ctorParameters = function () { return [
+                { type: src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+            ]; };
             MainClienteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-main-cliente',
@@ -1944,7 +2235,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("input {\n  text-align: center;\n}\n\n.price {\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: bold;\n  color: green;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jbGllbnRlL3ZpZXdzL3NlYXJjaC1vcmRlci9EOlxcV29ya2luZyBvblxcX1JlcG9zaXRvcmllc1xcVFAtQ29tYW5kYVxcVFBfTGFiNF8yY18yMDE5L3NyY1xcYXBwXFxjb21wb25lbnRzXFxjbGllbnRlXFx2aWV3c1xcc2VhcmNoLW9yZGVyXFxzZWFyY2gtb3JkZXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvY2xpZW50ZS92aWV3cy9zZWFyY2gtb3JkZXIvc2VhcmNoLW9yZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7QUNDSjs7QURFQTtFQUNJLHlDQUFBO0VBQ0EsaUJBQUE7RUFDQSxZQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2NsaWVudGUvdmlld3Mvc2VhcmNoLW9yZGVyL3NlYXJjaC1vcmRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlucHV0IHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLnByaWNlIHtcclxuICAgIGZvbnQtZmFtaWx5OiBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmO1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBjb2xvcjogZ3JlZW47XHJcbn0iLCJpbnB1dCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLnByaWNlIHtcbiAgZm9udC1mYW1pbHk6IEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBjb2xvcjogZ3JlZW47XG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = ("input {\n  text-align: center;\n}\n\n.price {\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: bold;\n  color: green;\n}\n\ntextarea {\n  resize: none;\n}\n\n.positive {\n  font-weight: bold;\n  color: green;\n}\n\n.negative {\n  font-weight: bold;\n  color: red;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jbGllbnRlL3ZpZXdzL3NlYXJjaC1vcmRlci9EOlxcV29ya2luZyBvblxcX1JlcG9zaXRvcmllc1xcVFAtQ29tYW5kYVxcVFBfTGFiNF8yY18yMDE5L3NyY1xcYXBwXFxjb21wb25lbnRzXFxjbGllbnRlXFx2aWV3c1xcc2VhcmNoLW9yZGVyXFxzZWFyY2gtb3JkZXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvY2xpZW50ZS92aWV3cy9zZWFyY2gtb3JkZXIvc2VhcmNoLW9yZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7QUNDSjs7QURFQTtFQUNJLHlDQUFBO0VBQ0EsaUJBQUE7RUFDQSxZQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0FDQ0o7O0FERUE7RUFDSSxpQkFBQTtFQUNBLFlBQUE7QUNDSjs7QURFQTtFQUNJLGlCQUFBO0VBQ0EsVUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9jbGllbnRlL3ZpZXdzL3NlYXJjaC1vcmRlci9zZWFyY2gtb3JkZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dCB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5wcmljZSB7XHJcbiAgICBmb250LWZhbWlseTogQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZjtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IGdyZWVuO1xyXG59XHJcblxyXG50ZXh0YXJlYSB7XHJcbiAgICByZXNpemU6IG5vbmU7XHJcbn1cclxuXHJcbi5wb3NpdGl2ZSB7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiBncmVlbjtcclxufVxyXG5cclxuLm5lZ2F0aXZlIHtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHJlZDtcclxufSIsImlucHV0IHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ucHJpY2Uge1xuICBmb250LWZhbWlseTogQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZjtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGNvbG9yOiBncmVlbjtcbn1cblxudGV4dGFyZWEge1xuICByZXNpemU6IG5vbmU7XG59XG5cbi5wb3NpdGl2ZSB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBjb2xvcjogZ3JlZW47XG59XG5cbi5uZWdhdGl2ZSB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBjb2xvcjogcmVkO1xufSJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/components/cliente/views/search-order/search-order.component.ts": 
@@ -1963,16 +2254,29 @@
             /* harmony import */ var src_app_services_firebase_table_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/firebase/table.service */ "./src/app/services/firebase/table.service.ts");
             /* harmony import */ var src_app_models_order__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/order */ "./src/app/models/order.ts");
             /* harmony import */ var src_app_models_table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/models/table */ "./src/app/models/table.ts");
+            /* harmony import */ var src_app_services_firebase_survey_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/firebase/survey.service */ "./src/app/services/firebase/survey.service.ts");
+            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var src_app_models_survey__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/models/survey */ "./src/app/models/survey.ts");
             var SearchOrderComponent = /** @class */ (function () {
-                function SearchOrderComponent(toastr, orderService, tableService) {
+                function SearchOrderComponent(surveyService, toastr, orderService, tableService) {
+                    this.surveyService = surveyService;
                     this.toastr = toastr;
                     this.orderService = orderService;
                     this.tableService = tableService;
                     this.alreadyPaid = false;
                     this.waitingOrder = false;
+                    this.surveyDone = false;
                 }
                 SearchOrderComponent.prototype.ngOnInit = function () {
                     var _this = this;
+                    this.surveyForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormGroup"]({
+                        'tableScore': new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].min(1), _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].max(10)]),
+                        'restaurantScore': new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].min(1), _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].max(10)]),
+                        'waiterScore': new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].min(1), _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].max(10)]),
+                        'cookScore': new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].min(1), _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].max(10)]),
+                        'comment': new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required]),
+                        'commentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required]),
+                    });
                     setInterval(function () {
                         if (_this.order) {
                             var now = new Date();
@@ -2003,10 +2307,9 @@
                     var _this = this;
                     this.waitingOrder = true;
                     this.orderService.GetByCodeID(this.orderID)
-                        .then(function (ord) {
-                        _this.waitingOrder = false;
-                        _this.order = ord;
-                    });
+                        .then(function (ord) { return _this.order = ord; })
+                        .catch(function (error) { return _this.toastr.error(error, 'Error'); })
+                        .finally(function () { return _this.waitingOrder = false; });
                 };
                 SearchOrderComponent.prototype.CanPayNow = function () {
                     var can = false;
@@ -2017,11 +2320,17 @@
                     return can;
                 };
                 SearchOrderComponent.prototype.SendAnswers = function () {
-                    this.toastr.success('Encuesta enviada correctamente!');
+                    var _this = this;
+                    var survey = src_app_models_survey__WEBPACK_IMPORTED_MODULE_9__["Survey"].Create(this.order, this.surveyForm.get('tableScore').value, this.surveyForm.get('waiterScore').value, this.surveyForm.get('restaurantScore').value, this.surveyForm.get('cookScore').value, this.surveyForm.get('comment').value, this.surveyForm.get('commentType').value);
+                    this.surveyService.Add(survey)
+                        .then(function () { return _this.toastr.success('Encuesta enviada correctamente!'); })
+                        .catch(function () { return _this.toastr.error('Se ha producido un error al enviar la encuesta.'); })
+                        .finally(function () { return _this.surveyDone = true; });
                 };
                 return SearchOrderComponent;
             }());
             SearchOrderComponent.ctorParameters = function () { return [
+                { type: src_app_services_firebase_survey_service__WEBPACK_IMPORTED_MODULE_7__["SurveyService"] },
                 { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrService"] },
                 { type: src_app_services_firebase_order_service__WEBPACK_IMPORTED_MODULE_3__["OrderService"] },
                 { type: src_app_services_firebase_table_service__WEBPACK_IMPORTED_MODULE_4__["TableService"] }
@@ -2098,17 +2407,24 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainCocineroComponent", function () { return MainCocineroComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/authentication/auth.service */ "./src/app/services/authentication/auth.service.ts");
             var MainCocineroComponent = /** @class */ (function () {
-                function MainCocineroComponent() {
+                function MainCocineroComponent(authService) {
+                    this.authService = authService;
                     this.open = false;
                 }
                 MainCocineroComponent.prototype.toggleSidebar = function () {
                     this.open = !this.open;
                 };
                 MainCocineroComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.authService.GetCurrentUser().then(function (x) { return _this.user = x; });
                 };
                 return MainCocineroComponent;
             }());
+            MainCocineroComponent.ctorParameters = function () { return [
+                { type: src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+            ]; };
             MainCocineroComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-main-cocinero',
@@ -2202,90 +2518,6 @@
             ], SelectOrderComponent);
             /***/ 
         }),
-        /***/ "./src/app/components/mozo/main/table-card/table-card.component.scss": 
-        /*!***************************************************************************!*\
-          !*** ./src/app/components/mozo/main/table-card/table-card.component.scss ***!
-          \***************************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".icon {\n  font-size: 2rem;\n}\n\n.card-title {\n  font-size: 1.5rem;\n}\n\n.green {\n  color: green;\n}\n\n.red {\n  color: red;\n}\n\n.orange {\n  color: orange;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tb3pvL21haW4vdGFibGUtY2FyZC9EOlxcV29ya2luZyBvblxcX1JlcG9zaXRvcmllc1xcVFAtQ29tYW5kYVxcVFBfTGFiNF8yY18yMDE5L3NyY1xcYXBwXFxjb21wb25lbnRzXFxtb3pvXFxtYWluXFx0YWJsZS1jYXJkXFx0YWJsZS1jYXJkLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnRzL21vem8vbWFpbi90YWJsZS1jYXJkL3RhYmxlLWNhcmQuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxlQUFBO0FDQ0o7O0FERUE7RUFDSSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksWUFBQTtBQ0NKOztBREVBO0VBQ0ksVUFBQTtBQ0NKOztBREVBO0VBQ0ksYUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9tb3pvL21haW4vdGFibGUtY2FyZC90YWJsZS1jYXJkLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmljb24ge1xyXG4gICAgZm9udC1zaXplOiAycmVtO1xyXG59XHJcblxyXG4uY2FyZC10aXRsZSB7XHJcbiAgICBmb250LXNpemU6IDEuNXJlbTtcclxufVxyXG5cclxuLmdyZWVuIHtcclxuICAgIGNvbG9yOiBncmVlbjtcclxufVxyXG5cclxuLnJlZCB7XHJcbiAgICBjb2xvcjogcmVkO1xyXG59XHJcblxyXG4ub3JhbmdlIHtcclxuICAgIGNvbG9yOiBvcmFuZ2U7XHJcbn0iLCIuaWNvbiB7XG4gIGZvbnQtc2l6ZTogMnJlbTtcbn1cblxuLmNhcmQtdGl0bGUge1xuICBmb250LXNpemU6IDEuNXJlbTtcbn1cblxuLmdyZWVuIHtcbiAgY29sb3I6IGdyZWVuO1xufVxuXG4ucmVkIHtcbiAgY29sb3I6IHJlZDtcbn1cblxuLm9yYW5nZSB7XG4gIGNvbG9yOiBvcmFuZ2U7XG59Il19 */");
-            /***/ 
-        }),
-        /***/ "./src/app/components/mozo/main/table-card/table-card.component.ts": 
-        /*!*************************************************************************!*\
-          !*** ./src/app/components/mozo/main/table-card/table-card.component.ts ***!
-          \*************************************************************************/
-        /*! exports provided: TableCardComponent */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TableCardComponent", function () { return TableCardComponent; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            /* harmony import */ var src_app_models_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/table */ "./src/app/models/table.ts");
-            /* harmony import */ var src_app_services_firebase_table_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/firebase/table.service */ "./src/app/services/firebase/table.service.ts");
-            /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
-            var TableCardComponent = /** @class */ (function () {
-                function TableCardComponent(tableService, toastr) {
-                    this.tableService = tableService;
-                    this.toastr = toastr;
-                }
-                TableCardComponent.prototype.ngOnInit = function () {
-                };
-                TableCardComponent.prototype.ChangeStatus = function (option) {
-                    var _this = this;
-                    var status;
-                    switch (option) {
-                        case 1:
-                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].available;
-                            break;
-                        case 2:
-                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].waitingOrder;
-                            break;
-                        case 3:
-                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].eating;
-                            break;
-                        case 4:
-                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].paying;
-                            break;
-                        case 5:
-                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].closed;
-                            break;
-                        default:
-                            status = src_app_models_table__WEBPACK_IMPORTED_MODULE_2__["TableState"].available;
-                            break;
-                    }
-                    this.tableService.UpdateStatus(this.table.tableID, status)
-                        .then(function () {
-                        _this.toastr.success('Se cambió el estado de la mesa.');
-                    })
-                        .catch(function () {
-                        _this.toastr.error('Ha ocurrido un error al actualizar.');
-                    });
-                };
-                return TableCardComponent;
-            }());
-            TableCardComponent.ctorParameters = function () { return [
-                { type: src_app_services_firebase_table_service__WEBPACK_IMPORTED_MODULE_3__["TableService"] },
-                { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"] }
-            ]; };
-            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-            ], TableCardComponent.prototype, "table", void 0);
-            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-            ], TableCardComponent.prototype, "isAdmin", void 0);
-            TableCardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-                    selector: 'app-table-card',
-                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./table-card.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mozo/main/table-card/table-card.component.html")).default,
-                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./table-card.component.scss */ "./src/app/components/mozo/main/table-card/table-card.component.scss")).default]
-                })
-            ], TableCardComponent);
-            /***/ 
-        }),
         /***/ "./src/app/components/mozo/views/home-mozo/home-mozo.component.scss": 
         /*!**************************************************************************!*\
           !*** ./src/app/components/mozo/views/home-mozo/home-mozo.component.scss ***!
@@ -2349,17 +2581,24 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainMozoComponent", function () { return MainMozoComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/authentication/auth.service */ "./src/app/services/authentication/auth.service.ts");
             var MainMozoComponent = /** @class */ (function () {
-                function MainMozoComponent() {
+                function MainMozoComponent(authService) {
+                    this.authService = authService;
                     this.open = false;
                 }
                 MainMozoComponent.prototype.toggleSidebar = function () {
                     this.open = !this.open;
                 };
                 MainMozoComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.authService.GetCurrentUser().then(function (x) { return _this.user = x; });
                 };
                 return MainMozoComponent;
             }());
+            MainMozoComponent.ctorParameters = function () { return [
+                { type: src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+            ]; };
             MainMozoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-main-mozo',
@@ -2483,17 +2722,24 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainSocioComponent", function () { return MainSocioComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/authentication/auth.service */ "./src/app/services/authentication/auth.service.ts");
             var MainSocioComponent = /** @class */ (function () {
-                function MainSocioComponent() {
+                function MainSocioComponent(authService) {
+                    this.authService = authService;
                     this.open = false;
                 }
                 MainSocioComponent.prototype.toggleSidebar = function () {
                     this.open = !this.open;
                 };
                 MainSocioComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.authService.GetCurrentUser().then(function (x) { return _this.user = x; });
                 };
                 return MainSocioComponent;
             }());
+            MainSocioComponent.ctorParameters = function () { return [
+                { type: src_app_services_authentication_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+            ]; };
             MainSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-main-socio',
@@ -2586,6 +2832,184 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./manage-tables-admin.component.scss */ "./src/app/components/socio/views/manage-tables-admin/manage-tables-admin.component.scss")).default]
                 })
             ], ManageTablesAdminComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/components/socio/views/survey-table/survey-table.component.scss": 
+        /*!*********************************************************************************!*\
+          !*** ./src/app/components/socio/views/survey-table/survey-table.component.scss ***!
+          \*********************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("table {\n  background: silver;\n  border: 1px solid black;\n}\ntable th {\n  border: none;\n}\n.red {\n  color: red;\n}\n.yellow {\n  color: #d8b800;\n}\n.green {\n  color: #01b301;\n}\n.survey {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zb2Npby92aWV3cy9zdXJ2ZXktdGFibGUvRDpcXFdvcmtpbmcgb25cXF9SZXBvc2l0b3JpZXNcXFRQLUNvbWFuZGFcXFRQX0xhYjRfMmNfMjAxOS9zcmNcXGFwcFxcY29tcG9uZW50c1xcc29jaW9cXHZpZXdzXFxzdXJ2ZXktdGFibGVcXHN1cnZleS10YWJsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zb2Npby92aWV3cy9zdXJ2ZXktdGFibGUvc3VydmV5LXRhYmxlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSx1QkFBQTtBQ0NKO0FEQ0k7RUFDSSxZQUFBO0FDQ1I7QURHQTtFQUNJLFVBQUE7QUNBSjtBREdBO0VBQ0ksY0FBQTtBQ0FKO0FER0E7RUFDSSxjQUFBO0FDQUo7QURHQTtFQUNJLGVBQUE7QUNBSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc29jaW8vdmlld3Mvc3VydmV5LXRhYmxlL3N1cnZleS10YWJsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICAgIGJhY2tncm91bmQ6IHNpbHZlcjtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xyXG5cclxuICAgIHRoIHtcclxuICAgICAgICBib3JkZXI6IG5vbmU7XHJcbiAgICB9XHJcbn1cclxuXHJcbi5yZWQge1xyXG4gICAgY29sb3I6IHJlZDtcclxufVxyXG5cclxuLnllbGxvdyB7XHJcbiAgICBjb2xvcjogcmdiKDIxNiwgMTg0LCAwKTtcclxufVxyXG5cclxuLmdyZWVuIHtcclxuICAgIGNvbG9yOiByZ2IoMSwgMTc5LCAxKTtcclxufVxyXG5cclxuLnN1cnZleSB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn0iLCJ0YWJsZSB7XG4gIGJhY2tncm91bmQ6IHNpbHZlcjtcbiAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG59XG50YWJsZSB0aCB7XG4gIGJvcmRlcjogbm9uZTtcbn1cblxuLnJlZCB7XG4gIGNvbG9yOiByZWQ7XG59XG5cbi55ZWxsb3cge1xuICBjb2xvcjogI2Q4YjgwMDtcbn1cblxuLmdyZWVuIHtcbiAgY29sb3I6ICMwMWIzMDE7XG59XG5cbi5zdXJ2ZXkge1xuICBjdXJzb3I6IHBvaW50ZXI7XG59Il19 */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/socio/views/survey-table/survey-table.component.ts": 
+        /*!*******************************************************************************!*\
+          !*** ./src/app/components/socio/views/survey-table/survey-table.component.ts ***!
+          \*******************************************************************************/
+        /*! exports provided: SurveyTableComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SurveyTableComponent", function () { return SurveyTableComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_firebase_survey_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/firebase/survey.service */ "./src/app/services/firebase/survey.service.ts");
+            var SurveyTableComponent = /** @class */ (function () {
+                function SurveyTableComponent(surveyService) {
+                    this.surveyService = surveyService;
+                }
+                SurveyTableComponent.prototype.ngOnInit = function () {
+                    this.surveys = this.surveyService.GetAll().valueChanges();
+                };
+                SurveyTableComponent.prototype.SelectSurvey = function (surv) {
+                    this.survey = surv;
+                };
+                return SurveyTableComponent;
+            }());
+            SurveyTableComponent.ctorParameters = function () { return [
+                { type: src_app_services_firebase_survey_service__WEBPACK_IMPORTED_MODULE_2__["SurveyService"] }
+            ]; };
+            SurveyTableComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-survey-table',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./survey-table.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/socio/views/survey-table/survey-table.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./survey-table.component.scss */ "./src/app/components/socio/views/survey-table/survey-table.component.scss")).default]
+                })
+            ], SurveyTableComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/directives/no-orders.directive.ts": 
+        /*!***************************************************!*\
+          !*** ./src/app/directives/no-orders.directive.ts ***!
+          \***************************************************/
+        /*! exports provided: NoOrdersDirective */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoOrdersDirective", function () { return NoOrdersDirective; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            var NoOrdersDirective = /** @class */ (function () {
+                function NoOrdersDirective() {
+                }
+                NoOrdersDirective.prototype.ngOnChanges = function () {
+                };
+                return NoOrdersDirective;
+            }());
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('noOrders')
+            ], NoOrdersDirective.prototype, "orders", void 0);
+            NoOrdersDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+                    selector: '[noOrders]'
+                })
+            ], NoOrdersDirective);
+            /***/ 
+        }),
+        /***/ "./src/app/directives/survey-average.directive.ts": 
+        /*!********************************************************!*\
+          !*** ./src/app/directives/survey-average.directive.ts ***!
+          \********************************************************/
+        /*! exports provided: SurveyAverageDirective */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SurveyAverageDirective", function () { return SurveyAverageDirective; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            var SurveyAverageDirective = /** @class */ (function () {
+                function SurveyAverageDirective(el) {
+                    this.el = el;
+                }
+                SurveyAverageDirective.prototype.ngOnInit = function () {
+                    if (!this.returnAvg)
+                        this.Paint();
+                };
+                SurveyAverageDirective.prototype.ngOnChanges = function () {
+                    if (this.returnAvg)
+                        this.el.nativeElement.innerHTML = this.CalculateAverage().toFixed(2);
+                };
+                SurveyAverageDirective.prototype.CalculateAverage = function () {
+                    return (this.survey.tableScore +
+                        this.survey.restaurantScore +
+                        this.survey.waiterScore +
+                        this.survey.cookScore) / 4;
+                };
+                SurveyAverageDirective.prototype.Paint = function () {
+                    var avg = this.CalculateAverage();
+                    if (avg < 4)
+                        this.el.nativeElement.style.color = 'red';
+                    else if (avg >= 4 && avg < 7)
+                        this.el.nativeElement.style.color = 'yellow';
+                    else
+                        this.el.nativeElement.style.color = 'green';
+                };
+                return SurveyAverageDirective;
+            }());
+            SurveyAverageDirective.ctorParameters = function () { return [
+                { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }
+            ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('surveyAverage')
+            ], SurveyAverageDirective.prototype, "survey", void 0);
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('returnAverage')
+            ], SurveyAverageDirective.prototype, "returnAvg", void 0);
+            SurveyAverageDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+                    selector: '[surveyAverage]'
+                })
+            ], SurveyAverageDirective);
+            /***/ 
+        }),
+        /***/ "./src/app/directives/survey-comment.directive.ts": 
+        /*!********************************************************!*\
+          !*** ./src/app/directives/survey-comment.directive.ts ***!
+          \********************************************************/
+        /*! exports provided: SurveyCommentDirective */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SurveyCommentDirective", function () { return SurveyCommentDirective; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            var SurveyCommentDirective = /** @class */ (function () {
+                function SurveyCommentDirective(el) {
+                    this.el = el;
+                }
+                SurveyCommentDirective.prototype.ngOnChanges = function () {
+                    if (this.isIcon) {
+                        if (this.isPositive)
+                            this.el.nativeElement.innerHTML = '<i class="fas fa-check-circle" style="color: green"></i>';
+                        else
+                            this.el.nativeElement.innerHTML = '<i class="fas fa-exclamation" style="color: red"></i>';
+                    }
+                    else {
+                        if (this.isPositive)
+                            this.el.nativeElement.innerHTML = 'El comentario dado por el cliente fue positivo.';
+                        else
+                            this.el.nativeElement.innerHTML = 'El comentario dado por el cliente fue negativo.';
+                    }
+                };
+                return SurveyCommentDirective;
+            }());
+            SurveyCommentDirective.ctorParameters = function () { return [
+                { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }
+            ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('surveyComment')
+            ], SurveyCommentDirective.prototype, "isPositive", void 0);
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('isIcon')
+            ], SurveyCommentDirective.prototype, "isIcon", void 0);
+            SurveyCommentDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+                    selector: '[surveyComment]'
+                })
+            ], SurveyCommentDirective);
             /***/ 
         }),
         /***/ "./src/app/guards/auth.guard.ts": 
@@ -2817,6 +3241,38 @@
             })(Cook || (Cook = {}));
             /***/ 
         }),
+        /***/ "./src/app/models/survey.ts": 
+        /*!**********************************!*\
+          !*** ./src/app/models/survey.ts ***!
+          \**********************************/
+        /*! exports provided: Survey */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Survey", function () { return Survey; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var Survey = /** @class */ (function () {
+                function Survey() {
+                    this.tableScore = 0;
+                    this.waiterScore = 0;
+                    this.restaurantScore = 0;
+                    this.cookScore = 0;
+                }
+                Survey.Create = function (order, table, waiter, restaurant, cook, comment, commentType) {
+                    var newSurvey = new Survey();
+                    newSurvey.order = order;
+                    newSurvey.tableScore = table;
+                    newSurvey.waiterScore = waiter;
+                    newSurvey.restaurantScore = restaurant;
+                    newSurvey.cookScore = cook;
+                    newSurvey.comment = comment;
+                    newSurvey.commentType = commentType;
+                    return newSurvey;
+                };
+                return Survey;
+            }());
+            /***/ 
+        }),
         /***/ "./src/app/models/table.ts": 
         /*!*********************************!*\
           !*** ./src/app/models/table.ts ***!
@@ -2869,6 +3325,7 @@
                     this.password = "";
                     this.email = "";
                     this.role = Role.socio;
+                    this.image = 'assets/img/default-profile.png';
                 }
                 User.CreateUserWithParams = function (name, lastname, email, password, role) {
                     var user = new User();
@@ -2945,7 +3402,6 @@
                 function TimeleftPipe() {
                 }
                 TimeleftPipe.prototype.transform = function (value) {
-                    console.log(value);
                     if (value == undefined || isNaN(value) || value == 0)
                         return 'No tiene un tiempo estimado asignado.';
                     var diff = Math.floor(value / (1000 * 60));
@@ -3147,9 +3603,15 @@
                 OrderService.prototype.GetByCodeID = function (code) {
                     var documents = this.db.collection("orders", function (ref) { return ref.where('codeID', '==', code); });
                     return documents.get().toPromise().then(function (doc) {
-                        var theOrder = doc.docs[0].data();
-                        theOrder.id = doc.docs[0].id;
-                        return theOrder;
+                        return new Promise(function (resolve, reject) {
+                            if (doc.docs[0]) {
+                                var theOrder = doc.docs[0].data();
+                                theOrder.id = doc.docs[0].id;
+                                resolve(theOrder);
+                            }
+                            else
+                                reject('No se encontró el pedido.');
+                        });
                     });
                 };
                 return OrderService;
@@ -3162,6 +3624,47 @@
                     providedIn: 'root'
                 })
             ], OrderService);
+            /***/ 
+        }),
+        /***/ "./src/app/services/firebase/survey.service.ts": 
+        /*!*****************************************************!*\
+          !*** ./src/app/services/firebase/survey.service.ts ***!
+          \*****************************************************/
+        /*! exports provided: SurveyService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SurveyService", function () { return SurveyService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
+            /* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/ __webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__);
+            /* harmony import */ var src_app_classes_helpers_common_helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/classes/helpers/common-helper */ "./src/app/classes/helpers/common-helper.ts");
+            var SurveyService = /** @class */ (function () {
+                function SurveyService(db) {
+                    this.db = db;
+                }
+                SurveyService.prototype.GetAll = function () {
+                    return this.db.collection('surveys');
+                };
+                SurveyService.prototype.Add = function (surv) {
+                    var _this = this;
+                    return new Promise(function (resolve, reject) {
+                        _this.db.collection('surveys').add(src_app_classes_helpers_common_helper__WEBPACK_IMPORTED_MODULE_3__["CommonHelper"].ConvertToObject(surv))
+                            .then(function () { return resolve(); })
+                            .catch(function () { return reject(); });
+                    });
+                };
+                return SurveyService;
+            }());
+            SurveyService.ctorParameters = function () { return [
+                { type: angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+            ]; };
+            SurveyService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], SurveyService);
             /***/ 
         }),
         /***/ "./src/app/services/firebase/table.service.ts": 
@@ -3296,6 +3799,14 @@
                         return waiters;
                     });
                 };
+                UserService.prototype.ModifyProfileImage = function (email, image) {
+                    var _this = this;
+                    return this.GetUserByEmail(email).then(function (doc) {
+                        var user = doc;
+                        user.image = image;
+                        _this.db.collection('users').doc(doc.id).update(user);
+                    });
+                };
                 return UserService;
             }());
             UserService.ctorParameters = function () { return [
@@ -3307,6 +3818,44 @@
                     providedIn: 'root'
                 })
             ], UserService);
+            /***/ 
+        }),
+        /***/ "./src/app/services/firestorage/file.service.ts": 
+        /*!******************************************************!*\
+          !*** ./src/app/services/firestorage/file.service.ts ***!
+          \******************************************************/
+        /*! exports provided: FileService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FileService", function () { return FileService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+            /* harmony import */ var q__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! q */ "./node_modules/q/q.js");
+            /* harmony import */ var q__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/ __webpack_require__.n(q__WEBPACK_IMPORTED_MODULE_3__);
+            var FileService = /** @class */ (function () {
+                function FileService(storage) {
+                    this.storage = storage;
+                }
+                FileService.prototype.Upload = function (fileName, file) {
+                    return this.storage.upload(fileName, file).
+                        then(function (success) { return Object(q__WEBPACK_IMPORTED_MODULE_3__["resolve"])(success); })
+                        .catch(function (error) { return Object(q__WEBPACK_IMPORTED_MODULE_3__["reject"])(error.message); });
+                };
+                FileService.prototype.GetImageURL = function (fileName) {
+                    return this.storage.ref(fileName).getDownloadURL().toPromise().then(function (URL) { return Object(q__WEBPACK_IMPORTED_MODULE_3__["resolve"])(URL); });
+                };
+                return FileService;
+            }());
+            FileService.ctorParameters = function () { return [
+                { type: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_2__["AngularFireStorage"] }
+            ]; };
+            FileService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], FileService);
             /***/ 
         }),
         /***/ "./src/environments/environment.ts": 

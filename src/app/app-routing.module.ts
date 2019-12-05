@@ -22,6 +22,8 @@ import { SearchOrderComponent } from './components/cliente/views/search-order/se
 import { RedirectComponent } from './components/all/views/redirect/redirect.component';
 import { ManageOrdersAdminComponent } from './components/socio/views/manage-orders-admin/manage-orders-admin.component';
 import { ManageTablesAdminComponent } from './components/socio/views/manage-tables-admin/manage-tables-admin.component';
+import { ProfileComponent } from './components/all/views/profile/profile.component';
+import { SurveyTableComponent } from './components/socio/views/survey-table/survey-table.component';
 
 
 const routes: Routes = [
@@ -40,7 +42,9 @@ const routes: Routes = [
 		[
 			{path: '', component: HomeSocioComponent},
 			{path: 'tables', component: ManageTablesAdminComponent},
-			{path: 'orders', component: ManageOrdersAdminComponent}
+			{path: 'orders', component: ManageOrdersAdminComponent},
+			{path: 'profile', component: ProfileComponent},
+			{path: 'surveys', component: SurveyTableComponent},
 		],
 	canActivate: [AuthGuard]},
 
@@ -48,7 +52,8 @@ const routes: Routes = [
       	children:
 		[
 			{path: '', component: HomeMozoComponent},
-			{path: 'tables', component: ManageTablesComponent}
+			{path: 'tables', component: ManageTablesComponent},
+			{path: 'profile', component: ProfileComponent},
 		],
 	canActivate: [AuthGuard]},
 
@@ -56,6 +61,7 @@ const routes: Routes = [
       	children:
 		[
 			{path: '', component: HomeCerveceroComponent},
+			{path: 'profile', component: ProfileComponent},
 		],
 	canActivate: [AuthGuard]},
 
@@ -63,6 +69,7 @@ const routes: Routes = [
       	children:
 		[
 			{path: '', component: HomeCocineroComponent},
+			{path: 'profile', component: ProfileComponent},
 		],
 	canActivate: [AuthGuard]},
 
@@ -70,6 +77,7 @@ const routes: Routes = [
       	children:
 		[
 			{path: '', component: HomeBartenderComponent},
+			{path: 'profile', component: ProfileComponent},
 		],
 	canActivate: [AuthGuard]},
 
@@ -77,7 +85,8 @@ const routes: Routes = [
       	children:
 		[
 			{path: '', component: HomeClienteComponent},
-			{path: 'buscar', component: SearchOrderComponent}
+			{path: 'buscar', component: SearchOrderComponent},
+			{path: 'profile', component: ProfileComponent},
 		],
 	canActivate: [AuthGuard]},
 		

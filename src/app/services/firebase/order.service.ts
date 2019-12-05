@@ -5,6 +5,7 @@ import { CommonHelper } from 'src/app/classes/helpers/common-helper';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Cook } from 'src/app/models/product';
+import { reject } from 'q';
 
 @Injectable({
 	providedIn: 'root'
@@ -23,7 +24,7 @@ export class OrderService {
 		return this.db.collection("orders", ref => ref.where('completed', '==', false));
 	}
 
-	public GetAllByWaiterOrderByTime(email: string): any
+	public GetAllByWaiterOrderByTime(email: string)
 	{
 		// It's not order by time yet. It requires to create an index.
 		//return this.db.collection("orders", ref => ref.where('waiter.email', '==', email).orderBy('timestamp', 'desc'));
@@ -75,10 +76,17 @@ export class OrderService {
 	{
 		let documents = this.db.collection("orders", ref => ref.where('codeID', '==', code));
 		return documents.get().toPromise().then(doc => {
-			let theOrder = doc.docs[0].data() as Order;
-			theOrder.id = doc.docs[0].id;
-			return theOrder;
-		})
+			return new Promise((resolve, reject) => {
+				if(doc.docs[0])
+				{
+					let theOrder = doc.docs[0].data() as Order;
+					theOrder.id = doc.docs[0].id;
+					resolve(theOrder);
+				}
+				else
+					reject('No se encontró el pedido.');
+			})
+		});
 	}
 
 }

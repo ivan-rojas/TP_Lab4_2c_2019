@@ -1,3 +1,5 @@
+import { User } from 'src/app/models/user';
+
 export class CommonHelper 
 {
     public static ConvertToObject(obj: any): Object
@@ -10,5 +12,12 @@ export class CommonHelper
         let firstPart = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         let secondPart = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
         return firstPart + ' ' + secondPart;
+    }
+
+    public static GenerateProfileImageName(user: User): string
+    {
+        return user.name.trim().toUpperCase()
+            + user.lastname.trim().toUpperCase()
+            + user.role.charAt(0).toUpperCase();
     }
 }

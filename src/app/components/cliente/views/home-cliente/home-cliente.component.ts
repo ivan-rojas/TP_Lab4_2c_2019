@@ -106,7 +106,6 @@ export class HomeClienteComponent implements OnInit {
 	{
 		return this.userService.GetAllWaiters().then(waiters => {
 			let random = Math.floor(Math.random() * waiters.length);
-			console.log(random);
 			return waiters[random];
 		})
 	}

@@ -4,6 +4,9 @@ import { OrderService } from 'src/app/services/firebase/order.service';
 import { TableService } from 'src/app/services/firebase/table.service';
 import { Order, OrderState } from 'src/app/models/order';
 import { TableState } from 'src/app/models/table';
+import { SurveyService } from 'src/app/services/firebase/survey.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Survey } from 'src/app/models/survey';
 
 @Component({
 	selector: 'app-search-order',
@@ -18,9 +21,22 @@ export class SearchOrderComponent implements OnInit {
 	public alreadyPaid: boolean = false;
 	public waitingOrder: boolean = false;
 
-	constructor(private toastr: ToastrService, private orderService: OrderService, private tableService: TableService) { }
+	public surveyForm: FormGroup;
+	public surveyDone: boolean = false;
 
-	ngOnInit() {
+	constructor(private surveyService: SurveyService, private toastr: ToastrService, private orderService: OrderService, private tableService: TableService) { }
+
+	ngOnInit() 
+	{
+		this.surveyForm = new FormGroup({
+			'tableScore': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(10)]),
+			'restaurantScore': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(10)]),
+			'waiterScore': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(10)]),
+			'cookScore': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(10)]),
+			'comment': new FormControl(null, [Validators.required]),
+			'commentType': new FormControl(null, [Validators.required]),
+		})
+
 		setInterval(() => {
 			if(this.order)
 			{
@@ -56,10 +72,9 @@ export class SearchOrderComponent implements OnInit {
 	{
 		this.waitingOrder = true;
 		this.orderService.GetByCodeID(this.orderID)
-			.then(ord => {
-				this.waitingOrder = false;
-				this.order = ord;
-			});
+			.then(ord => this.order = ord)
+			.catch(error => this.toastr.error(error, 'Error'))
+			.finally(() => this.waitingOrder = false);
 	}
 
 	public CanPayNow(): boolean
@@ -75,6 +90,19 @@ export class SearchOrderComponent implements OnInit {
 
 	public SendAnswers(): void
 	{
-		this.toastr.success('Encuesta enviada correctamente!');
+		let survey = Survey.Create(
+			this.order,
+			this.surveyForm.get('tableScore').value,
+			this.surveyForm.get('waiterScore').value,
+			this.surveyForm.get('restaurantScore').value,
+			this.surveyForm.get('cookScore').value,
+			this.surveyForm.get('comment').value,
+			this.surveyForm.get('commentType').value,
+		);
+
+		this.surveyService.Add(survey)
+			.then(() => this.toastr.success('Encuesta enviada correctamente!'))
+			.catch(() => this.toastr.error('Se ha producido un error al enviar la encuesta.'))
+			.finally(() => this.surveyDone = true);
 	}
 }

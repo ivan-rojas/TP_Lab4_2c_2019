@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
 
 	public registerForm: FormGroup;
+	public loading: boolean = false;
 
 	constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
 
@@ -29,6 +30,7 @@ export class RegisterComponent implements OnInit {
 
 	onSubmit()
 	{
+		this.loading = true;
     	let user: User = User.CreateUserWithParams(
 			this.registerForm.get('name').value,
 			this.registerForm.get('lastname').value,

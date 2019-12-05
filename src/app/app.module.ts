@@ -6,6 +6,7 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +27,7 @@ import { SidebarOptionComponent } from './components/all/main/sidebar-option/sid
 import { OrderListComponent } from './components/all/main/order-list/order-list.component';
 import { SelectOrderComponent } from './components/mozo/main/select-order/select-order.component';
 import { ManageTablesComponent } from './components/mozo/views/manage-tables/manage-tables.component';
-import { TableCardComponent } from './components/mozo/main/table-card/table-card.component';
+import { TableCardComponent } from './components/all/main/table-card/table-card.component';
 import { MainCocineroComponent } from './components/cocinero/views/main-cocinero/main-cocinero.component';
 import { HomeCocineroComponent } from './components/cocinero/views/home-cocinero/home-cocinero.component';
 import { HomeBartenderComponent } from './components/bartender/views/home-bartender/home-bartender.component';
@@ -41,6 +42,12 @@ import { SpinnerComponent } from './components/all/main/spinner/spinner.componen
 import { RedirectComponent } from './components/all/views/redirect/redirect.component';
 import { ManageTablesAdminComponent } from './components/socio/views/manage-tables-admin/manage-tables-admin.component';
 import { ManageOrdersAdminComponent } from './components/socio/views/manage-orders-admin/manage-orders-admin.component';
+import { ProfileComponent } from './components/all/views/profile/profile.component';
+import { FooterComponent } from './components/all/main/footer/footer.component';
+import { SurveyTableComponent } from './components/socio/views/survey-table/survey-table.component';
+import { SurveyAverageDirective } from './directives/survey-average.directive';
+import { SurveyCommentDirective } from './directives/survey-comment.directive';
+import { NoOrdersDirective } from './directives/no-orders.directive';
 
 @NgModule({
   declarations: [
@@ -74,7 +81,13 @@ import { ManageOrdersAdminComponent } from './components/socio/views/manage-orde
     SpinnerComponent,
     RedirectComponent,
     ManageTablesAdminComponent,
-    ManageOrdersAdminComponent
+    ManageOrdersAdminComponent,
+    ProfileComponent,
+    FooterComponent,
+    SurveyTableComponent,
+    SurveyAverageDirective,
+    SurveyCommentDirective,
+    NoOrdersDirective
   ],
   imports: [
     BrowserModule,
@@ -84,6 +97,7 @@ import { ManageOrdersAdminComponent } from './components/socio/views/manage-orde
     AngularFireModule.initializeApp(FirebaseConfig),
     AngularFirestoreModule,
     AngularFireFunctionsModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 2300,
